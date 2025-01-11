@@ -1,0 +1,21 @@
+:root {
+  --color-blue: #3b90ea;
+  --color-black: rgb(63, 63, 63);
+  --color-red:#ff4b4b;
+  --color-pink: #ec407a;
+  --color-grey: #626a71;
+}
+
+.full-heigh {
+  height: 100%;
+}
+
+.flex-center-full {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.color-blue {
+  color: rgb(33, 112, 172);
+}

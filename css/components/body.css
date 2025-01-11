@@ -1,0 +1,17 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f2f2f2;
+}
+
+main{
+    flex-grow: 2;
+  margin: 0rem;
+  padding: 0rem;
+  background: #f2f2f2;
+}
+
+header{
+    min-height: 70.1px;
+}

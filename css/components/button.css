@@ -1,0 +1,55 @@
+.button-blue {
+  background: var(--color-blue);
+  padding: 0.74rem 1.5rem;
+  border: 0rem;
+  color: white;
+  font-weight: 600;
+}
+
+.button-red {
+  background: var(--color-red);
+  padding: 0.74rem 1.5rem;
+  border: 0rem;
+  color: white;
+  font-weight: 600;
+}
+
+.button-white {
+  color: white;
+  padding: 0.74rem 1.5rem;
+  border: 0rem;
+  background-color: white;
+  border: solid 2px white;
+}
+
+.button-grey{
+  background: var(--color-grey);
+  padding: 0.74rem 1.5rem;
+  border: 0rem;
+  color: white;
+  font-weight: 600;
+}
+
+.button-pink {
+  background: var(--color-pink);
+  padding: 0.74rem 1.5rem;
+  border: 0rem;
+  font-weight: 600;
+  color: white;
+  border: solid 2px white;
+}
+
+.button-blue:hover,
+.button-white:hover,
+.button-pink:hover,
+.button-red:hover,
+.button-grey:hover {
+  transition: box-shadow 0.5s linear;
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+.button-white > a {
+  text-decoration: none;
+  color: rgb(47, 47, 47);
+  font-weight: 600;
+}

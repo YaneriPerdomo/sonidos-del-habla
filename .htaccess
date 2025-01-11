@@ -1,0 +1,3 @@
+ErrorDocument 404 http://localhost/spaceN/404.php
+ErrorDocument 403 http://localhost/spaceN/403.php
+Options All -Indexes
