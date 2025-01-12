@@ -1,7 +1,7 @@
-.validations > span{
-    color: #ff5d5d !important;
-  }
-.not-Valid{
-    transition: border 0.1 linear;
-    border: solid 2px #ff5d5d !important;
+.validations > span {
+  color: #ff5d5d !important;
+}
+.not-Valid {
+  transition: border 0.1 linear;
+  border: solid 2px #ff5d5d !important;
 }

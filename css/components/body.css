@@ -10,7 +10,9 @@ main{
   margin: 0rem;
   padding: 0rem;
   background: #f2f2f2;
+  background-image: linear-gradient(180deg, #256398 50%, #f2f2f2 0% 100%);
 }
+
 
 header{
     min-height: 70.1px;

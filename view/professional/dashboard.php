@@ -15,52 +15,54 @@ include '../../php/validation/authorized-user.php';
     <link rel="stylesheet" href="../../css/components/body.css">
     <link rel="stylesheet" href="../../css/components/footer.css">
     <link rel="stylesheet" href="../../css/components/button.css">
-    <link rel="stylesheet" href="../../css/components/input.css">
     <link rel="stylesheet" href="../../css/components/header.css">
     <link rel="stylesheet" href="../../css/components/auxiliary.css">
-
-    <style>
-        .header-img{
-            width: 50px;
-        }
-
-        header>nav {
-            display: flex;
-            justify-content: space-between;
-            padding: 0.5rem;
-            height: 100%;
-            align-items: center;
-        }
-
-        .dropdown-toggle {
-            background: none;
-            border: none;
-        }
-
-        .dropdown-menu__img{
-            width: 200px;
-        }
-
-        .dropstart .dropdown-toggle::before{
-            content:none;
-        }
-
-        .color-grey{
-            color: #828282;
-        }
-
-        .dropdown-menu__information-email{
-            word-break: break-all;
-        }
-    </style>
+    <link rel="stylesheet" href="../../css/components/modal-window.css">
+    <link rel="stylesheet" href="../../css/admin/header.css">
+    <link rel="stylesheet" href="../../css/admin/dashboard.css">
 </head>
 
 <body>
 
     <?php include '../include/professional/header.php'; ?>
-    <main class="flex-center-full">
+    <main class="flex-start-full">
         <div class="main__content shadow z-1 ">
+            <h1 class="fw-bold">Panel administrativo</h1>
+            <div class="d-flex justify-content-between">
+                <div>
+                    <button class="button-black">Reporte en <b>PDF</b></button>
+                </div>
+                <div>
+                    <button class="button-black"><a href="./patient/add.php" class="text-decoration-none text-white">Agregar paciente</a></button><br>
+                </div>
+            </div><br>
+            <section class="show-patients d-flex   flex-column">
+                <div class="card-patient shadow">
+                    <br>
+                    <div class="card-patient__img flex-center-full">
+                        <img src="../../img/childs/girl.png" class="" alt="">
+                    </div>
+                    <div class="card-patiente_information ">
+                        <b>Usuario:</b><span> Yaneri</span><br>
+                        <b>Nombre:</b><span> Yaneri</span><br>
+                        <b>Apellido:</b> Perdomo<span></span><br>
+                        <b>Edad:</b><span> 10</span><br>
+                        <b>Ejercicios: </b><span>Lorem ipsum dolor sit amet, consectetur</span>
+                    </div>
+                    <hr>
+                    <div class="card-patient__operation flex-center-full gap-4">
+                        <i class="bi bi-trash"></i>
+                        <i class="bi bi-person-lines-fill"></i>
+                        <i class="bi bi-calendar3"></i>
+                    </div>
 
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between px-2">
+                    <i class="bi bi-caret-left-fill color-blue fs-2"></i>
+                    <i class="bi bi-caret-right-fill color-blue fs-2"></i>
+                </div>
+            </section>
         </div>
     </main>
 

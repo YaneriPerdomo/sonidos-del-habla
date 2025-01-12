@@ -1,0 +1,28 @@
+.header-img {
+  width: 50px;
+}
+
+header > nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem;
+  height: 100%;
+  align-items: center;
+}
+
+.dropdown-toggle {
+  background: none;
+  border: none;
+}
+
+.dropdown-menu__img {
+  width: 200px;
+}
+
+.dropstart .dropdown-toggle::before {
+  content: none;
+}
+
+.dropdown-menu__information-email {
+  word-break: break-all;
+}

@@ -1,0 +1,16 @@
+.main__content {
+  background: white;
+  padding: 1rem;
+  border: solid 1px #e8d8ff;
+  margin: 1rem;
+  width: 992px;
+  min-width: 400px;
+  border-radius: 0rem 0rem 1rem 1rem;
+}
+
+
+.btn-change-password {
+  background: none;
+  border: 0rem;
+  text-decoration: underline;
+}

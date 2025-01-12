@@ -1,5 +1,5 @@
 <header class="">
-    <nav class="container-lg">
+    <nav class="">
         <section class="logo">
             <figure class="p-0 m-0">
                 <img src="./../../img/header-professional.png" class="header-img fluid-img" alt="">
@@ -19,7 +19,7 @@
                         <h2> <?php echo isset($_SESSION['user']) ? '¡Hola, ' .$_SESSION['user'] . '!': ''?></h2>
                     </li>
                     <li class="text-center">
-                        <button class="dropdown-item" type="button"><a href="./account/profile.php" class="text-decoration-none">Administra tu cuenta</a></button>
+                        <button class="dropdown-item" type="button"><a href="../account/profile.php" class="text-decoration-none">Administrar tu cuenta </a></button>
                     </li>
                     <li clasS="text-center">
                         <button class="dropdown-item" type="button">
