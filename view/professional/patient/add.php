@@ -48,6 +48,40 @@ include '../../../php/validation/authorized-user.php';
         .selection-gender>label>input {
             display: none;
         }
+
+        .card-exercise>figure>img {
+            width: 200px;
+            border: solid 2px rgb(47, 47, 47);
+            border-radius: 0.4rem;
+        }
+
+        .therapy {
+            height: 150px;
+            width: 120px;
+            background: white;
+            background: wheat;
+            border-radius: 0.5rem;
+            margin: 1rem;
+            position: relative;
+        }
+
+        .therapy>.delete-therapy {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            right: 0;
+            left: 0;
+            position: absolute;
+            border: 0;
+            left: 90%;
+        }
+
+        .therapy>figure>img {
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 
@@ -160,6 +194,125 @@ include '../../../php/validation/authorized-user.php';
                 </div>
                 <hr>
                 <span><b>Datos de la personalizacion de la sesion</b></span>
+                <input type="" class="input-therapys" name="input-therapys" value="sonidos-habla">
+                <div class="flex-center-full">
+                    <div class="therapy flex-center-full" data-state="inactive" data-state-one="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+                    <div class="therapy flex-center-full" data-state="inactive">
+                        <figure>
+                            <img src="" alt="">
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle"></i>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <label for="aim">Objetivo:</label>
+                        <div class="input-group mb-2 selection-phonemes mb-3 ">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-journal-text"></i></span>
+                            <select name="aim" id="aim" class="form-control">
+                                <option value="" selected disabled>Elige la gravedad de la dificultad</option>
+                                <option value="muscle-strengthening">Fortalecimiento muscular</option>
+                                <option value="joint"> Articulación</option>
+                                <option value="fluency">Fluidez</option>
+                            </select>
+                        </div>
+                        <label for="exercises">Ejercicios para mejorar:</label>
+                        <div class="input-group mb-2 selection-phonemes mb-3 ">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-journal-text"></i></span>
+                            <select name="exercises" id="exercises" class="form-control">
+                                <option value="" selected disabled>...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-6 flex-center-full gap-2">
+                        <div class="card-exercise" data-exercise="one">
+                            <figure>
+                                <img src="" alt="">
+                            </figure>
+                            <span></span>
+                        </div>
+                        <div class="card-exercise" data-exercise="two">
+                            <figure>
+                                <img src="" alt="">
+                            </figure>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <span><b>Datos del representante</b></span>
                 <label for="date">Nombre</label><br>
@@ -219,7 +372,170 @@ include '../../../php/validation/authorized-user.php';
     </script>
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/js/multi-select-tag.js"></script>
     <script>
+        $input_therapy_elements = document.querySelector(".input-therapys");
+        let $card_exercise_img = document.querySelectorAll(".card-exercise > figure > img");
+        let $therapy_elements = document.querySelectorAll(".therapy");
+        let $delete_therapy = document.querySelectorAll(".delete-therapy > i")
+        $therapy_imgs = document.querySelectorAll(".therapy > figure > img")
+        document.addEventListener("click", e => {
+         
+                if(e.target.matches('.delete-therapy > i')){
+                    let therapy_image_elements = $input_therapy_elements.value.split(',');
+
+                for (let i = 0; i < $therapy_elements.length; i++) {
+                    if (e.target.getAttribute('data-name-t') == $therapy_imgs[i].getAttribute('alt')) {
+                        $therapy_elements[i].setAttribute('data-state', 'inactive');
+                        if($therapy_elements.getAttribute("data-state-one") == 'active'){
+                            $therapy_elements[i].setAttribute('data-state-one', 'inactive');
+                            $input_therapy_elements.value = $input_therapy_elements.value.replace($delete_therapy[i].getAttribute('data-name-t')+',', '');
+                            let therapy_image_elements = $input_therapy_elements.value.split(',');
+                            if(therapy_image_elements.includes($delete_therapy[i].getAttribute('data-name-t'))){
+                                $input_therapy_elements.value = $input_therapy_elements.value.replace(','+$delete_therapy[i].getAttribute('data-name-t'), '')
+                            }
+
+                            console.info(0)
+                        }else{
+                            $input_therapy_elements.value = $input_therapy_elements.value.replace(','+$delete_therapy[i].getAttribute('data-name-t'), '');
+                        }
+                        $therapy_imgs[i].src = "";
+                        $therapy_imgs[i].alt = "";
+                        $delete_therapy[i].setAttribute('data-name-t', '')
+                        break;
+                    }
+                }
+            }
+
+
+
+
+            if (e.target.matches(".card-exercise > figure >img")) {
+                let therapy_image_elements = $input_therapy_elements.value.split(',');
+                let should_update_input = true;
+                for (let i = 0; i < $therapy_elements.length; i++) {
+                    if ($therapy_elements[i].getAttribute('data-state') == 'inactive') {
+                        if ($therapy_elements[i].getAttribute('data-state-one') == 'inactive') {
+                            console.info(typeof(therapy_image_elements));
+                            console.info(therapy_image_elements.length);
+                             for (let i = 0; i < therapy_image_elements.length; i++) {
+                                if (e.target.getAttribute('alt').includes(therapy_image_elements[i]) ) {
+                                    should_update_input = false;
+                                    break;
+                                }
+                            }
+                            if (should_update_input == false) {
+                                console.info('updaenot')
+                                return
+                            }
+                            $therapy_elements[i].setAttribute('data-state-one', 'active')
+                            if(therapy_image_elements.length == 0){
+                                $input_therapy_elements.value = e.target.getAttribute('alt');
+                           }else if(therapy_image_elements.length == 1){
+                                $input_therapy_elements.value = e.target.getAttribute('alt');
+                           }
+                           else{
+                                $input_therapy_elements.value = $input_therapy_elements.value + ',' + e.target.getAttribute('alt');                           
+                           }
+                        } else {
+                            for (let i = 0; i < therapy_image_elements.length; i++) {
+                                if (e.target.getAttribute('alt').includes(therapy_image_elements[i]) ) {
+                                    should_update_input = false;
+                                    break;
+                                }
+                            }
+                            if (should_update_input == false) {
+                                console.info('updaenot')
+                                return
+                            }
+                            $input_therapy_elements.value = $input_therapy_elements.value + ',' + e.target.getAttribute('alt');
+                        }
+                        $therapy_imgs[i].src = e.target.getAttribute('src');
+                        $therapy_imgs[i].alt = e.target.getAttribute('alt');
+                        $delete_therapy[i].setAttribute('data-name-t', e.target.getAttribute('alt'))
+                        $therapy_elements[i].setAttribute('data-state', 'active')
+                        break;
+                    }
+                }
+            }
+        })
+
+
+
         let $data_checked = document.querySelectorAll(".selection-gender > label > img");
+        let $exercises = document.querySelector('#exercises');
+        let $aim = document.querySelector("#aim");
+        document.addEventListener('change', e => {
+            if (e.target.matches('#aim')) {
+                console.info(0);
+                $card_exercise_img[0].src = "";
+                $card_exercise_img[1].src = "";
+                switch (e.target.value) {
+
+                    case "muscle-strengthening":
+                        $exercises.innerHTML = `
+                                <option value="Musculos de la lengua">Los músculos de la lengua</option>
+                                <option value="Labios"> Labios </option>
+                                <option value="mejillas">Mejillas</option>
+                        `;
+                        //muscle-strengthening;
+                        $card_exercise_img[0].src = `../../../img/exercises/muscle-strengthening/Musculos de la lengua0.png`;
+                        $card_exercise_img[1].src = `../../../img/exercises/muscle-strengthening/Musculos de la lengua1.png`;
+                        $card_exercise_img[0].alt = 'Musculos de la lengua0';
+                        $card_exercise_img[1].alt = 'Musculos de la lengua1';
+                        break;
+                    case 'joint':
+
+                        $exercises.innerHTML = `
+                          <option value="rotacismo">Rotacismo (La no articulación del fonema /r/)</option>
+                        <option value="ceceo">Ceceo (pronunciación de /s/ por /z/)</option>
+                        <option value="seseo">Seseo: pronunciación de /z/ por /s/.</option>
+                        <option value="sigmatismo">Sigmatismo (la no articulación del fonema /s/)</option>
+                        <option value="jotacismo">Jotacismo: la no articulación del fonema /x/.</option>
+                        <option value="mitacismo">Mitacismo (la no articulación del fonema /m/)</option>
+                        <option value="lambdacismo">Lambdacismo (la no articulación del fonema /l/)</option>
+                        <option value="mumación">Numación (la no articulación del fonema /n/)</option>
+                        <option value="muñación">Nuñación (la no articulación del fonema /ñ/)</option>
+                        <option value="kappacismo">Kappacismo (la no articulación del fonema /k/)</option>
+                        <option value="gammacismo">Gammacismo (la no articulación del fonema /g/)</option>
+                        <option value="ficismo">Ficismo (la no articulación del fonema /f/)</option>
+                        <option value="chuitismo">Chuitismo (la no articulación del fonema /ch/)</option>
+                        <option value="piscismo">Piscismo (la no articulación del fonema /p/)</option>
+                        <option value="tetacismo">Tetacismo (la no articulación del fonema /t/)</option>
+                        <option value="yeismo">Yeismo (la no articulación del fonema /ll/)</option>
+                        <option value="chionismo">Chionismo (sustitución de /rr/ por /l/)</option>
+                        <option value="checheo">Checheo (sustitución de /s/ por /ch/)</option>`;
+                        $card_exercise_img[0].src = `../../../img/exercises/joint/rotacismo0.png`;
+                        $card_exercise_img[1].src = `../../../img/exercises/joint/rotacismo1.png`;
+                        $card_exercise_img[0].alt = 'rotacismo0';
+                        $card_exercise_img[1].alt = 'rotacismo1';
+                        break;
+                    case 'fluency':
+                        $exercises.innerHTML = `
+                         <option value="el ritmo del habla">El ritmo</option>
+                        <option value="the-cadence-of-speech">La cadencia del habla</option>
+                        `;
+                        //fluency;
+                        $card_exercise_img[0].src = `../../../img/exercises/fluency/el ritmo del habla0.png`;
+                        $card_exercise_img[1].src = `../../../img/exercises/fluency/el ritmo del habla1.png`;
+                        $card_exercise_img[0].alt = 'el ritmo del habla0';
+                        $card_exercise_img[1].alt = 'el ritmo del habla1';
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            if (e.target.matches('#exercises')) {
+                $card_exercise_img[0].src = `../../../img/exercises/${$aim.value}/${e.target.value}0.png`;
+                $card_exercise_img[1].src = `../../../img/exercises/${$aim.value}/${e.target.value}1.png`;
+                $card_exercise_img[0].alt = e.target.value + '0';
+                $card_exercise_img[1].alt = e.target.value + '1';
+            }
+        })
+
+
+
+
+
         document.addEventListener("click", e => {
             if (e.target.matches(".selection-gender > label > img")) {
                 for (let i = 0; i < $data_checked.length; i++) {
