@@ -378,29 +378,29 @@ include '../../../php/validation/authorized-user.php';
         let $delete_therapy = document.querySelectorAll(".delete-therapy > i")
         $therapy_imgs = document.querySelectorAll(".therapy > figure > img")
         document.addEventListener("click", e => {
-         
-                if(e.target.matches('.delete-therapy > i')){
-                    let therapy_image_elements = $input_therapy_elements.value.split(',');
 
-                for (let i = 0; i < $therapy_elements.length; i++) {
-                    if (e.target.getAttribute('data-name-t') == $therapy_imgs[i].getAttribute('alt')) {
-                        $therapy_elements[i].setAttribute('data-state', 'inactive');
-                        if($therapy_elements.getAttribute("data-state-one") == 'active'){
-                            $therapy_elements[i].setAttribute('data-state-one', 'inactive');
-                            $input_therapy_elements.value = $input_therapy_elements.value.replace($delete_therapy[i].getAttribute('data-name-t')+',', '');
-                            let therapy_image_elements = $input_therapy_elements.value.split(',');
-                            if(therapy_image_elements.includes($delete_therapy[i].getAttribute('data-name-t'))){
-                                $input_therapy_elements.value = $input_therapy_elements.value.replace(','+$delete_therapy[i].getAttribute('data-name-t'), '')
+            if (e.target.matches('.delete-therapy > i')) {
+                let therapy_image_elements = $input_therapy_elements.value.split(',');
+                if (e.target.getAttribute('data-name-t').length != 0) {
+                    for (let i = 0; i < $therapy_elements.length; i++) {
+                        if (e.target.getAttribute('data-name-t') === $therapy_imgs[i].getAttribute('alt')) {
+                            if ($therapy_elements[i].getAttribute("data-state-one") == 'active') {
+                                $therapy_elements[i].setAttribute('data-state-one', 'inactive');
+                                $input_therapy_elements.value = $input_therapy_elements.value.replace($delete_therapy[i].getAttribute('data-name-t') + ',', '');
+                                let therapy_image_elements = $input_therapy_elements.value.split(',');
+                                if (therapy_image_elements.includes($delete_therapy[i].getAttribute('data-name-t'))) {
+                                    $input_therapy_elements.value = $input_therapy_elements.value.replace(',' + $delete_therapy[i].getAttribute('data-name-t'), '')
+                                }
+                                console.info(0)
+                            } else {
+                                $input_therapy_elements.value = $input_therapy_elements.value.replace(',' + $delete_therapy[i].getAttribute('data-name-t'), '');
                             }
-
-                            console.info(0)
-                        }else{
-                            $input_therapy_elements.value = $input_therapy_elements.value.replace(','+$delete_therapy[i].getAttribute('data-name-t'), '');
+                            $therapy_elements[i].setAttribute('data-state', 'inactive');
+                            $therapy_imgs[i].src = "";
+                            $therapy_imgs[i].alt = "";
+                            $delete_therapy[i].setAttribute('data-name-t', '')
+                            break;
                         }
-                        $therapy_imgs[i].src = "";
-                        $therapy_imgs[i].alt = "";
-                        $delete_therapy[i].setAttribute('data-name-t', '')
-                        break;
                     }
                 }
             }
@@ -416,8 +416,8 @@ include '../../../php/validation/authorized-user.php';
                         if ($therapy_elements[i].getAttribute('data-state-one') == 'inactive') {
                             console.info(typeof(therapy_image_elements));
                             console.info(therapy_image_elements.length);
-                             for (let i = 0; i < therapy_image_elements.length; i++) {
-                                if (e.target.getAttribute('alt').includes(therapy_image_elements[i]) ) {
+                            for (let i = 0; i < therapy_image_elements.length; i++) {
+                                if (e.target.getAttribute('alt').includes(therapy_image_elements[i])) {
                                     should_update_input = false;
                                     break;
                                 }
@@ -427,17 +427,14 @@ include '../../../php/validation/authorized-user.php';
                                 return
                             }
                             $therapy_elements[i].setAttribute('data-state-one', 'active')
-                            if(therapy_image_elements.length == 0){
+                            if (therapy_image_elements.length == 0) {
                                 $input_therapy_elements.value = e.target.getAttribute('alt');
-                           }else if(therapy_image_elements.length == 1){
-                                $input_therapy_elements.value = e.target.getAttribute('alt');
-                           }
-                           else{
-                                $input_therapy_elements.value = $input_therapy_elements.value + ',' + e.target.getAttribute('alt');                           
-                           }
+                            } else {
+                                $input_therapy_elements.value = $input_therapy_elements.value + ',' + e.target.getAttribute('alt');
+                            }
                         } else {
                             for (let i = 0; i < therapy_image_elements.length; i++) {
-                                if (e.target.getAttribute('alt').includes(therapy_image_elements[i]) ) {
+                                if (e.target.getAttribute('alt').includes(therapy_image_elements[i])) {
                                     should_update_input = false;
                                     break;
                                 }
