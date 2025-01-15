@@ -49,7 +49,7 @@
 .container-modal {
   width: 100vw;
   height: 100vh;
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   background: green;
