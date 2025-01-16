@@ -240,7 +240,7 @@ include '../../../php/validation/authorized-user.php';
                     <hr>
                     <section class="personalization-therapy-session">
                         <span><b>Datos de la personalizacion de la sesion</b></span>
-                        <input type="" class="input-therapys" name="input-therapys" value="sonidos-habla">
+                        <input type="hidden" class="input-therapys" name="input-therapys" value="sonidos-habla">
                         <div class="flex-center-full">
                             <div class="therapy flex-center-full" data-state="inactive" data-state-one="inactive">
                                 <figure>
@@ -431,7 +431,7 @@ include '../../../php/validation/authorized-user.php';
                     </section>
                     <hr>
                     <div class="flex-center-full gap-3">
-                        <button class="button-grey"><a href="../dashboard.php" class="text-decoration-none text-white">Regresar</a></button>
+                        <a href="../dashboard.php" class="text-decoration-none text-white button-grey">Regresar</a> 
                         <input type="submit" class="button-pink" value="Agregar">
                     </div>
 
@@ -586,15 +586,15 @@ include '../../../php/validation/authorized-user.php';
 
                     case "muscle-strengthening":
                         $exercises.innerHTML = `
-                                <option value="Musculos de la lengua">Los músculos de la lengua</option>
-                                <option value="Labios"> Labios </option>
+                                <option value="musculos de la lengua">Los músculos de la lengua</option>
+                                <option value="labios"> Labios </option>
                                 <option value="mejillas">Mejillas</option>
                         `;
                         //muscle-strengthening;
-                        $card_exercise_img[0].src = `../../../img/exercises/muscle-strengthening/Musculos de la lengua0.png`;
-                        $card_exercise_img[1].src = `../../../img/exercises/muscle-strengthening/Musculos de la lengua1.png`;
-                        $card_exercise_img[0].alt = 'Musculos de la lengua0';
-                        $card_exercise_img[1].alt = 'Musculos de la lengua1';
+                        $card_exercise_img[0].src = `../../../img/exercises/muscle-strengthening/musculos de la lengua0.png`;
+                        $card_exercise_img[1].src = `../../../img/exercises/muscle-strengthening/musculos de la lengua1.png`;
+                        $card_exercise_img[0].alt = 'musculos de la lengua0';
+                        $card_exercise_img[1].alt = 'musculos de la lengua1';
                         break;
                     case 'joint':
 

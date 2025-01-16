@@ -118,12 +118,13 @@ try {
                     $add_representative_stmt->execute();
                 }
 
-                $add_patient_diagnosis_query = 'INSERT INTO pacientes_diagnostico (id_paciente, id_tipo_dislalia, fonemas, fecha_diagnostico, gravedad, observacion)
-                VALUES (:id_paciente, :id_tipo_dislalia, :fonemas, NOW(), :gravedad, :observacion);';
+                $add_patient_diagnosis_query = 'INSERT INTO pacientes_diagnosticados (id_paciente, id_tipo_dislalia,id_calificacion_dislalia fonemas, fecha_diagnostico, gravedad, observacion)
+                VALUES (:id_paciente, :id_tipo_dislalia, :id_calificacion_dislalia :fonemas, NOW(), :gravedad, :observacion);';
                 
                 $add_patient_diagnosis_stmt = $pdo->prepare($add_patient_diagnosis_query);
                 $add_patient_diagnosis_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
                 $add_patient_diagnosis_stmt->bindParam('id_tipo_dislalia',  $dyslalia_type, PDO::PARAM_INT);
+                $add_patient_diagnosis_stmt->bindParam('id_calificacion_dislalia', $dyslalia_classification , PDO::PARAM_INT);
                 $add_patient_diagnosis_stmt->bindParam('fonemas', $dyslalia_phonemes, PDO::PARAM_STR);
                 $add_patient_diagnosis_stmt->bindParam('gravedad', $dyslalia_gravity, PDO::PARAM_STR);
                 $add_patient_diagnosis_stmt->bindParam('observacion', $dyslalia_observations, PDO::PARAM_STR);

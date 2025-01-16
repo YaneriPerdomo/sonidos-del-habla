@@ -30,7 +30,7 @@ include '../../php/validation/authorized-user.php';
             <h1 class="fw-bold">Panel administrativo</h1>
             <div class="d-flex justify-content-between">
                 <div>
-                    <button class="button-black">Reporte en <b>PDF</b></button>
+                    <button class="button-black"><a href="../../php/admin/report.php" class="text-decoration-none color-white">Reporte en <b>PDF</b></a></button>
                 </div>
                 <div>
                     <button class="button-black"><a href="./patient/add.php" class="text-decoration-none text-white">Agregar paciente</a></button><br>
