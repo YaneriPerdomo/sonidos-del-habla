@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2025 a las 20:49:56
+-- Tiempo de generación: 19-01-2025 a las 22:06:43
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -22,6 +22,28 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `sonidos_de_habla` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `sonidos_de_habla`;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `calificaciones_dislalia`
+--
+
+DROP TABLE IF EXISTS `calificaciones_dislalia`;
+CREATE TABLE `calificaciones_dislalia` (
+  `id_calificacion_dislalia` int(10) NOT NULL,
+  `calificacion` varchar(13) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `calificaciones_dislalia`
+--
+
+INSERT INTO `calificaciones_dislalia` (`id_calificacion_dislalia`, `calificacion`) VALUES
+(1, 'Simple'),
+(2, 'Múltiple'),
+(3, 'Hotentotismo'),
+(4, 'Afín');
 
 -- --------------------------------------------------------
 
@@ -90,6 +112,31 @@ INSERT INTO `generos` (`id_genero`, `genero`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `historiales`
+--
+
+DROP TABLE IF EXISTS `historiales`;
+CREATE TABLE `historiales` (
+  `id_historial` int(10) NOT NULL,
+  `id_paciente` int(10) DEFAULT NULL,
+  `mensaje` text DEFAULT NULL,
+  `fecha_hora` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `historiales`
+--
+
+INSERT INTO `historiales` (`id_historial`, `id_paciente`, `mensaje`, `fecha_hora`) VALUES
+(5, 22, 'Yesenia ha completado de nuevo su sesión de terapia de:  Ejercicios de pronunciación de fonemas.   ', '2025-01-19 16:29:08'),
+(6, 22, 'Yesenia  ha completado su sesión de terapia de: Ejercicios de pronunciación de fonemas.   ', '2025-01-19 16:29:52'),
+(7, 22, 'Yesenia ha completado de nuevo su sesión de terapia de: Ejercicios de pronunciación de fonemas', '2025-01-19 16:33:10'),
+(8, 22, 'Yesenia ha completado su sesión de terapia de: Ejercicios de pronunciación de fonemas', '2025-01-19 16:42:12'),
+(9, 22, 'Yesenia ha completado de nuevo su sesión de terapia de: Ejercicios de pronunciación de fonemas', '2025-01-19 16:57:53');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `materiales_apoyo`
 --
 
@@ -97,25 +144,24 @@ DROP TABLE IF EXISTS `materiales_apoyo`;
 CREATE TABLE `materiales_apoyo` (
   `id_material_apoyo` int(10) NOT NULL,
   `id_formato_material` int(10) NOT NULL,
-  `titulo` text NOT NULL,
-  `url_material` varchar(250) NOT NULL,
-  `objetivo` text DEFAULT NULL,
-  `edad_minimo` tinyint(4) DEFAULT NULL,
-  `edad_maximo` tinyint(4) DEFAULT NULL
+  `Icono` varchar(25) NOT NULL,
+  `titulo` varchar(80) NOT NULL,
+  `url_material` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `materiales_apoyo`
 --
 
-INSERT INTO `materiales_apoyo` (`id_material_apoyo`, `id_formato_material`, `titulo`, `url_material`, `objetivo`, `edad_minimo`, `edad_maximo`) VALUES
-(1, 1, 'Ejercicios para pronunciación el fonema r y la doble rr', '', NULL, 7, 12),
-(2, 5, 'Actividades para discriminar sonidos', '', NULL, 7, 11),
-(3, 5, 'Ejercicios para identificar errores en la propia pronunciación', '', NULL, 7, 12),
-(5, 5, 'Actividades para mejorar  el vocabulario', '', NULL, 7, 12),
-(6, 2, 'Trabalenguas fáciles', '', NULL, 6, 8),
-(7, 3, 'Aprende a pronunciar el fonema Ñ 👅👀🧠 ', '', NULL, NULL, NULL),
-(8, 2, 'Trabalenguas ', '', NULL, 7, 12);
+INSERT INTO `materiales_apoyo` (`id_material_apoyo`, `id_formato_material`, `Icono`, `titulo`, `url_material`) VALUES
+(1, 1, 'bi bi-filetype-pdf', 'Ejercicios para pronunciación el fonema r y la doble rr', ''),
+(2, 5, 'bi bi-ear', 'Actividades para discriminar sonidos', ''),
+(3, 5, 'bi bi-journals', 'Ejercicios para identificar errores en la propia pronunciación', ''),
+(5, 5, 'bi bi-journals', 'Actividades para mejorar  el vocabulario', ''),
+(6, 2, 'book', 'Trabalenguas fáciles', ''),
+(7, 3, 'bi bi-play-btn', 'Aprende a pronunciar el fonema Ñ 👅👀🧠 ', 'bi bi-book'),
+(8, 2, 'bi bi-book', 'Trabalenguas ', './materials/image/tongue-twister.php'),
+(9, 1, 'bi bi-filetype-pdf', 'Ejercicios de <br> respiración', '../../pdf/Ejercicios de respiración.pdf');
 
 -- --------------------------------------------------------
 
@@ -139,28 +185,30 @@ CREATE TABLE `pacientes` (
 --
 
 INSERT INTO `pacientes` (`id_paciente`, `id_genero`, `id_usuario`, `id_profesional`, `nombre`, `apellido`, `fecha_nacimiento`) VALUES
-(1, 2, 28, 13, 'Yane', 'Perdomo', '2025-01-08'),
+(1, 2, 28, 13, 'Yane', 'Perdomo', '2016-01-20'),
 (11, 1, 38, 13, 'Yaneri', 'perdomo', '2025-01-17'),
 (12, 2, 39, 13, 'Emily', 'Perdomo', '2019-02-02'),
 (13, 2, 40, 13, 'Fanny2029', 'Perdomo', '2025-01-09'),
 (14, 1, 41, 13, 'yane2', 'perdoo', '2020-02-02'),
 (15, 1, 42, 13, 'Taka', 'perdomo', '2020-01-12'),
-(16, 1, 43, 13, '', '', '0000-00-00'),
+(16, 1, 43, 13, 'Edgar', 'Maldonado', '0000-00-00'),
 (17, 2, 44, 13, 'Toño', 'Perdomo', '2019-02-02'),
-(19, 1, 46, 13, 'chili', 'perdomo', '2025-01-03'),
-(20, 2, 47, 13, 'dsadsa', 'perdomo', '2025-01-02');
+(19, 1, 46, 13, 'Carleys', 'Marquez', '2025-01-03'),
+(20, 2, 47, 13, 'Dustin', 'perdomo', '2025-01-02'),
+(22, 2, 49, 13, 'Yaireli', 'Perdomo', '2021-01-06');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pacientes_diagnostico`
+-- Estructura de tabla para la tabla `pacientes_diagnosticados`
 --
 
-DROP TABLE IF EXISTS `pacientes_diagnostico`;
-CREATE TABLE `pacientes_diagnostico` (
+DROP TABLE IF EXISTS `pacientes_diagnosticados`;
+CREATE TABLE `pacientes_diagnosticados` (
   `id_paciente_diagnostico` int(10) NOT NULL,
   `id_paciente` int(10) NOT NULL,
   `id_tipo_dislalia` int(10) NOT NULL,
+  `id_calificacion_dislalia` int(10) DEFAULT NULL,
   `fonemas` varchar(40) DEFAULT NULL,
   `fecha_diagnostico` date DEFAULT NULL,
   `gravedad` enum('Leve','Moderada','Severa') DEFAULT NULL,
@@ -168,15 +216,16 @@ CREATE TABLE `pacientes_diagnostico` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `pacientes_diagnostico`
+-- Volcado de datos para la tabla `pacientes_diagnosticados`
 --
 
-INSERT INTO `pacientes_diagnostico` (`id_paciente_diagnostico`, `id_paciente`, `id_tipo_dislalia`, `fonemas`, `fecha_diagnostico`, `gravedad`, `observacion`) VALUES
-(1, 15, 2, 'a', '2025-01-15', 'Moderada', 'weqewqewqewq'),
-(2, 16, 2, 'r,w', '2025-01-15', 'Leve', 'rwwqewqe'),
-(3, 17, 2, 'b', '2025-01-15', 'Moderada', 'dsadas'),
-(4, 19, 2, 'a', '2025-01-15', 'Leve', 'dwd'),
-(5, 20, 2, 'k', '2025-01-15', 'Leve', 'dsadas');
+INSERT INTO `pacientes_diagnosticados` (`id_paciente_diagnostico`, `id_paciente`, `id_tipo_dislalia`, `id_calificacion_dislalia`, `fonemas`, `fecha_diagnostico`, `gravedad`, `observacion`) VALUES
+(1, 15, 2, 1, 'a', '2025-01-15', 'Moderada', 'weqewqewqewq'),
+(2, 16, 2, 2, 'r,w', '2025-01-15', 'Leve', 'rwwqewqe'),
+(3, 17, 2, 3, 'b', '2025-01-15', 'Moderada', 'dsadas'),
+(4, 19, 2, 4, 'a', '2025-01-15', 'Leve', 'dwd'),
+(5, 20, 2, 1, 'k', '2025-01-15', 'Leve', 'dsadas'),
+(6, 22, 1, 1, 'b', '2025-01-15', 'Leve', '');
 
 -- --------------------------------------------------------
 
@@ -188,25 +237,27 @@ DROP TABLE IF EXISTS `pacientes_materiales_apoyo`;
 CREATE TABLE `pacientes_materiales_apoyo` (
   `id_paciente_material_apoyo` int(10) NOT NULL,
   `id_paciente` int(10) DEFAULT NULL,
-  `id_material_apoyo` int(10) DEFAULT NULL
+  `id_material_apoyo` int(10) DEFAULT NULL,
+  `activo` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `pacientes_materiales_apoyo`
 --
 
-INSERT INTO `pacientes_materiales_apoyo` (`id_paciente_material_apoyo`, `id_paciente`, `id_material_apoyo`) VALUES
-(8, 11, 7),
-(9, 12, 1),
-(10, 12, 2),
-(11, 12, 7),
-(12, 13, 7),
-(13, 14, 7),
-(14, 15, 7),
-(15, 16, 7),
-(16, 17, 7),
-(17, 19, 7),
-(18, 20, 7);
+INSERT INTO `pacientes_materiales_apoyo` (`id_paciente_material_apoyo`, `id_paciente`, `id_material_apoyo`, `activo`) VALUES
+(8, 11, 7, b'1'),
+(9, 12, 1, b'1'),
+(10, 12, 2, b'1'),
+(11, 12, 7, b'1'),
+(12, 13, 7, b'1'),
+(13, 14, 7, b'1'),
+(14, 15, 7, b'1'),
+(15, 16, 7, b'1'),
+(16, 17, 7, b'1'),
+(17, 19, 7, b'1'),
+(18, 20, 7, b'1'),
+(19, 22, 9, b'1');
 
 -- --------------------------------------------------------
 
@@ -236,7 +287,7 @@ INSERT INTO `profesionales` (`id_profesional`, `id_especialidad`, `id_usuario`, 
 (7, 2, 7, 'paola', 'perdomo', 'perdomopaola33brriosw@gmail.com', 'josefina de acosta'),
 (8, 2, 8, 'paola', 'perdomo', 'perdomoapolabarrios@gmail.com', 'josef'),
 (12, 1, 12, '', '', '', ''),
-(13, 1, 13, 'Dustin', 'Perdomo', 'dustinperdomo@gmail.com', 'josefina de acosta');
+(13, 1, 13, 'Dustin', 'Perdomo', 'dustinperdomo@gmail.com', 'Josefina de Acosta');
 
 -- --------------------------------------------------------
 
@@ -295,12 +346,18 @@ CREATE TABLE `sesiones` (
   `id_paciente` int(10) DEFAULT NULL,
   `id_terapia_lenguaje` int(10) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
-  `duracion_real` time DEFAULT NULL,
-  `estado_sesion` enum('completada','pausada') DEFAULT NULL,
+  `estado` enum('Completado','Pausado') DEFAULT NULL,
   `observaciones` text DEFAULT NULL,
   `objetivos_alcanzados` text DEFAULT NULL,
   `evaluacion` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `sesiones`
+--
+
+INSERT INTO `sesiones` (`id_sesion`, `id_paciente`, `id_terapia_lenguaje`, `fecha`, `estado`, `observaciones`, `objetivos_alcanzados`, `evaluacion`) VALUES
+(8, 22, 23, '2025-01-19', 'Completado', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -329,10 +386,11 @@ INSERT INTO `terapias_lenguaje` (`id_terapia_lenguaje`, `id_paciente`, `ejercici
 (14, 13, 'sonidos-habla,rotacismo0,rotac', 15000, '01:50:00', 'dsadsa'),
 (15, 14, 'sonidos-habla,rotacismo0,rotac', 15000, '01:50:00', 'dasdasd'),
 (16, 15, 'sonidos-habla,rotacismo0,rotac', 15000, '01:50:00', 'ew'),
-(17, 16, 'sonidos-habla,Musculos de la l', 10000, '01:00:00', 'wewq'),
+(17, 16, 'sonidos-habla,musculos de la lengua0', 10000, '01:00:00', 'wewq'),
 (18, 17, 'sonidos-habla,rotacismo0,rotacismo1', 15000, '01:50:00', 'dasdas'),
 (20, 19, 'sonidos-habla,rotacismo0,rotacismo1', 15000, '01:50:00', 'wewqe'),
-(21, 20, 'sonidos-habla,rotacismo0', 10000, '01:00:00', 'dsadsad');
+(21, 20, 'sonidos-habla,rotacismo0', 10000, '01:00:00', 'dsadsad'),
+(23, 22, 'sonidos-habla,rotacismo0', 10000, '01:00:00', 'El segundo ejercicio coloque bien la lengua');
 
 -- --------------------------------------------------------
 
@@ -383,7 +441,7 @@ INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `usuario`, `clave`, `fecha_hora_
 (7, 2, 'pepito33', '$2y$10$vzk', '2025-01-09 23:14:28', NULL),
 (8, 2, 'yaya', '123', '2025-01-09 23:21:35', '2025-01-10 19:06:27'),
 (12, 2, 'Josef', '$2y$10$82MantakXrnLWQAST9GeYurPOUWrq7qMB7zFcg8.SEj0MSJ.G51He', '2025-01-10 13:08:26', NULL),
-(13, 2, 'Dustin2024', '$2y$10$tS.V2.Qh5Ezd6GR1TcX2A.BqdtCiwbSGgYAOIoxtqTJctm.R7zBH.', '2025-01-10 22:23:21', '2025-01-15 13:55:30'),
+(13, 2, 'Dustin2024', '$2y$10$tS.V2.Qh5Ezd6GR1TcX2A.BqdtCiwbSGgYAOIoxtqTJctm.R7zBH.', '2025-01-10 22:23:21', '2025-01-19 17:01:40'),
 (28, 1, 'Yayi3', '$2y$10$uT6a93QvQ2i89dOarN/cl..Wa7AtR2Z/BJDserlo5SU1kEwHRbJ1e', '2025-01-15 14:01:37', NULL),
 (38, 1, 'perdomo2', '$2y$10$8QZIPOl.Q3mmzYOAhwPagO4MVTfgYErtITYWjg7u6flD0hFB5zPTO', '2025-01-15 14:36:18', NULL),
 (39, 1, 'Emilita', '$2y$10$.qIXULE52aytpZfac5b0nehJ0zsmSagqYvZV0HXvF7Fo5XTtwZEbi', '2025-01-15 14:38:12', NULL),
@@ -393,11 +451,18 @@ INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `usuario`, `clave`, `fecha_hora_
 (43, 1, '', '$2y$10$jAYnCiZIyIdzHxIbluL6UuoVwoMTTQoLKAO4fgNgTxxMEXfzb0iVS', '2025-01-15 14:52:10', NULL),
 (44, 1, 'tono2029', '$2y$10$1eGdjoNFhqqycOVARUg7W.YGEgMydCbVc6zv9ADgLMTL1mEjNIhOa', '2025-01-15 15:06:38', NULL),
 (46, 1, 'chile', '$2y$10$c6r/osaYMUSyEbJn5VMoDeUWkZ2wJTr9ZGDjH5je24MdipGnijb9S', '2025-01-15 15:10:15', NULL),
-(47, 1, 'andosad', '$2y$10$7Jf9H2.JnabWx/8LMr8sEeAnIZXiZYYTVbEopENH0J/XndQplsL16', '2025-01-15 15:12:31', NULL);
+(47, 1, 'andosad', '$2y$10$7Jf9H2.JnabWx/8LMr8sEeAnIZXiZYYTVbEopENH0J/XndQplsL16', '2025-01-15 15:12:31', NULL),
+(49, 1, 'Yesenia', '$2y$10$tIKCJFf8bNJspgv3X2e91.wE8dVZlUpAPSlq1ZIxrfKl/MbIewmL.', '2025-01-15 18:10:01', '2025-01-19 13:10:23');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `calificaciones_dislalia`
+--
+ALTER TABLE `calificaciones_dislalia`
+  ADD PRIMARY KEY (`id_calificacion_dislalia`);
 
 --
 -- Indices de la tabla `especialidades`
@@ -418,6 +483,13 @@ ALTER TABLE `generos`
   ADD PRIMARY KEY (`id_genero`);
 
 --
+-- Indices de la tabla `historiales`
+--
+ALTER TABLE `historiales`
+  ADD PRIMARY KEY (`id_historial`),
+  ADD KEY `id_paciente` (`id_paciente`);
+
+--
 -- Indices de la tabla `materiales_apoyo`
 --
 ALTER TABLE `materiales_apoyo`
@@ -434,12 +506,13 @@ ALTER TABLE `pacientes`
   ADD KEY `id_profesional` (`id_profesional`);
 
 --
--- Indices de la tabla `pacientes_diagnostico`
+-- Indices de la tabla `pacientes_diagnosticados`
 --
-ALTER TABLE `pacientes_diagnostico`
+ALTER TABLE `pacientes_diagnosticados`
   ADD PRIMARY KEY (`id_paciente_diagnostico`),
   ADD KEY `id_paciente` (`id_paciente`),
-  ADD KEY `id_tipo_dislalia` (`id_tipo_dislalia`);
+  ADD KEY `id_tipo_dislalia` (`id_tipo_dislalia`),
+  ADD KEY `fk_calificacion_dislalia` (`id_calificacion_dislalia`);
 
 --
 -- Indices de la tabla `pacientes_materiales_apoyo`
@@ -506,6 +579,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `calificaciones_dislalia`
+--
+ALTER TABLE `calificaciones_dislalia`
+  MODIFY `id_calificacion_dislalia` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT de la tabla `especialidades`
 --
 ALTER TABLE `especialidades`
@@ -524,28 +603,34 @@ ALTER TABLE `generos`
   MODIFY `id_genero` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT de la tabla `historiales`
+--
+ALTER TABLE `historiales`
+  MODIFY `id_historial` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
 -- AUTO_INCREMENT de la tabla `materiales_apoyo`
 --
 ALTER TABLE `materiales_apoyo`
-  MODIFY `id_material_apoyo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_material_apoyo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `id_paciente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_paciente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT de la tabla `pacientes_diagnostico`
+-- AUTO_INCREMENT de la tabla `pacientes_diagnosticados`
 --
-ALTER TABLE `pacientes_diagnostico`
-  MODIFY `id_paciente_diagnostico` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `pacientes_diagnosticados`
+  MODIFY `id_paciente_diagnostico` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `pacientes_materiales_apoyo`
 --
 ALTER TABLE `pacientes_materiales_apoyo`
-  MODIFY `id_paciente_material_apoyo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_paciente_material_apoyo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `profesionales`
@@ -569,13 +654,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `id_sesion` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_sesion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `terapias_lenguaje`
 --
 ALTER TABLE `terapias_lenguaje`
-  MODIFY `id_terapia_lenguaje` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id_terapia_lenguaje` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_dislalia`
@@ -587,11 +672,17 @@ ALTER TABLE `tipos_dislalia`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `historiales`
+--
+ALTER TABLE `historiales`
+  ADD CONSTRAINT `historiales_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`);
 
 --
 -- Filtros para la tabla `materiales_apoyo`
@@ -608,11 +699,12 @@ ALTER TABLE `pacientes`
   ADD CONSTRAINT `pacientes_ibfk_3` FOREIGN KEY (`id_profesional`) REFERENCES `profesionales` (`id_profesional`);
 
 --
--- Filtros para la tabla `pacientes_diagnostico`
+-- Filtros para la tabla `pacientes_diagnosticados`
 --
-ALTER TABLE `pacientes_diagnostico`
-  ADD CONSTRAINT `pacientes_diagnostico_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`),
-  ADD CONSTRAINT `pacientes_diagnostico_ibfk_2` FOREIGN KEY (`id_tipo_dislalia`) REFERENCES `tipos_dislalia` (`id_tipo_dislalia`);
+ALTER TABLE `pacientes_diagnosticados`
+  ADD CONSTRAINT `fk_calificacion_dislalia` FOREIGN KEY (`id_calificacion_dislalia`) REFERENCES `calificaciones_dislalia` (`id_calificacion_dislalia`),
+  ADD CONSTRAINT `pacientes_diagnosticados_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`),
+  ADD CONSTRAINT `pacientes_diagnosticados_ibfk_2` FOREIGN KEY (`id_tipo_dislalia`) REFERENCES `tipos_dislalia` (`id_tipo_dislalia`);
 
 --
 -- Filtros para la tabla `pacientes_materiales_apoyo`

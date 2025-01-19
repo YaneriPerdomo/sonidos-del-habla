@@ -5,6 +5,15 @@
   color: white;
 }
 
+.content__header > h1{
+  margin: 0rem;
+  background: var(--color-orange);
+  padding: 1rem;
+  color: white;
+  font-weight: 600;
+}
+
+
 .modal-form {
   padding: 1rem;
 }

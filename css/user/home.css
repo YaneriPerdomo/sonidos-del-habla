@@ -1,0 +1,30 @@
+.card-patient__img > img {
+  width: 300px;
+}
+
+.card-patiente_information {
+  padding: 1rem 1rem 0rem 1rem;
+}
+
+.card-patient__operation {
+  padding-bottom: 1rem;
+}
+
+li {
+  font-weight: 600;
+  list-style-type: none;
+  display: inline;
+  color: var(--color-blue);
+}
+
+.bi-check,
+.bi-hourglass-top {
+  position: absolute;
+  margin: 0;
+  top: -1.5rem;
+  background: rgb(47, 47, 47);
+  border-radius: 1rem;
+  color: white;
+  padding: 0.5rem;
+  right: -1rem;
+}

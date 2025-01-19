@@ -25,8 +25,20 @@ try {
                 session_start();
                 switch ($row_user['id_rol']) {
                     case 1:
+                        $get_dates_patient_query ='SELECT id_paciente, id_genero,  id_profesional, nombre, apellido FROM pacientes WHERE id_usuario = :id_user';
+                        $get_dates_patient_stmt = $pdo->prepare($get_dates_patient_query);
+                        $get_dates_patient_stmt->bindParam('id_user', $row_user["id_usuario"], PDO::PARAM_INT);
+                        $get_dates_patient_stmt->execute();
 
-                        break;
+                        $row_patient = $get_dates_patient_stmt->fetch(PDO::FETCH_ASSOC);
+                        $_SESSION['id_user'] = $row_user["id_usuario"];
+                        $_SESSION['id_professional'] = $row_patient['id_profesional'];
+                        $_SESSION['id_patient'] = $row_patient['id_paciente'];
+                        $_SESSION['id_gender'] = $row_patient['id_genero'];
+                        $_SESSION['user'] = $user;
+                        $_SESSION['name_lastname'] = $row_patient['nombre'] .' '. $row_patient['apellido'];
+                        header('Location: ../view/patient/home.php', true, 301);
+                    break;
                     case 2:
                         $get_dates_professional_query = 'SELECT id_profesional, nombre, apellido, correo_electronico FROM profesionales WHERE id_usuario = :id_user';
                         $get_dates_professional_stmt = $pdo->prepare($get_dates_professional_query);
@@ -40,12 +52,10 @@ try {
                         $_SESSION['user'] = $row_user['usuario'];
                         $_SESSION['email'] = $row_professional['correo_electronico'];
                         header('Location: ../view/professional/dashboard.php', true, 301);
-                        break;
+                    break;
                     default:
-
-                        break;
+                    break;
                 }
-                echo "Sesión iniciada";
             } else {
                 showMsg('Lo sentimos, no pudimos encontrar una cuenta con esos datos.', './../view/login.php');
             }

@@ -20,50 +20,74 @@ include '../../php/validation/authorized-user.php';
     <link rel="stylesheet" href="../../css/components/modal-window.css">
     <link rel="stylesheet" href="../../css/admin/header.css">
     <link rel="stylesheet" href="../../css/admin/dashboard.css">
+
+    <style>
+        .row>div>div {
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
+    </style>
 </head>
 
 <body>
 
     <?php include '../include/professional/header.php'; ?>
     <main class="flex-start-full">
-        <div class="main__content shadow z-1 ">
-            <h1 class="fw-bold">Panel administrativo</h1>
-            <div class="d-flex justify-content-between">
-                <div>
-                    <button class="button-black"><a href="../../php/admin/report.php" class="text-decoration-none color-white">Reporte en <b>PDF</b></a></button>
-                </div>
-                <div>
-                    <button class="button-black"><a href="./patient/add.php" class="text-decoration-none text-white">Agregar paciente</a></button><br>
-                </div>
-            </div><br>
-            <section class="show-patients d-flex   flex-column">
-                <div class="card-patient shadow">
-                    <br>
-                    <div class="card-patient__img flex-center-full">
-                        <img src="../../img/childs/girl.png" class="" alt="">
-                    </div>
-                    <div class="card-patiente_information ">
-                        <b>Usuario:</b><span> Yaneri</span><br>
-                        <b>Nombre:</b><span> Yaneri</span><br>
-                        <b>Apellido:</b> Perdomo<span></span><br>
-                        <b>Edad:</b><span> 10</span><br>
-                        <b>Ejercicios: </b><span>Lorem ipsum dolor sit amet, consectetur</span>
-                    </div>
-                    <hr>
-                    <div class="card-patient__operation flex-center-full gap-4">
-                        <i class="bi bi-trash"></i>
-                        <i class="bi bi-person-lines-fill"></i>
-                        <i class="bi bi-calendar3"></i>
-                    </div>
+        <section class=" h-100  z-1 w-100 p-3 ">
+            <div class="row ">
+                <div class="col-9">
+                    <div>
+                        <h1 class="fw-bold">Panel administrativo</h1>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <button class="button__orange"><a href="../../php/admin/report.php" class="text-decoration-none text__white">Reporte en <b>PDF</b></a></button>
+                            </div>
+                        </div><br>
+                        <div class="show-patients d-flex   flex-column">
+                            <div class="card-patient shadow">
+                                <br>
+                                <div class="card-patient__img flex-center-full">
+                                    <img src="../../img/patients/childs/girl.png" class="" alt="">
+                                </div>
+                                <div class="card-patiente_information ">
+                                    <b>Usuario:</b><span> Yaneri</span><br>
+                                    <b>Nombre:</b><span> Yaneri</span><br>
+                                    <b>Apellido:</b> Perdomo<span></span><br>
+                                    <b>Edad:</b><span> 10</span><br>
+                                    <b>Ejercicios: </b><span>Lorem ipsum dolor sit amet, consectetur</span>
+                                </div>
+                                <hr>
+                                <div class="card-patient__operation flex-center-full gap-4">
+                                    <i class="bi bi-trash"></i>
+                                    <i class="bi bi-person-lines-fill"></i>
+                                    <i class="bi bi-calendar3"></i>
+                                </div>
 
+                            </div>
+                            <hr>
+                            <div class="d-flex justify-content-between px-2">
+                                <i class="bi bi-caret-left-fill color-blue fs-2"></i>
+                                <i class="bi bi-caret-right-fill color-blue fs-2"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <hr>
-                <div class="d-flex justify-content-between px-2">
-                    <i class="bi bi-caret-left-fill color-blue fs-2"></i>
-                    <i class="bi bi-caret-right-fill color-blue fs-2"></i>
+                <div class="col-3">
+                    <div>
+                        <a href="./patient/add.php" class="text-decoration-none w-100">
+                            <button class="button__green w-100">
+                            Agregar paciente
+                        </button>
+                        </a><hr>
+                        <section class="historys">
+                            <span class="text__green fs-4">Historial</span>
+                        </section>    
+                    
+                    </div>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
     </main>
 
     <?php include '../include/footer.php'; ?>

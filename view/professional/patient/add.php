@@ -63,7 +63,7 @@ include '../../../php/validation/authorized-user.php';
             border-radius: 0.5rem;
             margin: 1rem;
             position: relative;
-            background: #ffa2c1;
+            background:rgb(145, 222, 222);
         }
 
         .therapy>.delete-therapy {
@@ -127,8 +127,8 @@ include '../../../php/validation/authorized-user.php';
     <main class="flex-start-full ">
         <div class="main__content shadow z-1 ">
             <h1 class="text-center fw-bold">Agregar paciente</h1>
-            <div class="flex-center-full color-grey">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum mollitia culpa esse, temporibus soluta distinctio quidem quis cupiditate fugiat ea reiciendis. Necessitatibus, labore dolore in ut beatae sit deleniti.</p>
+            <div class="flex-center-full text__grey">
+                <p >Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum mollitia culpa esse, temporibus soluta distinctio quidem quis cupiditate fugiat ea reiciendis. Necessitatibus, labore dolore in ut beatae sit deleniti.</p>
             </div>
             <form action="../../../php/admin/patient.php" method="post">
                 <input type="hidden" name="state" value="add">
@@ -158,11 +158,11 @@ include '../../../php/validation/authorized-user.php';
                         <p class="d-flex gap-2 selection-gender">
                             <label for="M" data-checked="true">
                                 <input type="radio" id="M" name="id-gender" value="1" checked>
-                                <img src="../../../img/childs/boy.png" alt="" class="checked">
+                                <img src="../../../img/patients/childs/boy.png" alt="" class="checked">
                             </label>
                             <label for="F">
                                 <input type="radio" id="F" name="id-gender" value="2">
-                                <img src="../../../img/childs/girl.png" alt="">
+                                <img src="../../../img/patients/childs/girl.png" alt="">
                             </label>
                         </p>
 
@@ -359,7 +359,7 @@ include '../../../php/validation/authorized-user.php';
                                 </div>
                             </div>
                         </div>
-                        <label for="">Duración de cada ejercicio</label>
+                        <label for="duration-each-exercise">Duración de cada ejercicio</label>
                         <div class="input-group mb-2 selection-phonemes mb-3 ">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-stopwatch"></i></i></span>
                             <select name="duration-each-exercise" id="duration-each-exercise" class="form-control">
@@ -431,8 +431,8 @@ include '../../../php/validation/authorized-user.php';
                     </section>
                     <hr>
                     <div class="flex-center-full gap-3">
-                        <a href="../dashboard.php" class="text-decoration-none text-white button-grey">Regresar</a> 
-                        <input type="submit" class="button-pink" value="Agregar">
+                        <a href="../dashboard.php" class="text-decoration-none text-white button__grey button-a">Regresar</a> 
+                        <input type="submit" class="button__orange" value="Agregar">
                     </div>
 
 
@@ -453,7 +453,7 @@ include '../../../php/validation/authorized-user.php';
             </div>
             <hr>
             <div class="flex-center-full  mb-3">
-                <button class="button-red btn-close-therapy-img">Cerrar </button>
+                <button class="button__blue btn-close-therapy-img">Cerrar </button>
             </div>
         </div>
     </div>

@@ -87,7 +87,7 @@ $html = '
             }
 
             thead > tr > th {
-                background: rgb(67, 150, 225)  ;
+                background: #15A6A6  ;
                 color:white;
                 text-align: left;
             }

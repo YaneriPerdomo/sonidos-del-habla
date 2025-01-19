@@ -1,70 +1,67 @@
-.button-blue {
+.button__blue {
   background: var(--color-blue);
-  padding: 0.54rem 1rem;  
-  border: 0rem;
-  color: white;
-  font-weight: 600;
 }
 
-.button-red {
+.button__red {
   background: var(--color-red);
-  padding: 0.54rem 1rem;  
-  border: 0rem;
-  color: white;
-  font-weight: 600;
 }
 
-.button-white {
-  color: white;
-  padding: 0.54rem 1rem;  
-  border: 0rem;
+.button__white {
   background-color: white;
-  border: solid 2px white;
 }
 
 .button-black > a {
   color: inherit;
 }
 
-.button-grey{
+.button__green {
+  background: var(--color-green);
+}
+.button__grey {
   background: var(--color-grey);
-  padding: 0.54rem 1rem;  
-  border: 0rem;
-  color: white;
-  font-weight: 600;
 }
 
-.button-pink {
+.button__pink {
   background: var(--color-pink);
-  padding: 0.54rem 1rem;  
-  border: 0rem;
-  font-weight: 600;
-  color: white;
+  border-radius: 6px;
   border: solid 2px white;
 }
+.button__orange {
+  position: relative;
+}
 
-.button-black{
-  padding: 0.54rem 1rem;  
+button,
+[type="submit"],
+.button-a {
+  border-radius: 6px;
+  padding: 0.54rem 1rem;
   border: 0rem;
   font-weight: 600;
   color: white;
+}
+.button__black {
   border: solid 2px white;
   background: var(--color-black);
 }
 
-.button-blue:hover,
-.button-white:hover,
-.button-pink:hover,
-.button-red:hover,
-.button-grey:hover, 
-.button-black:hover {
+.button__orange {
+  background: var(--color-orange);
+  border: solid 2px white;
+  border-radius: 6px;
+}
+.button__blue:hover,
+.button__white:hover,
+.button__pink:hover,
+.button__red:hover,
+.button__grey:hover,
+.button__black:hover {
   transition: box-shadow 0.5s linear;
   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
 }
 
-.button-white > a {
+.button__white > a {
   text-decoration: none;
   color: rgb(47, 47, 47);
   font-weight: 600;
+  color: white;
 }
-

@@ -40,8 +40,6 @@ try {
                 $support_materials = $_POST['support-materials'] ?? [];
                 $note = $_POST['note'] ?? null;
 
-
-
                 //Search if the user already exists
                 $search_user_query = "SELECT usuario FROM usuarios WHERE usuario = :user ";
                 $search_user_stmt = $pdo->prepare($search_user_query);
@@ -55,6 +53,7 @@ try {
                     exit();
                 }
 
+                  //Search if the email of representative already exists
                 $search_email_representative_query = "SELECT correo_electronico FROM representantes WHERE correo_electronico = :email ";
                 $search_email_representative_stmt = $pdo->prepare($search_email_representative_query);
                 $search_email_representative_stmt->bindParam('email', $representative_email, PDO::PARAM_STR);
@@ -117,9 +116,9 @@ try {
                     $add_representative_stmt->bindParam('codigo_secreto', $hash_secrect_code, PDO::PARAM_STR);
                     $add_representative_stmt->execute();
                 }
-
-                $add_patient_diagnosis_query = 'INSERT INTO pacientes_diagnosticados (id_paciente, id_tipo_dislalia,id_calificacion_dislalia fonemas, fecha_diagnostico, gravedad, observacion)
-                VALUES (:id_paciente, :id_tipo_dislalia, :id_calificacion_dislalia :fonemas, NOW(), :gravedad, :observacion);';
+                $current_date = date('d/m/Y');
+                $add_patient_diagnosis_query = 'INSERT INTO pacientes_diagnosticados (id_paciente, id_tipo_dislalia,id_calificacion_dislalia fonemas, 
+                fecha_diagnostico, gravedad, observacion) VALUES (:id_paciente, :id_tipo_dislalia, :id_calificacion_dislalia :fonemas, :current_date, :gravedad, :observacion);';
                 
                 $add_patient_diagnosis_stmt = $pdo->prepare($add_patient_diagnosis_query);
                 $add_patient_diagnosis_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
@@ -127,6 +126,7 @@ try {
                 $add_patient_diagnosis_stmt->bindParam('id_calificacion_dislalia', $dyslalia_classification , PDO::PARAM_INT);
                 $add_patient_diagnosis_stmt->bindParam('fonemas', $dyslalia_phonemes, PDO::PARAM_STR);
                 $add_patient_diagnosis_stmt->bindParam('gravedad', $dyslalia_gravity, PDO::PARAM_STR);
+                $add_patient_diagnosis_stmt->bindParam('current_date', $current_date, PDO::PARAM_INT);
                 $add_patient_diagnosis_stmt->bindParam('observacion', $dyslalia_observations, PDO::PARAM_STR);
                 $add_patient_diagnosis_stmt->execute();
 
@@ -140,7 +140,10 @@ try {
                     }
                 }
 
-                $pdo->commit();
+                $pdo->commit(); //Confirmacion de la transaccion
+
+                //Mostrar mensaje de manera exitosa
+                showMsg('Datos del paciente registrado exitosamente', './../../view/professional/dashboard.php');
 
                 break;
             case 'update';

@@ -45,10 +45,10 @@
             </section>
           </div>
         </div>
-        <div class="col-6 create-account">
-          <form action="../php/login.php" method="POST">
+        <div class="col-6 create-account flex-center-full">
+          <form action="../php/login.php" class="w-100" method="POST">
             <legend class="text-center create-account__title">
-              <h3>Inicia sesion</h3>
+              <h2 class=" fw-bold">Inicia sesion</h2>
             </legend>
             <div class="validations text-center fw-bold">
               <span class="one"></span>
@@ -68,8 +68,8 @@
                 aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
             </div>
             <div class="flex-center-full mt-3 flex-column gap-2">
-              <input type="submit" class="button-pink" value="Entrar">
-              <a href="./create-account.php" class="text-decoration-none color-blue"> No tengo una cuenta</a>
+              <input type="submit" class="button__green" value="Acceder">
+              <a href="./create-account.php" class="text-decoration-none color__blue"> No tengo una cuenta</a>
             </div>
           </form>
         </div>

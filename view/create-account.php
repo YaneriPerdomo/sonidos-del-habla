@@ -45,10 +45,10 @@
             </section>
           </div>
         </div>
-        <div class="col-6 create-account">
-          <form action="../php/createAccount.php" method="post">
+        <div class="col-6 create-account flex-center-full">
+          <form action="../php/createAccount.php" class="w-100" method="post">
             <legend class="text-center create-account__title">
-              <h3>Crea una cuenta</h3>
+              <h2 class=" fw-bold">Crea una cuenta</h2>
             </legend>
             <div class="row">
               <div class="col-6">
@@ -112,7 +112,7 @@
               </div>
             </div>
             <div class="flex-center-full mt-3 flex-column">
-              <input type="submit" class="button-pink" value="Registrate">
+              <input type="submit" class="button__green" value="Registrate">
             </div>
           </form>
         </div>

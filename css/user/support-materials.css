@@ -1,0 +1,19 @@
+.card-sopport-materials {
+  padding: 1rem;
+  color: rgb(47, 47, 47);
+  border-radius: 6px;
+  border: solid 2px var(--color-orange);
+}
+
+.card-sopport-materials > a {
+  color: rgb(47, 47, 47);
+}
+
+.support-materials__title {
+  display: block;
+  background: var(--color-green);
+  color: white;
+  border-radius: 1rem 1rem 0rem 0rem;
+  padding: 0.6rem 1rem;
+  margin-top: 0;
+}

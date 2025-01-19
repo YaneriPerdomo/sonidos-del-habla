@@ -15,7 +15,7 @@
           <ul class="navbar-nav me-auto mb-1 w-100  mt-2  mb-lg-0">
             <section class="">
               <nav>
-                <button class="button-white"> <a href="./login.php">Iniciar Sesión</a></button>
+                <button class="button__oragen"> <a href="./login.php">Iniciar Sesión</a></button>
               </nav>
             </section>
           </ul>

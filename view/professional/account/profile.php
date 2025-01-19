@@ -27,19 +27,19 @@ function showInformationProfessional()
 
             $row_professional = $get_professional_stmt->fetch(PDO::FETCH_ASSOC);
             $show_specialty = match ($row_professional['id_especialidad']) {
-                1 => '<select class="form-select" name="specialty" id="specialty">
+                1 => '<select class="form-select" name="specialty" id="specialty" disabled>
                                             <option  disabled>Seleccione una opcion...</option>
                                             <option value="1" selected>Logopeda</option>
                                             <option value="2">Foniatra</option>
                                             <option value="3">Terapeuta del Lenguaje</option>
                                         </select>',
-                2 => '<select class="form-select" name="specialty" id="specialty">
+                2 => '<select class="form-select" name="specialty" id="specialty" disabled>
                                             <option  disabled>Seleccione una opcion...</option>
                                             <option value="1" >Logopeda</option>
                                             <option value="2" selected>Foniatra</option>
                                             <option value="3">Terapeuta del Lenguaje</option>
                                         </select>',
-                3 => '<select class="form-select" name="specialty" id="specialty">
+                3 => '<select class="form-select" name="specialty" id="specialty" disabled>
                                             <option  disabled>Seleccione una opcion...</option>
                                             <option value="1">Logopeda</option>
                                             <option value="2">Foniatra</option>
@@ -54,19 +54,19 @@ function showInformationProfessional()
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
                                     <input type="text" name="name" class="form-control" placeholder="Introduzca su nombre"
-                                        aria-label="Username" aria-describedby="basic-addon1" autofocus="false" value="' . $row_professional['nombre'] . '">
+                                        aria-label="Username" aria-describedby="basic-addon1" disabled autofocus="false" value="' . $row_professional['nombre'] . '">
                                 </div>
                                 <label for="lastname">Apellido</label><br>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
-                                    <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Introduzca su apellido"
-                                        aria-label="Username" aria-describedby="basic-addon1" autofocus="false" value="' . $row_professional['apellido'] . '">
+                                    <input type="text" name="lastname" id="lastname"  class="form-control" placeholder="Introduzca su apellido"
+                                        aria-label="Username" aria-describedby="basic-addon1" disabled autofocus="false" value="' . $row_professional['apellido'] . '">
                                 </div>
                                 <label for="email">Correo electronico</label><br>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
                                     <input type="text" name="email" id="email" class="form-control" placeholder="Introduzca su correo electronico"
-                                        aria-label="Username" aria-describedby="basic-addon1" autofocus="false"  value="' . $row_professional['correo_electronico'] . '">
+                                        aria-label="Username" aria-describedby="basic-addon1" disabled autofocus="false"  value="' . $row_professional['correo_electronico'] . '">
                                 </div>
                                 <label for="specialty">Especialidad </label><br>
                                 <div class="input-group mb-3">
@@ -76,8 +76,8 @@ function showInformationProfessional()
                                  <label for="work-center">Centro de trabajo</label><br>
                                 <div class="input-group mb-2">
                                     <span class="input-group-text" id="basic-addon1"><i class="bi bi-buildings"></i></span>
-                                    <input type="text" name="work-center" id="work-center" class="form-control" placeholder="Introduzca su centro de trabajo"
-                                        aria-label="Username" aria-describedby="basic-addon1" autofocus="false"  value="' . $row_professional['centro_trabajo'] . '">
+                                    <input type="text" name="work-center" id="work-center"  class="form-control" placeholder="Introduzca su centro de trabajo"
+                                        aria-label="Username" aria-describedby="basic-addon1" disabled autofocus="false"  value="' . $row_professional['centro_trabajo'] . '">
                                 </div>
                                 </div>
                                 <div class="col-6">
@@ -86,7 +86,7 @@ function showInformationProfessional()
                                     <div class="input-group mb-2">
                                         <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
                                         <input type="text" name="user" id="user" class="form-control" placeholder="Introduzca su nombre de usuario"
-                                            aria-label="Username" aria-describedby="basic-addon1" autofocus="false" value="' . $row_user['usuario'] . '">
+                                            aria-label="Username" aria-describedby="basic-addon1" disabled autofocus="false" value="' . $row_user['usuario'] . '">
                                     </div>
                                 ';
         }
@@ -117,37 +117,69 @@ function showInformationProfessional()
     <link rel="stylesheet" href="../../../css/admin/header.css">
     <link rel="stylesheet" href="../../../css/admin/profile.css">
 </head>
+    <style>
+        .row>div>div, .qualities-administrator {
+            padding: 1rem;
+            background: white;
+            border-radius: 6px;
+        }
 
+        .input-group{
+            padding: 0.4rem !important
+        }
+    </style>
 <body>
 
     <?php include '../../include/professional/account/header.php'; ?>
     <main class="flex-start-full ">
-        <div class="main__content shadow z-1 ">
-            <form action="../../../php/admin/professional.php" method="post">
-                <input type="hidden" value="update" name="state">
-                <h1 class="text-center fw-bold ">
-                    Mi cuenta
-                </h1>
-                <div class="flex-center-full color-grey">
-                    <p>Administra tu información y las opciones de privacidad y seguridad a fin de que sonidos de
-                        habla sea más relevante para ti. </p>
+        <section class=" h-100  z-1 w-100 p-3 ">
+            <div class="row">
+                <div class="col-9">
+                    <div class="z-1 ">
+                        <form action="../../../php/admin/professional.php" method="post">
+                            <input type="hidden" value="update" name="state">
+                            <h1 class=" fw-bold ">
+                                Mi cuenta
+                            </h1>
+                            <div class="text__grey">
+                                <p>Administra tu información y las opciones de privacidad y seguridad a fin de que sonidos de
+                                    habla sea más relevante para ti. </p>
+                            </div>
+                            <?php
+                            showInformationProfessional()
+                            ?>
+                            <hr>
+                            <div class="change-password-operation d-none">
+                                <small>Actualiza tu contraseña de forma regular para mantener tu cuenta segura.</small><br>
+                                <button class="btn-change-password m-0 bg-none p-0 text__blue">Cambiar tu contraseña</button>
+                            </div>
+                    </div>
                 </div>
-                <?php
-                showInformationProfessional()
-                ?>
                 <hr>
-                <small>Actualiza tu contraseña de forma regular para mantener tu cuenta segura.</small>
-                <button class="btn-change-password m-0 bg-none p-0 color-blue">Cambiar tu contraseña</button>
-        </div>
-        </div>
-        <hr>
-        <div class="flex-center-full mt-3 gap-3">
-            <button class="button-grey"><a href="../dashboard.php" class="text-decoration-none text-white">Regresar</a></button>
-            <button class="button-red">Elimnar cuenta</button>
-            <input type="submit" class="button-pink" value="Registrate">
-        </div>
-        </form>
-        </div>
+                <div class="flex-center-full mt-3 gap-3 profile-operations d-none">
+                    <a href="../dashboard.php" class="text-decoration-none button__grey button-a text-white">Regresar</button></a>
+                    <button class="button__red">Elimnar cuenta</button>
+                    <input type="submit" class="button__orange" value="Actualizar">
+                </div>
+                </form>
+            </div>
+            </div>
+            <div class="col-3 ">
+                <div class="modify-professional">
+                        <button class="w-100 modify-professional__button  button__green w-100">
+                            Editar perfil
+                        </button>
+                </div>
+                <span class="text__green my-2 fs-2 ms-3">Administrador</span>
+                <section class="qualities-administrator">
+                    <span class="text__grey">Administracion de usuarios</span><br>
+                   <p> <b>Acceso a la gestión de usuarios para crear perfiles personalizados, programar sesiones y realizar un seguimiento del progreso de sus pacientes.</b></p>
+                    <span class="text__grey">Contactos</span>
+                    <p> <b class="">Acceso a los representantes de sus pacientes de una forma más rápida y confiable para enviar mensajes a través de Gmail.</b></p>
+                </section>
+            </div>
+            </div>
+        </section>
     </main>
 
     <div class="container-modal" data-modal="change-password" style="display:none">
@@ -193,8 +225,8 @@ function showInformationProfessional()
                 </div>
                 <hr>
                 <div class="modal-footer flex-center-full gap-4">
-                    <button type="button" class="btn-cancel-cp button-grey">Cancelar</button>
-                    <input type="submit" value="Cambiar contraseña" class="button-blue">
+                    <button type="button" class="btn-cancel-cp button__grey">Cancelar</button>
+                    <input type="submit" value="Cambiar contraseña" class="button__blue">
                 </div>
             </form>
         </div>
@@ -202,9 +234,26 @@ function showInformationProfessional()
     <?php include '../../include/footer.php'; ?>
 
     <script>
+
+
+        let $input_group = document.querySelectorAll(".input-group > input");  
+        
+        
         let $change_password_modal = document.querySelector("[data-modal='change-password']");
-        let $change_password_modal_content = document.querySelector("[data-modal='change-password'] > .content")
+        let $change_password_modal_content = document.querySelector("[data-modal='change-password'] > .content");
+        let $profile_operations =document.querySelector(".profile-operations");
+        let $change_password_operation =document.querySelector(".change-password-operation");
+        let $select =document.querySelector('select ');
+        let $select_option =document.querySelector('select > option');
         document.addEventListener("click", e => {
+            if(e.target.matches('.modify-professional__button ')){
+                $input_group.forEach(el => {
+                    el.removeAttribute("disabled");
+                });
+                $profile_operations.classList.remove("d-none");
+                $change_password_operation.classList.remove('d-none');
+                $select.removeAttribute("disabled");
+            }
             if (e.target.matches('.btn-change-password')) {
                 e.preventDefault()
                 $change_password_modal_content.classList.remove('animation-modal-close')
