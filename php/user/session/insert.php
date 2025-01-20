@@ -50,9 +50,8 @@ function add_history($state_messege, $id_paciente)
         $insert_history_stmt->execute();
 
         if ($insert_history_stmt->rowCount() > 0) {
-            echo 'Insertado el historial';
         } else {
-            echo 'sucedio un error ';
+            echo 'error ';
         }
     } catch (PDOException $ex) {
         echo $ex->getMessage();

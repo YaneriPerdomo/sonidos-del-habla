@@ -42,6 +42,7 @@ function show_welcome_message()
     <link rel="stylesheet" href="../../../css/components/modal-window.css">
     <link rel="stylesheet" href="../../../css/admin/header.css">
 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
     <style>
         .session {
             padding: 1rem;
@@ -196,8 +197,30 @@ function show_welcome_message()
             100% {
                 transform: perspective(10rem) translate3d(0, 0, 0)
             }
+        }
 
 
+        .animation__therapy-end{
+            animation: therapy-end 2s both;
+        }
+
+        @keyframes therapy-end {
+            0% {
+                opacity: 0;
+            }
+
+            5% {
+                transform: scale(0.1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: scale(1);
+            }
 
         }
     </style>
@@ -242,7 +265,7 @@ function show_welcome_message()
         </div>
     </main>
 
-    <div class="modal-welcome container-modal ">
+    <div class="modal-welcome container-modal">
         <div class="content flex-center-full flex-column animation__back-left">
             <div class="content__header w-100  ">
                 <h1>¡<?php
@@ -263,6 +286,40 @@ function show_welcome_message()
             </div>
         </div>
     </div>
+    <div class="modal-end container-modal d-none">
+        <div class="content flex-center-full flex-column ">
+            <div class="content__header w-100  ">
+                <h1 class="content__header-title-end">Felicidades </h1>
+            </div>
+            <div class="p-3">
+                <div class="content__body">
+                    <p class="">
+                        ¿Le gustaría que su representante comparta sus observaciones sobre esta sesión?
+                        Si responde que sí, se abrirá un formulario para la verificacion de sus datos.
+                    </p>
+                    <div class="content__body-form">
+                        <form action="" class="form-representative-verify d-none">
+                            <input type="text" name="email">
+                            <input type="text" name="password">
+                            <button class="button__orange">Verificar</button>
+                        </form>
+                        <form action="" class="form-representative-send d-none">
+                            <input type="text" name="observations">
+                            <input type="text" name="evaluation">
+                            <input type="number" name="objectives">
+                            <button class="button__orange">Enviar</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="content__footer text-end">
+                    <div class="content__footer-buttons-end">
+                        <a href="../home.php" class="text-decoration-none"> <button class="btn-one button__grey">No, gracias.</button></a>
+                        <button clasS="btn-two button__orange">Si.</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal modal-counting container-modal d-none">
         <div class="content flex-center-full flex-column" style="background:none;">
             <strong class="from-one-to-three fs-2 flex-center-full">3</strong>
@@ -277,7 +334,96 @@ function show_welcome_message()
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 </body>
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
 <script>
+    let $form_representative_verify = document.querySelector(".form-representative-verify");
+    let $form_representative_send = document.querySelector(".form-representative-send");
+    let $modal_end_parrafo = document.querySelector(".modal-end > div > div > div > p");
+    let $content_header_title_end = document.querySelector('.content__header-title-end');
+    let $content_footer_buttons_end = document.querySelector(".content__footer-buttons-end")
+
+    document.addEventListener('click', e => {
+        if (e.target.matches('.btn-two')) {
+            $form_representative_verify.classList.remove('d-none');
+            $content_footer_buttons_end.classList.add('d-none');
+            $content_header_title_end.innerHTML = 'Verificacion';
+            $modal_end_parrafo.innerHTML = 'Para garantizar la calidad de la atención, es necesario que el representante valide la veracidad de los datos suministrados. Posterior a esta verificación, podrá realizar sus observaciones.'
+        }
+    })
+    $form_representative_verify.addEventListener('submit', e => {
+        e.preventDefault()
+        const formData = new FormData($form_representative_verify);
+        let formJson = JSON.stringify(Object.fromEntries(formData.entries()))
+        let formArray = JSON.parse(formJson);
+        console.info(formJson)
+        fetch("../../../php/user/session/representative.php", {
+            method: "POST",
+            body: new URLSearchParams({
+                email: formArray.email,
+                password: formArray.password,
+            }),
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
+        }).then(
+            (response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.text()
+            }).then((data) => {
+            console.info(data);
+            if (data == "success") {
+                alertify.success('Datos del representante válidos')
+                $modal_end_parrafo.innerHTML = 'Bienvenido representante, ahora tendrá la oportunidad de enviar observaciones sobre su niño a su profesional para que las tenga en cuenta.';
+                $form_representative_verify.classList.add('d-none')
+                $form_representative_send.classList.remove('d-none');
+                $content_header_title_end.innerHTML = 'Observaciones';
+            } else if (data = 'not found') {
+                alertify.error('No existe un representante registrado con esos datos');
+            }
+        }).catch((error) => {
+            console.warn('Sucedio un error')
+        }).finally()
+
+    })
+
+
+    $form_representative_send.addEventListener('submit', e => {
+        e.preventDefault()
+        const formData = new FormData($form_representative_send);
+        let formJson = JSON.stringify(Object.fromEntries(formData.entries()))
+        let formArray = JSON.parse(formJson);
+        console.info(formJson)
+        fetch("../../../php/user/session/update.php", {
+            method: "POST",
+            body: new URLSearchParams({
+                observations: formArray.observations,
+                evaluation: formArray.evaluation,
+                objectives:formArray.objectives
+            }),
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            }
+        }).then(
+            (response) => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok");
+                }
+                return response.text()
+            }).then((data) => {
+            console.info(data);
+            if (data == "success") {
+                alertify.success('Observaciones enviadas')
+            }
+        }).catch((error) => {
+            console.warn('Sucedio un error')
+        }).finally()
+
+    })
+
+
     let $session_horizontal_bar = document.querySelector(".session__horizontal-bar");
     let $data_exercise = document.querySelector("[data-exercise]");
     let $modal_welcome = document.querySelector(".modal-welcome");
@@ -335,6 +481,8 @@ function show_welcome_message()
             console.info(arreglo_ejercicios)
             duration_each_exercise($session_horizontal_bar.getAttribute('data-duration_each_exercise'));
         } else {
+            let $modal_end = document.querySelector(".modal-end ");
+            $modal_end.classList.remove('d-none')
             fetch("../../../php/user/session/insert.php", {
                 method: "POST",
                 headers: {
@@ -347,13 +495,20 @@ function show_welcome_message()
                     }
                     return response.text()
                 }).then((data) => {
-                    console.info(data);
-                    if(data == 'success'){
-                        console.info('Se guardo')
-                    }
-                }).catch((error ) => {
-                    console.warn('Sucedio un error')
-                }).finally()
+                console.info(data);
+                if (data == 'success') {
+                    var delay = alertify.get('notifier', 'delay');
+                    alertify.set('notifier', 'delay', 5);
+                    alertify.success('¡Sesion guardada exitosamente!');
+                    alertify.set('notifier', 'delay', delay);
+                } else if (data == 'error') {
+                    alertify.error('Error message');
+                } else {
+                    console.warn(data)
+                }
+            }).catch((error) => {
+                console.warn('Sucedio un error')
+            }).finally()
         }
     }
     //duration of each exercise
