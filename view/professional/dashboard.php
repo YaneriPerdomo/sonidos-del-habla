@@ -8,9 +8,9 @@ include '../../php/validation/authorized-user.php';
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inicia sesion | Sonidos de habla</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Panel de control | Sonidos de habla</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../../css/components/body.css">
     <link rel="stylesheet" href="../../css/components/footer.css">
@@ -20,12 +20,30 @@ include '../../php/validation/authorized-user.php';
     <link rel="stylesheet" href="../../css/components/modal-window.css">
     <link rel="stylesheet" href="../../css/admin/header.css">
     <link rel="stylesheet" href="../../css/admin/dashboard.css">
-
     <style>
-        .row>div>div {
+        .activities_patients {
+            overflow-x: hidden;
             padding: 1rem;
             background: white;
-            border-radius: 6px;
+            border-radius: 1rem;
+            border: solid 1px #e8d8ff;
+        }
+
+        .activities-patient__show {
+            align-items: start;
+        }
+
+        .activities-patient__show-btn-delete {
+            height: 2rem;
+            border-radius: 0.3rem;
+            border: 0rem;
+            background: none;
+            background: rgb(225, 225, 225);
+            color: rgb(47, 47, 47);
+        }
+
+        h1{
+            font-weight: 600;
         }
     </style>
 </head>
@@ -38,10 +56,11 @@ include '../../php/validation/authorized-user.php';
             <div class="row ">
                 <div class="col-9">
                     <div>
-                        <h1 class="fw-bold">Panel administrativo</h1>
+                        <h1 class="" >Panel de control</h1>
+                        <hr>
                         <div class="d-flex justify-content-between">
                             <div>
-                                <button class="button__orange"><a href="../../php/admin/report.php" class="text-decoration-none text__white">Reporte en <b>PDF</b></a></button>
+                                <button class="button__blue"><a href="../../php/admin/report.php" class="text-decoration-none text__white">Reporte en <b>PDF</b></a></button>
                             </div>
                         </div><br>
                         <div class="show-patients d-flex   flex-column">
@@ -77,13 +96,20 @@ include '../../php/validation/authorized-user.php';
                     <div>
                         <a href="./patient/add.php" class="text-decoration-none w-100">
                             <button class="button__green w-100">
-                            Agregar paciente
-                        </button>
-                        </a><hr>
-                        <section class="historys">
-                            <span class="text__green fs-4">Historial</span>
-                        </section>    
-                    
+                                Agregar paciente
+                            </button>
+                        </a>
+                        <hr style="  margin-bottom: 0.5rem;">
+                        <section class="activities-patients">
+                            <span class="text__green fs-3">Actividades</span>
+                            <?php
+
+                            include '../../php/admin/show-history.php';
+
+                            show_historys();
+                            ?>
+                        </section>
+
                     </div>
                 </div>
             </div>

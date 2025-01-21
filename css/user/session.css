@@ -1,0 +1,175 @@
+.session {
+  padding: 1rem;
+}
+
+.time,
+.amount {
+  color: white;
+  border: 0rem;
+  min-width: 40px !important;
+  min-height: 40px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.amount {
+  color: white;
+  border: 0rem;
+  min-width: 40px !important;
+  min-height: 40px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+.bi-stopwatch-fill {
+  background: #3f8ddf;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+}
+
+.bi-images {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  color: white;
+  background: var(--color-pink);
+}
+
+.time,
+.amount {
+  display: flex;
+  flex-direction: row-reverse;
+
+  align-items: center;
+  background: rgb(47, 47, 47);
+  color: white;
+  border-radius: 0.5rem;
+}
+
+.amount > div > span {
+  padding: 0.5rem;
+}
+
+.back {
+  background: var(--color-grey);
+  padding: 0.4rem 0.9rem;
+
+  color: white;
+  border: 0rem;
+  min-width: 40px !important;
+  min-height: 40px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  border-radius: 6px;
+}
+
+.sound {
+  background: var(--color-red);
+  padding: 0.4rem 0.9rem;
+  color: white;
+
+  border: 0rem;
+  min-width: 40px !important;
+  min-height: 40px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.session-therapy {
+  width: 400px;
+  height: 350px;
+  border: 0rem;
+  min-width: 40px !important;
+  min-height: 40px;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  filter: drop-shadow(2px 3px #222);
+  background: var(--color-green);
+  border-radius: 6px;
+  position: relative;
+}
+
+.button__audio {
+  position: absolute;
+  border: 0;
+  bottom: -2rem;
+  left: 40%;
+  background: var(--color-orange);
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.from-one-to-three {
+  font-size: clamp(10rem, 90vw, 12rem) !important;
+  color: white;
+  filter: drop-shadow(2px 2px #260303);
+}
+
+main {
+  background-image: url(../../../img/background-letters.png);
+}
+
+.modal-welcome {
+  background: rgb(47, 47, 47);
+  background: rgb(0, 168, 168);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 168, 168, 1) 35%,
+    rgba(10, 139, 139, 1) 84%
+  );
+}
+
+.session-therapy > figure > img {
+  border-radius: 6px;
+}
+
+.animation__back-left {
+  animation: back-left 3.4s both;
+}
+
+@keyframes back-left {
+  0% {
+    overflow-x: hidden;
+    transform: perspective(10rem) translateX(-100rem);
+  }
+
+  50% {
+    transform: perspective(10rem) translate3d(9px, 10%, 3em);
+    overflow: visible;
+  }
+
+  100% {
+    transform: perspective(10rem) translate3d(0, 0, 0);
+  }
+}
+
+.animation__therapy-end {
+  animation: therapy-end 2s both;
+}
+
+@keyframes therapy-end {
+  0% {
+    opacity: 0;
+  }
+
+  5% {
+    transform: scale(0.1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

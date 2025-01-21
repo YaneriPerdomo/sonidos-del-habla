@@ -102,10 +102,9 @@ function showInformationProfessional()
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inicia sesion | Sonidos de habla</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Perfil | Sonidos de habla</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../css/../reset.css">
     <link rel="stylesheet" href="../../../css/components/body.css">
     <link rel="stylesheet" href="../../../css/components/footer.css">
@@ -117,17 +116,6 @@ function showInformationProfessional()
     <link rel="stylesheet" href="../../../css/admin/header.css">
     <link rel="stylesheet" href="../../../css/admin/profile.css">
 </head>
-    <style>
-        .row>div>div, .qualities-administrator {
-            padding: 1rem;
-            background: white;
-            border-radius: 6px;
-        }
-
-        .input-group{
-            padding: 0.4rem !important
-        }
-    </style>
 <body>
 
     <?php include '../../include/professional/account/header.php'; ?>
@@ -139,7 +127,7 @@ function showInformationProfessional()
                         <form action="../../../php/admin/professional.php" method="post">
                             <input type="hidden" value="update" name="state">
                             <h1 class=" fw-bold ">
-                                Mi cuenta
+                                Perfil
                             </h1>
                             <div class="text__grey">
                                 <p>Administra tu información y las opciones de privacidad y seguridad a fin de que sonidos de
@@ -164,19 +152,21 @@ function showInformationProfessional()
                 </form>
             </div>
             </div>
-            <div class="col-3 ">
-                <div class="modify-professional">
+            <div class="col-3">
+                <div>
+                    <div class="modify-professional">
                         <button class="w-100 modify-professional__button  button__green w-100">
                             Editar perfil
                         </button>
-                </div>
-                <span class="text__green my-2 fs-2 ms-3">Administrador</span>
-                <section class="qualities-administrator">
+                    </div><hr style="  margin-bottom: 0.5rem;">
+                    <section class="qualities-administrator m-0 p-0">
+                    <span class="text__green fs-3 ">Administrador</span><br>
                     <span class="text__grey">Administracion de usuarios</span><br>
-                   <p> <b>Acceso a la gestión de usuarios para crear perfiles personalizados, programar sesiones y realizar un seguimiento del progreso de sus pacientes.</b></p>
-                    <span class="text__grey">Contactos</span>
-                    <p> <b class="">Acceso a los representantes de sus pacientes de una forma más rápida y confiable para enviar mensajes a través de Gmail.</b></p>
-                </section>
+                        <p> <b>Acceso a la gestión de usuarios para crear perfiles personalizados, programar sesiones y realizar un seguimiento del progreso de sus pacientes.</b></p>
+                        <span class="text__grey">Contactos</span>
+                        <p> <b class="">Acceso a los representantes de sus pacientes de una forma más rápida y confiable para enviar mensajes a través de Gmail.</b></p>
+                    </section>
+                </div>
             </div>
             </div>
         </section>
@@ -234,19 +224,16 @@ function showInformationProfessional()
     <?php include '../../include/footer.php'; ?>
 
     <script>
+        let $input_group = document.querySelectorAll(".input-group > input");
 
-
-        let $input_group = document.querySelectorAll(".input-group > input");  
-        
-        
         let $change_password_modal = document.querySelector("[data-modal='change-password']");
         let $change_password_modal_content = document.querySelector("[data-modal='change-password'] > .content");
-        let $profile_operations =document.querySelector(".profile-operations");
-        let $change_password_operation =document.querySelector(".change-password-operation");
-        let $select =document.querySelector('select ');
-        let $select_option =document.querySelector('select > option');
+        let $profile_operations = document.querySelector(".profile-operations");
+        let $change_password_operation = document.querySelector(".change-password-operation");
+        let $select = document.querySelector('select ');
+        let $select_option = document.querySelector('select > option');
         document.addEventListener("click", e => {
-            if(e.target.matches('.modify-professional__button ')){
+            if (e.target.matches('.modify-professional__button ')) {
                 $input_group.forEach(el => {
                     el.removeAttribute("disabled");
                 });

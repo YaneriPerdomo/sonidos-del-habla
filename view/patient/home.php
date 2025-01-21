@@ -15,14 +15,13 @@ function show_additional_information()
 
         $row_necessary_treatment = $get_necessary_treatment_stmt->fetch(PDO::FETCH_ASSOC);
 
-        $therapy_exercises_today_query = 'SELECT  IF(fecha = CURDATE() , "1", "0") AS "today" FROM sesiones WHERE id_paciente = :id_patient';
+        $therapy_exercises_today_query = 'SELECT fecha AS "today" FROM sesiones WHERE id_paciente = :id_patient AND DATE(fecha) = CURDATE(); ';
         $therapy_exercises_today_stmt = $pdo->prepare($therapy_exercises_today_query);
         $therapy_exercises_today_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
         $therapy_exercises_today_stmt->execute();
 
         $row_therapy_exercises_today = $therapy_exercises_today_stmt->fetch(PDO::FETCH_ASSOC);
-
-        $result_today =  $row_therapy_exercises_today['today'] == "1" ? '<i class="bi bi-check fs-4"> </i>' : '<i class="bi bi-hourglass-top fs-4"> </i>';
+        $result_today =  $therapy_exercises_today_stmt->rowCount() > 0 ? '<i class="bi bi-check fs-4"> </i>' : '<i class="bi bi-hourglass-top fs-4"> </i>';
 
         $joint = '';
         $muscle_strengthening = '';
@@ -69,7 +68,7 @@ function show_additional_information()
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Inicia sesion | Sonidos de habla</title>
+    <title>Casa | Sonidos de habla</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">

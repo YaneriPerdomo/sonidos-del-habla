@@ -1,7 +1,15 @@
-
-
 .btn-change-password {
   background: none;
   border: 0rem;
   text-decoration: underline;
+}
+.row > div > div,
+.qualities-administrator {
+  padding: 1rem;
+  background: white;
+  border-radius: 6px;
+}
+
+.input-group {
+  padding: 0.4rem !important;
 }
