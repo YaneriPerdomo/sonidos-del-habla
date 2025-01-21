@@ -30,6 +30,10 @@
   position: relative;
 }
 
+.btn-delete-activitie {
+  color: rgb(47, 47, 47);
+}
+
 button,
 [type="submit"],
 .button-a {

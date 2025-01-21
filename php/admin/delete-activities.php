@@ -6,7 +6,7 @@ if ($pdo->errorCode() != 0) {
 }
 try {
     $id = $_GET["id"];
-    $sqlDeleteHistoryChild = "DELETE FROM historiales WHERE id_historial = :id";
+    $sqlDeleteHistoryChild = "DELETE FROM actividades WHERE id_actividad = :id";
     $query = $pdo->prepare($sqlDeleteHistoryChild);
     $query->bindParam('id', $id, PDO::PARAM_INT);
     $query->execute();

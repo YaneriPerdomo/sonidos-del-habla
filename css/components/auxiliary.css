@@ -40,6 +40,10 @@ color: var(--color-green);
   color: #1A3659;
 }
 
+h1{
+  font-weight: 600;
+}
+
 .text__grey{
   color: var(--color-grey);
 }

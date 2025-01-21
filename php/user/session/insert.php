@@ -21,20 +21,20 @@ function add_history($state_messege, $id_paciente)
         // Determine exercise types based on 'ejercicios' field
         $exercise_types = [];
         if (preg_match("/rotacismo0|rotacismo1|seseo0|seseo1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types[] = 'Ejercicios de pronunciación de fonemas';
+            $exercise_types[] = '<i>Ejercicios de pronunciación de fonemas.</i>';
         }
         if (preg_match("/musculos de la lengua0|musculos de la lengua1|el ritmo del habla0|el ritmo del habla1|labio0|labio1|mejilla0|mejilla1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types[] = 'Fortalecimiento muscular';
+            $exercise_types[] = '<i>Fortalecimiento muscular.</i>';
         }
         if (preg_match("/el ritmo del habla0|el ritmo del habla1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types[] = 'Fluidez';
+            $exercise_types[] = '<i>Fluidez.</i>';
         }
 
         // Construct the exercise list
         $exercises = implode(', ', $exercise_types);
 
         // Prepare the message
-        $user = $_SESSION['user'];
+        $user = '<b> '. $_SESSION['user'].'</b>';
         $messege = '';
         if ($state_messege == 'completed') {
             $messege = "$user ha completado su sesión de terapia de: $exercises";
@@ -43,7 +43,7 @@ function add_history($state_messege, $id_paciente)
         }
 
         // Insert the history record
-        $insert_history_query = 'INSERT INTO historiales (id_paciente, mensaje, fecha_hora) VALUES (:id_paciente, :mensaje, NOW())';
+        $insert_history_query = 'INSERT INTO actividades (id_paciente, mensaje, fecha_hora) VALUES (:id_paciente, :mensaje, NOW())';
         $insert_history_stmt = $pdo->prepare($insert_history_query);
         $insert_history_stmt->bindParam('id_paciente', $id_paciente, PDO::PARAM_INT);
         $insert_history_stmt->bindParam('mensaje', $messege, PDO::PARAM_STR);
@@ -74,28 +74,23 @@ try {
         echo 'Muy bien, pero hoy ya hiciste tu terapia de lenguaje, pero que bueno que la vuelvas a hacer, eso la hace única!!';
         exit();
     } else {
-        // Obtener el ID de la terapia del paciente
-        $get_speech_therapy_query = 'SELECT id_terapia_lenguaje FROM terapias_lenguaje WHERE id_paciente = :id_patient';
-        $get_speech_therapy_stmt = $pdo->prepare($get_speech_therapy_query);
-        $get_speech_therapy_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
-        $get_speech_therapy_stmt->execute();
-
-        // Obtener datos del formulario (si existen)
-        $observations = $_POST['observations'] ?? NULL;
-        $evaluation = $_POST['evaluation'] ?? NULL;
-        $objectives = $_POST['objectives'] ?? NULL;
+        // Obtener las terapias de lenguaje del paciente
+        $get_speech_therapys_query = 'SELECT ejercicios FROM terapias_lenguaje WHERE id_paciente = :id_patient';
+        $get_speech_therapys_stmt = $pdo->prepare($get_speech_therapys_query);
+        $get_speech_therapys_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+        $get_speech_therapys_stmt->execute();
 
         // Insertar registro de sesión
-        if ($get_speech_therapy_stmt->rowCount() > 0) {
-            $row_speech_therapy = $get_speech_therapy_stmt->fetch(PDO::FETCH_ASSOC);
-            $id_speech_therapy = $row_speech_therapy['id_terapia_lenguaje'];
+        if ($get_speech_therapys_stmt->rowCount() > 0) {
+            $row_speech_therapys = $get_speech_therapys_stmt->fetch(PDO::FETCH_ASSOC);
+            $speech_therapys = $row_speech_therapys['ejercicios'];
             $state = 'Completado';
-            $insert_speech_therapies_query = 'INSERT INTO sesiones ( id_paciente, id_terapia_lenguaje, fecha,estado,  observaciones,
-             objetivos_alcanzados, evaluacion) VALUES (:id_paciente, :id_terapia_lenguaje, NOW(), :estado, :observaciones, 
+            $insert_speech_therapies_query = 'INSERT INTO sesiones ( id_paciente,  ejercicios , fecha,estado,  observaciones,
+             objetivos_alcanzados, evaluacion) VALUES (:id_paciente, :exercises , NOW(), :estado, :observaciones, 
              :objetivos_alcanzados, :evaluacion)';
             $insert_speech_therapies_stmt = $pdo->prepare($insert_speech_therapies_query);
             $insert_speech_therapies_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
-            $insert_speech_therapies_stmt->bindParam('id_terapia_lenguaje', $id_speech_therapy, PDO::PARAM_INT);
+            $insert_speech_therapies_stmt->bindParam('exercises', $speech_therapys, PDO::PARAM_STR);
             $insert_speech_therapies_stmt->bindParam('estado', $state, PDO::PARAM_STR);
             $insert_speech_therapies_stmt->bindParam('observaciones', $observations, PDO::PARAM_STR);
             $insert_speech_therapies_stmt->bindParam('objetivos_alcanzados', $objectives, PDO::PARAM_STR);
@@ -104,6 +99,7 @@ try {
 
             if ($insert_speech_therapies_stmt->rowCount() > 0) {
                 echo 'success';
+                //Insertar un historial indicando que el paciente completó su sesión
                 add_history('completed', $id_patient);
             } else {
                 echo 'error';

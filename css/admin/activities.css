@@ -1,0 +1,14 @@
+.content {
+    background: white;
+    padding: 1rem;
+    border-radius: 6px;
+    border: solid 1px #e8d8ff;
+    margin: 1rem;
+    max-width: 700px;
+    min-width: 200px;
+}
+ 
+.load_more > a{
+    text-decoration: none;
+    color: var(--color-blue);
+}

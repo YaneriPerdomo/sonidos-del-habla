@@ -45,6 +45,11 @@ include '../../php/validation/authorized-user.php';
         h1{
             font-weight: 600;
         }
+
+
+        .activities-patients__title{
+            font-weight: 600;
+        }
     </style>
 </head>
 
@@ -64,7 +69,7 @@ include '../../php/validation/authorized-user.php';
                             </div>
                         </div><br>
                         <div class="show-patients d-flex   flex-column">
-                            <div class="card-patient shadow">
+                            <div class="card-patient">
                                 <br>
                                 <div class="card-patient__img flex-center-full">
                                     <img src="../../img/patients/childs/girl.png" class="" alt="">
@@ -101,7 +106,7 @@ include '../../php/validation/authorized-user.php';
                         </a>
                         <hr style="  margin-bottom: 0.5rem;">
                         <section class="activities-patients">
-                            <span class="text__green fs-3">Actividades</span>
+                            <span class="text__green fs-3 activities-patients__title">Actividades</span>
                             <?php
 
                             include '../../php/admin/show-history.php';

@@ -5,6 +5,7 @@ import {
   $amount_span,
   $modal_counting_number,
   $count_down,
+  $data_exercise,
 } from "./variable.js";
 
 export function show_img() {

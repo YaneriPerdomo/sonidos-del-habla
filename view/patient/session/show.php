@@ -29,7 +29,7 @@ function show_welcome_message()
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sesión de Terapia del Lenguaje | Sonidos de habla</title>
+    <title>Sesión de terapias de lenguaje | Sonidos de habla</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -41,6 +41,7 @@ function show_welcome_message()
     <link rel="stylesheet" href="../../../css/components/auxiliary.css">
     <link rel="stylesheet" href="../../../css/components/modal-window.css">
     <link rel="stylesheet" href="../../../css/admin/header.css">
+    <link rel="stylesheet" href="../../../css/user/session.css">
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
     

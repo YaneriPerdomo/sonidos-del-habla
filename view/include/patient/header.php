@@ -18,7 +18,7 @@
                 <ul class="dropdown-menu p-3">
                     <li clasS="text-center">
                         <button class="dropdown-item" type="button">
-                            <a href="../../php/signOut.php" class="text-decoration-none color-black">Cerrar sesion</a>
+                            <a href="../../php/signOut.php" class="text-decoration-none text__grey">Cerrar sesion</a>
                         </button>
                     </li>
                 </ul>

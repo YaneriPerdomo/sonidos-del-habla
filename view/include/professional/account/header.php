@@ -19,11 +19,11 @@
                         <h2> <?php echo isset($_SESSION['user']) ? '¡Hola, ' .$_SESSION['user'] . '!': ''?></h2>
                     </li>
                     <li class="text-center">
-                        <button class="dropdown-item" type="button"><a href="../account/profile.php" class="text-decoration-none">Administrar tu cuenta </a></button>
+                        <button class="dropdown-item" type="button"><a href="../account/profile.php" class="text__blue text-decoration-none">Administrar tu cuenta </a></button>
                     </li>
                     <li clasS="text-center">
                         <button class="dropdown-item" type="button">
-                            <a href="../../../php/signOut.php" class="text-decoration-none color-grey">Cerrar sesion</a>
+                            <a href="../../../php/signOut.php" class="text-decoration-none text__grey">Cerrar sesion</a>
                         </button>
                     </li>
                 </ul>

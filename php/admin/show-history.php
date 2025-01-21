@@ -47,10 +47,10 @@ function show_historys()
             $row_total_history = $get_total_history_stmt->fetch(PDO::FETCH_ASSOC);
 
             if($row_total_history["total_history"] > 3 ){
-                echo "<small> <a href='./history.php' class='text-decoration-none text__grey'> Ver todas</a></small>";
+                echo "<small> <a href='./activities.php' class='text-decoration-none text__blue'> Ver todos</a></small>";
             }
         } else {
-            echo "<div> No se han encontrado historiales registrados </div>";
+            echo "<div> No se han encontrado actividades registradas </div>";
         }
     } catch (PDOException $ex) {
         echo $ex;
