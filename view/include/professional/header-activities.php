@@ -1,23 +1,12 @@
 <header class="">
     <nav class="">
-        <div class="flex-center-full gap-3">
-            <section class="logo">
+             <section class="logo">
                 <figure class="p-0 m-0">
                     <img src="./../img/header-professional.png" class="header-img fluid-img" alt="">
                     <span>logo</span>
                 </figure>
             </section>
-            <section class="search-datas">
-                <div class="input-group  search-datas-content">
-                    <label id="open-modal-search" class="input-group-text search-datas-icon" id="basic-addon1">
-                        <i class="bi bi-search"></i>
-                    </label>
-                    <input type="text" name="name" id="open-modal-search" class="form-control search-datas-input" placeholder="Buscar..."
-                        aria-label="Username" aria-describedby="basic-addon1">
-                </div>
-            </section>
-        </div>
-        <section class="profile">
+         <section class="profile">
             <div class="btn-group dropstart">
                 <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
                     data-bs-display="static" aria-expanded="false">

@@ -116,6 +116,7 @@ function showInformationProfessional()
     <link rel="stylesheet" href="../../../css/admin/header.css">
     <link rel="stylesheet" href="../../../css/admin/profile.css">
 </head>
+
 <body>
 
     <?php include '../../include/professional/account/header.php'; ?>
@@ -158,10 +159,11 @@ function showInformationProfessional()
                         <button class="w-100 modify-professional__button  button__green w-100">
                             Editar perfil
                         </button>
-                    </div><hr style="  margin-bottom: 0.5rem;">
+                    </div>
+                    <hr style="  margin-bottom: 0.5rem;">
                     <section class="qualities-administrator m-0 p-0">
-                    <span class="text__green fs-3 ">Administrador</span><br>
-                    <span class="text__grey">Administracion de usuarios</span><br>
+                        <span class="text__green fs-3 ">Administrador</span><br>
+                        <span class="text__grey">Administracion de usuarios</span><br>
                         <p> <b>Acceso a la gestión de usuarios para crear perfiles personalizados, programar sesiones y realizar un seguimiento del progreso de sus pacientes.</b></p>
                         <span class="text__grey">Contactos</span>
                         <p> <b class="">Acceso a los representantes de sus pacientes de una forma más rápida y confiable para enviar mensajes a través de Gmail.</b></p>
@@ -258,9 +260,8 @@ function showInformationProfessional()
         })
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" type="module"></script>
+
     <script src="../js/validations/login.js" type="module"></script>
 </body>
 

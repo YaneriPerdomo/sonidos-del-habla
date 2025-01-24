@@ -87,7 +87,7 @@ function show_welcome_message()
     </main>
 
     <div class="modal-welcome container-modal">
-        <div class="content flex-center-full flex-column animation__back-left">
+        <div class="modal-content flex-center-full flex-column animation__back-left">
             <div class="content__header w-100  ">
                 <h1>¡<?php
                         echo $_SESSION['id_gender'] == 1 ?  'Bienvenido'  : 'Bienvenida';
@@ -108,7 +108,7 @@ function show_welcome_message()
         </div>
     </div>
     <div class="modal-end container-modal d-none">
-        <div class="content flex-center-full flex-column ">
+        <div class="modal-content flex-center-full flex-column ">
             <div class="content__header w-100  ">
                 <h1 class="content__header-title-end">Felicidades </h1>
             </div>

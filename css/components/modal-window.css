@@ -5,6 +5,20 @@
   color: white;
 }
 
+.modal-title-red {
+  margin: 0rem;
+  background: var(--color-red);
+  padding: 1rem;
+  color: white;
+}
+
+.modal-title-green {
+  margin: 0rem;
+  background: var(--color-green);
+  padding: 1rem;
+  color: white;
+}
+
 .content__header > h1{
   margin: 0rem;
   background: var(--color-orange);
@@ -67,7 +81,15 @@
   z-index: 999;
 }
 
-.container-modal > .content {
+.container-modal > .modal-content {
+  max-width: 500px;
+  background: white;
+  min-width: 200px;
+  border-radius: 0rem 0rem 1rem 1rem;
+}
+
+
+.modal-content{
   max-width: 500px;
   background: white;
   min-width: 200px;

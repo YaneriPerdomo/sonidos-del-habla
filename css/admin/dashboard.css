@@ -31,3 +31,34 @@
   background: white;
   border-radius: 6px;
 }
+
+.activities_patients {
+  overflow-x: hidden;
+  padding: 1rem;
+  background: white;
+  border-radius: 1rem;
+  border: solid 1px #e8d8ff;
+}
+
+.activities-patient__show {
+  align-items: start;
+}
+
+.activities-patient__show-btn-delete {
+  height: 2rem;
+  border-radius: 0.3rem;
+  border: 0rem;
+  background: none;
+  background: rgb(225, 225, 225);
+  color: rgb(47, 47, 47);
+}
+
+h1{
+  font-weight: 600;
+}
+
+/*
+.activities-patients__title{
+  font-weight: 600;
+  text-decoration: underline;
+}*/

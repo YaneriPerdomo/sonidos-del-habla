@@ -21,34 +21,22 @@ include '../../php/validation/authorized-user.php';
     <link rel="stylesheet" href="../../css/admin/header.css">
     <link rel="stylesheet" href="../../css/admin/dashboard.css">
     <style>
-        .activities_patients {
-            overflow-x: hidden;
-            padding: 1rem;
-            background: white;
-            border-radius: 1rem;
-            border: solid 1px #e8d8ff;
+        .search-datas-icon,
+        .search-datas-input {
+            background: #0F8A8A !important;
+            border: solid 1px rgb(112, 212, 212) !important;
         }
 
-        .activities-patient__show {
-            align-items: start;
+        .search-datas-input{
+            border-radius: 0rem 0.5rem 0.5rem 0rem !important;
         }
 
-        .activities-patient__show-btn-delete {
-            height: 2rem;
-            border-radius: 0.3rem;
-            border: 0rem;
-            background: none;
-            background: rgb(225, 225, 225);
-            color: rgb(47, 47, 47);
+        .search-datas-input::placeholder{
+            color:white;
         }
 
-        h1{
-            font-weight: 600;
-        }
-
-
-        .activities-patients__title{
-            font-weight: 600;
+        .search-datas{
+            width: 25vw !important;
         }
     </style>
 </head>
@@ -61,7 +49,7 @@ include '../../php/validation/authorized-user.php';
             <div class="row ">
                 <div class="col-9">
                     <div>
-                        <h1 class="" >Panel de control</h1>
+                        <h1 class="">Panel de control</h1>
                         <hr>
                         <div class="d-flex justify-content-between">
                             <div>
@@ -106,7 +94,8 @@ include '../../php/validation/authorized-user.php';
                         </a>
                         <hr style="  margin-bottom: 0.5rem;">
                         <section class="activities-patients">
-                            <span class="text__green fs-3 activities-patients__title">Actividades</span>
+                            <span class=" fs-3 activities-patients__title">Actividades</span>
+                            
                             <?php
 
                             include '../../php/admin/show-history.php';
@@ -121,12 +110,12 @@ include '../../php/validation/authorized-user.php';
         </section>
     </main>
 
+    </div>
+
     <?php include '../include/footer.php'; ?>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous">
-    </script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" type="module"></script>
+
     <script src="../js/validations/login.js" type="module"></script>
 </body>
 

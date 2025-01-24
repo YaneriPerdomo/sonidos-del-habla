@@ -29,7 +29,7 @@ $load_more.addEventListener('click', e => {
                                   <small style='color: #6f6f6f;'>${data[i].fecha_hora}</small>
                               </div>
                               <div class='text__black'>
-                                  <a href='./../../php/admin/delete-activities.php?id="${data[i].id_actividad}' class='btn-delete-activitie '>
+                                  <a href='./../../php/admin/delete-activitie.php?id="${data[i].id_actividad}' class='btn-delete-activitie '>
                                       <i class='bi bi-x-lg '></i>
                                   </a>
                               </div>

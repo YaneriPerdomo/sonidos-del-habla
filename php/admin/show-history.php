@@ -31,7 +31,7 @@ function show_historys()
                             </button>
                             <ul class='dropdown-menu'>
                                 <li>
-                                    <a class='dropdown-item' href='./../../php/admin/delete-activities.php?id=". $value["id_actividad"] . "'>
+                                    <a class='dropdown-item' href='./../../php/admin/delete-activitie.php?id=". $value["id_actividad"] . "'>
                                         <i class='bi bi-trash'></i> 
                                             Borrar
                                     </a>
