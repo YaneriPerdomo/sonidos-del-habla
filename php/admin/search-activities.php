@@ -14,11 +14,11 @@ try {
     $get_data_search_query = $show_all == 'true' ? //Si se cumple
         "SELECT id_actividad, mensaje, fecha_hora FROM actividades INNER JOIN pacientes ON 
             actividades.id_paciente = pacientes.id_paciente WHERE mensaje LIKE :search 
-            AND pacientes.id_profesional = :id_professional LIMIT 10"
+            AND pacientes.id_profesional = :id_professional ORDER BY fecha_hora DESC LIMIT 10"
         : //si no se cumple
         "SELECT id_actividad, mensaje, fecha_hora FROM actividades INNER JOIN pacientes ON 
             actividades.id_paciente = pacientes.id_paciente WHERE mensaje LIKE :search 
-            AND pacientes.id_profesional = :id_professional";
+            AND pacientes.id_profesional = :id_professional ORDER BY fecha_hora DESC";
     $get_data_search_stmt = $pdo->prepare($get_data_search_query);
 
     $search_term = '%' . $search . '%';

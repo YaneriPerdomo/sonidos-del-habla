@@ -8,6 +8,9 @@
   --color-orange:  #fd7b43;
 }
 
+.back > a{
+  color: rgb(47,47,47);
+}
 .flex-around-full {
   display: flex;
   justify-content: space-around;

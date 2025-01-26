@@ -35,8 +35,8 @@ try {
                         $_SESSION['id_professional'] = $row_patient['id_profesional'];
                         $_SESSION['id_patient'] = $row_patient['id_paciente'];
                         $_SESSION['id_gender'] = $row_patient['id_genero'];
-                        $_SESSION['user'] = $user;
-                        $_SESSION['name_lastname'] = $row_patient['nombre'] .' '. $row_patient['apellido'];
+                        $_SESSION['user'] = ucfirst($user);
+                        $_SESSION['name_lastname'] = ucfirst($row_patient['nombre']) .' '. ucfirst($row_patient['apellido']);
                         header('Location: ../view/patient/home.php', true, 301);
                     break;
                     case 2:
@@ -49,7 +49,7 @@ try {
 
                         $_SESSION['id_user'] = $row_user["id_usuario"];
                         $_SESSION['id_professional'] = $row_professional['id_profesional'];
-                        $_SESSION['user'] = $row_user['usuario'];
+                        $_SESSION['user'] = ucfirst($row_user['usuario']);
                         $_SESSION['email'] = $row_professional['correo_electronico'];
                         header('Location: ../view/professional/dashboard.php', true, 301);
                     break;

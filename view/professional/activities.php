@@ -7,7 +7,7 @@ include './../../php/validation/authorized-user.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actividades | Sonidos de habla </title>
+    <title>Actividades | Sonidos del habla </title>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="stylesheet" href="../css/reset.css">
@@ -19,12 +19,6 @@ include './../../php/validation/authorized-user.php';
     <link rel="stylesheet" href="../../css/components/modal-window.css">
     <link rel="stylesheet" href="../../css/admin/header.css">
     <link rel="stylesheet" href="../../css/admin/activities.css">
-    <style>
-       .form-check-input:checked {
-            background-color: #6f6f6f;
-            border-color: #535353;
-       }
-    </style>
 </head>
 
 <body>

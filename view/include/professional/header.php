@@ -7,12 +7,12 @@
                     <span>logo</span>
                 </figure>
             </section>
-            <section class="search-datas">
-                <div class="input-group  search-datas-content">
-                    <label id="open-modal-search" class="input-group-text search-datas-icon" id="basic-addon1">
+            <section class="search-data">
+                <div class="input-group  search-data__content">
+                    <label id="open-modal__search" class="input-group-text search-data__icon" id="basic-addon1">
                         <i class="bi bi-search"></i>
                     </label>
-                    <input type="text" name="name" id="open-modal-search" class="form-control search-datas-input" placeholder="Buscar..."
+                    <input type="text" name="name" id="open-modal__search" class="form-control search-data__input" placeholder="Buscar..."
                         aria-label="Username" aria-describedby="basic-addon1">
                 </div>
             </section>

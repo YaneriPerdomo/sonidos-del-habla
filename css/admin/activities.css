@@ -1,11 +1,25 @@
-
 .load_more > a {
   text-decoration: none;
   color: var(--color-blue);
 }
 
-.container-activities > div > section > div{
+.container-activities > div > section > div {
   padding: 1rem;
   background: white;
   border-radius: 6px;
+}
+
+.form-check-input:checked {
+  background-color: #6f6f6f;
+  border-color: #535353;
+}
+
+.activities--search {
+  background: white;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: solid 1px #e8d8ff;
+  margin: 1rem;
+  max-width: 700px;
+  min-width: 200px;
 }

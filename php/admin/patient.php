@@ -27,11 +27,11 @@ try {
                 $password = $_POST['password'];
 
                 //Information about dyslalia
-                $dyslalia_type = $_POST['dyslalia-type'];
-                $dyslalia_classification = $_POST['classification'];
-                $dyslalia_observations = $_POST['observations'];
-                $dyslalia_phonemes = $_POST['phonemes'];
-                $dyslalia_gravity = $_POST['gravity'];
+                $dyslalia_type = $_POST['dyslalia-type'] ?? NULL;
+                $dyslalia_classification = $_POST['classification'] ?? NULL; 
+                $dyslalia_observations = $_POST['observations'] ?? '';
+                $dyslalia_phonemes = $_POST['phonemes'] ?? null;
+                $dyslalia_gravity = $_POST['gravity'] ?? null;
 
                 //Personalization of the therapy session
                 $duration_each_exercise = $_POST['duration-each-exercise'] ?? NULL;
@@ -52,8 +52,7 @@ try {
                 </script>";
                     exit();
                 }
-
-                  //Search if the email of representative already exists
+                //Search if the email of representative already exists
                 $search_email_representative_query = "SELECT correo_electronico FROM representantes WHERE correo_electronico = :email ";
                 $search_email_representative_stmt = $pdo->prepare($search_email_representative_query);
                 $search_email_representative_stmt->bindParam('email', $representative_email, PDO::PARAM_STR);
@@ -116,17 +115,15 @@ try {
                     $add_representative_stmt->bindParam('codigo_secreto', $hash_secrect_code, PDO::PARAM_STR);
                     $add_representative_stmt->execute();
                 }
-                $current_date = date('d/m/Y');
-                $add_patient_diagnosis_query = 'INSERT INTO pacientes_diagnosticados (id_paciente, id_tipo_dislalia,id_calificacion_dislalia fonemas, 
-                fecha_diagnostico, gravedad, observacion) VALUES (:id_paciente, :id_tipo_dislalia, :id_calificacion_dislalia :fonemas, :current_date, :gravedad, :observacion);';
-                
+                $add_patient_diagnosis_query = 'INSERT INTO pacientes_diagnosticados (id_paciente, id_tipo_dislalia,id_calificacion_dislalia ,  fecha_diagnostico , fonemas, 
+                gravedad, observacion) VALUES (:id_paciente, :id_tipo_dislalia, :id_calificacion_dislalia, DATE(NOW()),  :fonemas,  :gravedad,  :observacion)';
+
                 $add_patient_diagnosis_stmt = $pdo->prepare($add_patient_diagnosis_query);
                 $add_patient_diagnosis_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
                 $add_patient_diagnosis_stmt->bindParam('id_tipo_dislalia',  $dyslalia_type, PDO::PARAM_INT);
-                $add_patient_diagnosis_stmt->bindParam('id_calificacion_dislalia', $dyslalia_classification , PDO::PARAM_INT);
+                $add_patient_diagnosis_stmt->bindParam('id_calificacion_dislalia', $dyslalia_classification, PDO::PARAM_INT);
                 $add_patient_diagnosis_stmt->bindParam('fonemas', $dyslalia_phonemes, PDO::PARAM_STR);
                 $add_patient_diagnosis_stmt->bindParam('gravedad', $dyslalia_gravity, PDO::PARAM_STR);
-                $add_patient_diagnosis_stmt->bindParam('current_date', $current_date, PDO::PARAM_INT);
                 $add_patient_diagnosis_stmt->bindParam('observacion', $dyslalia_observations, PDO::PARAM_STR);
                 $add_patient_diagnosis_stmt->execute();
 
@@ -143,7 +140,7 @@ try {
                 $pdo->commit(); //Confirmacion de la transaccion
 
                 //Mostrar mensaje de manera exitosa
-                showMsg('Datos del paciente registrado exitosamente', './../../view/professional/dashboard.php');
+                showMsg('Datos del paciente registrados exitosamente', './../../view/professional/dashboard.php');
 
                 break;
             case 'update';
@@ -151,6 +148,53 @@ try {
 
                 break;
             case 'delete';
+
+                $id_patient = $_POST['id_patient'];
+                $id_user = $_POST['id_user'];
+
+                $pdo->beginTransaction();
+                $delete_activities_query = "DELETE FROM actividades WHERE id_paciente = :id_patient";
+                $delete_activities_stmt = $pdo->prepare($delete_activities_query);
+                $delete_activities_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $delete_activities_stmt->execute();
+                
+                $delete_therapy_query = "DELETE FROM terapias_lenguaje WHERE id_paciente = :id_patient";
+                $delete_therapy_stmt = $pdo->prepare($delete_therapy_query);
+                $delete_therapy_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $delete_therapy_stmt->execute();
+
+                $delete_patient_diagnosticodo_query = "DELETE FROM pacientes_diagnosticados WHERE id_paciente = :id_patient";
+                $delete_patient_diagnosticodo_stmt = $pdo->prepare($delete_patient_diagnosticodo_query);
+                $delete_patient_diagnosticodo_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $delete_patient_diagnosticodo_stmt->execute();
+
+                $delete_paciente_materiales_apoyo_query = "DELETE FROM pacientes_materiales_apoyo WHERE id_paciente = :id_patient";
+                $delete_paciente_materiales_apoyo_stmt = $pdo->prepare($delete_paciente_materiales_apoyo_query);
+                $delete_paciente_materiales_apoyo_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $delete_paciente_materiales_apoyo_stmt->execute();
+
+                $delete_representative_query = "DELETE FROM representantes WHERE id_paciente = :id_patient";
+                $delete_representative_stmt = $pdo->prepare($delete_representative_query);
+                $delete_representative_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $delete_representative_stmt->execute();
+
+                $delete_sessions_query = "DELETE FROM sesiones WHERE id_paciente = :id_patient";
+                $delete_sessions_stmt = $pdo->prepare($delete_sessions_query);
+                $delete_sessions_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $delete_sessions_stmt->execute();
+     
+                $delete_user_query = "DELETE FROM usuarios WHERE id_usuario = :id_user";
+                $delete_user_stmt = $pdo->prepare($delete_user_query);
+                $delete_user_stmt->bindParam('id_user', $id_user, PDO::PARAM_INT);
+                $delete_user_stmt->execute();
+                
+                $delete_patient_query = "DELETE FROM pacientes WHERE id_paciente = :id_patient";
+                $delete_patient_stmt = $pdo->prepare($delete_activities_query);
+                $delete_patient_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $delete_patient_stmt->execute();
+
+                $pdo->commit();
+                showMsg('Datos del paciente eliminados exitosamente', './../../view/professional/dashboard.php');
 
                 break;
             default:
@@ -160,6 +204,5 @@ try {
     }
 } catch (PDOException $ex) {
     $pdo->rollBack();
-    echo error_log($ex->getMessage());
     echo 'Oh no... Hay un error por parte de la base de datos: ' . $ex->getMessage();
 }

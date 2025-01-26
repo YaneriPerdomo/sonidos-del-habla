@@ -53,7 +53,7 @@
   color: rgb(47, 47, 47);
 }
 
-h1{
+h1 {
   font-weight: 600;
 }
 
@@ -62,3 +62,42 @@ h1{
   font-weight: 600;
   text-decoration: underline;
 }*/
+
+.search-data__icon,
+.search-data__input {
+  background: #0f8a8a !important;
+  border: solid 1px rgb(112, 212, 212) !important;
+}
+
+.search-data__input {
+  border-radius: 0rem 0.5rem 0.5rem 0rem !important;
+}
+
+.search-data__input::placeholder {
+  color: white;
+}
+
+.search-data {
+  width: 25vw !important;
+}
+
+.search-overflow-y {
+  width: auto;
+  position: relative;
+  overflow-y: auto;
+  max-height: 700px;
+}
+
+.card-patient--bgPink {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-pink) 25%,
+    #f2f2f2 0% 100%
+  );
+}
+
+.bi-trash,
+.bi-calendar3,
+.bi-person-lines-fill {
+  cursor: pointer;
+}
