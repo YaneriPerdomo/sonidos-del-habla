@@ -11,13 +11,16 @@ function show_welcome_message()
     $get_information_therapy_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
     $get_information_therapy_stmt->execute();
     $row_information_therapy = $get_information_therapy_stmt->fetch(PDO::FETCH_ASSOC);
+
+    $imagenes_visuales = count(explode(',', $row_information_therapy['ejercicios'])) -1 ;
+    $message_count_img =  $imagenes_visuales == 1 ? 'que es una imagen visual la que se va a mostrar.' : 'hay '.$imagenes_visuales .' imagenes visuales que se van a mostrar.'; 
     echo '
      <p  data-exercise="' . $row_information_therapy['ejercicios'] . '" > En primer lugar, cada ejercicio tendrá una duración  de
-     <span class="duration_each_exercise"> ' . intval($row_information_therapy['duracion_cada_ejercicio']) / 1000 . ' </span>segundos, en un
-         total de ' . $row_information_therapy['duracion_total'] . ' minutos.';
+     <span class="duration_each_exercise"> ' . intval($row_information_therapy['duracion_cada_ejercicio']) / 1000 . ' </span>segundos, teniendo en cuenta que 
+         ' .$message_count_img. '';
     if (strlen($row_information_therapy['nota']) != 0) {
         echo ' Por otro lado, tu profesional te envió una nota para que la tengas en cuenta, la cual es 
-                la siguiente: " ' . $row_information_therapy['nota'] . '"<p>';
+                la siguiente: "' . trim($row_information_therapy['nota']) . '."<p>';
     } else {
         echo '</p>';
     }

@@ -24,7 +24,7 @@ function show_support_materials()
                 $HTML_materials .= '<div class="card-sopport-materials">
                                     <a href="' . $value['url_material'] . '" 
                                        class="flex-center-full flex-column text-decoration-none color-white"
-                                       '. ($value['id_material_apoyo'] == 9 ? 'download="Ejercicios de respiración"' : '') . '> 
+                                       '. ($value['id_material_apoyo'] == 7 ? 'download="Ejercicios de respiración"' : '') . '> 
                                         <i class="' . $value['icono'] . ' fs-2"></i>
                                         <span class="fw-bold">' . $value['titulo'] . '</span>
                                     </a>

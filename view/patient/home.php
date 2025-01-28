@@ -68,7 +68,7 @@ function show_additional_information()
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Casa | Sonidos de habla</title>
+    <title>Casa | Sonidos del habla</title>
     <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../css/reset.css">

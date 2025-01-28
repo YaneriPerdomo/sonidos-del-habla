@@ -208,8 +208,8 @@ include './../../php/validation/authorized-user.php';
     })
 
 
+
 </script>
 
-<script src="./../../js/admin/ajax/get-activities.js" type="module"></script>
 
 </html>

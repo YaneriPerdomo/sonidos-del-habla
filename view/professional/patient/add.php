@@ -281,21 +281,22 @@ include '../../../php/validation/authorized-user.php';
                             <input type="text" name="session_duration" id="session_duration" disabled class="form-control"
                                 aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
                         </div>
-                        <label class="support-materials">Materiales de apoyo</label>
-                        <select name="support-materials[]" class="form-control" id="support-materials" multiple>
-                            <option value="1">Ejercicios en formato PDF para pronunciar el fonema r y la doble rr</option>
-                            <option value="2">Juego para discriminar sonidos</option>
-                            <option value="3">Juego para identificar errores en la propia pronunciación</option>
-                            <option value="4">Juego para mejorar el vocabulario, nivel basico</option>
-                            <option value="5">Imágenes de trabalenguas fáciles para niños entre 7 y 10 años</option>
-                            <option value="6" >Video para aprende a pronunciar el fonema Ñ</option>
-                            <option value="7" selected>Imagenes de Trabalenguas </option>
-                        </select>
                         <label for="note">Nota</label>
                         <div class="input-group mb-2">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-journal-text"></i></span>
                             <textarea name="note" id="note" class="form-control"></textarea>
                         </div>
+                        <label class="support-materials">Materiales de apoyo</label>
+                        <select name="support-materials[]" class="form-control" id="support-materials" multiple>
+                            <option value="0">Ejercicios para pronunciación el fonema r y la doble rr</option>
+                            <option value="1">Actividades para discriminar sonidos</option>
+                            <option value="2">Ejercicios para identificar errores en la propia pronunciación</option>
+                            <option value="3">Actividades para mejorar el vocabulario</option>
+                            <option value="4">Trabalenguas fáciles</option>
+                            <option value="5">Aprende a pronunciar el fonema Ñ</option>
+                            <option value="6">Trabalenguas</option>
+                            <option value="7">Ejercicios de respiración</option>
+                        </select>
                     </section>
                     <br><br><br><br>
                     <section class="representative">

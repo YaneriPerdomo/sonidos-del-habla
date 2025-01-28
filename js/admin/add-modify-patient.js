@@ -116,7 +116,7 @@ document.addEventListener('change', e => {
         if (e.target.value == '2' || e.target.value == "4") {
             $add_select_phonemes.innerHTML = `
             <select-multiple name="phonemes" class="form-control" id="Fonemas" label="Fonemas" multiple >
-                <option value="a">a</option>
+                <option value="a" >a</option>
                 <option value="b">b</option>
                 <option value="c">c</option>
                 <option value="d">d</option>
@@ -146,9 +146,7 @@ document.addEventListener('change', e => {
             </select-multiple>`;
         } else if (e.target.value == "3") {
             $add_select_phonemes.innerHTML = `
-             <select name="phonemes" id="phonemes" class="form-control">
-                <option value="Todos los fonemas" seleted>Todos los fonemas</option>
-            </select>`;
+            `;
         }
         else {
             $add_select_phonemes.innerHTML = `

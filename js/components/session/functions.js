@@ -56,12 +56,7 @@ export function show_img() {
     ) {
       type_exercise = "muscle-strengthening";
     }
-    $session_img.src =
-      "../../../img/exercises/" +
-      type_exercise +
-      "/" +
-      arreglo_ejercicios[$session_horizontal_bar.getAttribute("data-count")] +
-      ".png";
+    $session_img.src = "../../../img/exercises/" +type_exercise +"/" + arreglo_ejercicios[$session_horizontal_bar.getAttribute("data-count")] +".png";
     $session_img.alt =
       arreglo_ejercicios[$session_horizontal_bar.getAttribute("data-count")];
     console.info(arreglo_ejercicios);
