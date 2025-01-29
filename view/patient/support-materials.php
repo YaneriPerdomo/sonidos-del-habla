@@ -17,14 +17,21 @@ function show_support_materials()
 
         $HTML_materials = '';
 
+     
         if ($get_support_materials_stmt->rowCount() > 0) {
             $row_support_materials = $get_support_materials_stmt->fetchAll(PDO::FETCH_ASSOC);
         
             foreach ($row_support_materials as $value) {
+                $download = '';
+                $download = match ($value['id_material_apoyo']) {
+                    0 => 'download="Ejercicios para pronunciación el fonema r y la doble rr"',
+                    7 => 'download="Ejercicios de respiración"',
+                        default => ''
+                };
                 $HTML_materials .= '<div class="card-sopport-materials">
                                     <a href="' . $value['url_material'] . '" 
                                        class="flex-center-full flex-column text-decoration-none color-white"
-                                       '. ($value['id_material_apoyo'] == 7 ? 'download="Ejercicios de respiración"' : '') . '> 
+                                       '. $download . '> 
                                         <i class="' . $value['icono'] . ' fs-2"></i>
                                         <span class="fw-bold">' . $value['titulo'] . '</span>
                                     </a>
@@ -76,7 +83,7 @@ function show_support_materials()
             </div> 
             <strong class="support-materials__title fs-4">Materiales de apoyo</strong>
             <hr>
-            <div class="d-flex">
+            <div class="d-flex gap-3 flex-wrap">
             <?php
                 show_support_materials();
                 ?>

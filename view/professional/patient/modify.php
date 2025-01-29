@@ -14,7 +14,7 @@ function show_information_patient()
                                             pacientes.nombre, pacientes.apellido, pacientes.id_genero, pacientes.fecha_nacimiento, usuarios.usuario,
                                             pacientes_diagnosticados.id_tipo_dislalia, pacientes_diagnosticados.id_calificacion_dislalia, pacientes_diagnosticados.fonemas,
                                             pacientes_diagnosticados.gravedad, pacientes_diagnosticados.observacion,
-                                            terapias_lenguaje.ejercicios, terapias_lenguaje.duracion_cada_ejercicio, terapias_lenguaje.nota, terapias_lenguaje.duracion_total
+                                            SUBSTRING(terapias_lenguaje.ejercicios,15) AS ejercicios, terapias_lenguaje.duracion_cada_ejercicio, terapias_lenguaje.nota, terapias_lenguaje.duracion_total
                                         FROM
                                             usuarios
                                         INNER JOIN 
@@ -84,7 +84,7 @@ function show_information_patient()
 
 
 
-
+        $patient_gender = '';
         $patient_gender =  match ($row_information_patient['id_genero']) {
             1 =>  '<label for="M" data-checked="true">
                                 <input type="radio" id="M" name="id-gender" value="1" checked>
@@ -212,7 +212,110 @@ function show_information_patient()
             return $options;
         }
 
-        function options_selected_multiple($arreglo, $row, $first_select, $last_select){
+
+       
+
+        
+        $array_imgs_therapys = array(
+            'rotacismo0' => 'rotacismo0',
+            'rotacismo1' => 'rotacismo1',
+            'seseo0' => 'seseo0',
+            'seseo1' => 'seseo1',
+            'jotacismo0' => 'jotacismo0',
+            'jotacismo1' => 'jotacismo1',
+            'lambdacismo0' => 'lambdacismo0',
+            'lambdacismo1' => 'lambdacismo1',
+            'muñación1' => 'muñación1',
+            'muñación0' => 'muñación0',
+            'mumación0' => 'mumación0',
+            'mumación1' => 'mumación1',
+            'yeismo0' => 'yeismo0',
+            'yeismo1' => 'yeismo1',
+            'el ritmo del habla0' => 'el ritmo del habla0',
+            'el ritmo del habla1' => 'el ritmo del habla1',
+            'musculos de la lengua0' => 'musculos de la lengua0',
+            'musculos de la lengua1' => 'musculos de la lengua1',
+            'labio0' => 'labio0',
+            'labio1' => 'labio1',
+            'mejillas1' => 'mejillas1',
+            'mejillas0' => 'mejillas0',
+        );
+ 
+ 
+ 
+ 
+        function show_therapys($row)
+        {
+            $therapy_html = '';
+            $array_row = explode(',', $row);
+            $count = 0;
+
+            for($i = 0; $i < count($array_row) ; $i++){
+                $count++;
+                $file = '';
+                switch ($array_row[$i]) {
+                    case 'el ritmo del habla0':
+                    case 'el ritmo del habla1':
+                        $file = 'fluency';
+                        break;
+                    case 'rotacismo0':
+                    case 'rotacismo1':
+                    case 'seseo0':
+                    case 'seseo1':
+                    case 'jotacismo0':
+                    case 'jotacismo1':
+                    case 'lambdacismo0';
+                    case 'lambdacismo1':
+                    case 'mumación0':
+                    case 'mumación1':
+                    case 'muñación0':
+                    case 'muñación11':
+                    case 'yeismo0':
+                    case 'yeismo1':
+                        $file = 'joint';
+                        break;
+                    case 'musculos de la lengua0':
+                    case 'musculos de la lengua1':
+                    case 'labio0':
+                    case 'labio1':
+                    case 'mejillas0':
+                    case 'mejillas1':
+                        $file = 'muscle-strengthening';
+                        break;
+                }
+                $class = ($count == 1) ? 'data-state="active" data-state-one="active"' : 'data-state="active"';
+                $therapy_html .= '
+                    <div class="therapy flex-center-full" ' . $class . '>
+                        <figure>
+                            <img src="../../..//img/exercises/' . $file . '/' . $array_row[$i] . '.png" alt="' . $array_row[$i] . '"  draggable="false"> 
+                        </figure>
+                        <div class="delete-therapy">
+                            <i class="bi bi-x-circle" data-name-t="' . $array_row[$i] . '"></i>
+                        </div>
+                    </div>';
+            }
+
+            for($i = $count; $i < 10; $i++){
+                $therapy_html .= '
+                        <div class="therapy flex-center-full" data-state="inactive">
+                            <figure>
+                                <img src="" alt=""  draggable="false">
+                            </figure>
+                            <div class="delete-therapy">
+                                <i class="bi bi-x-circle"></i>
+                            </div>
+                        </div>';                 
+            }
+
+
+ 
+            return $therapy_html;
+        }
+
+
+        $html_therapys = show_therapys( $row_information_patient['ejercicios']);
+        function options_selected_multiple($arreglo, $row, $first_select, $last_select)
+        {
             $options = '';
             $array_row = explode(',', $row);
             $selected_keys = [];
@@ -357,88 +460,9 @@ function show_information_patient()
                      <hr>
                     <section class="personalization-therapy-session">
                         <span><b>Datos de la personalizacion de la sesion</b></span>
-                        <input type="hidden" class="input-therapys" name="input-therapys" value="sonidos-habla">
+                        <input type="hidden" class="input-therapys" value="sonidos-habla,' . $row_information_patient['ejercicios'] . '" name="input-therapys">
                         <div class="flex-center-full">
-                            <div class="therapy flex-center-full" data-state="inactive" data-state-one="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
-                            <div class="therapy flex-center-full" data-state="inactive">
-                                <figure>
-                                    <img src="" alt="">
-                                </figure>
-                                <div class="delete-therapy">
-                                    <i class="bi bi-x-circle"></i>
-                                </div>
-                            </div>
+                           ' . $html_therapys . '
 
                         </div>
                         <div class="row">
@@ -500,8 +524,6 @@ function show_information_patient()
                             ' . $options_materiales_apoyo . '
                         </select>
                     </section>
-                    
-                    <br><br><br><br>
                     <section class="representative">
                         <span class="mt-3"><b>Datos del representante</b></span><br>
                         <label for="representative__name">Nombre</label><br>
@@ -575,7 +597,7 @@ function show_information_patient()
 
     <?php include '../../include/professional/account/header.php'; ?>
     <main class="flex-start-full ">
-        <div class="main__content shadow z-1 ">
+        <div class="main__content  z-1 ">
             <h1 class="text-center fw-bold">Modificar paciente</h1>
             <div class="flex-center-full text__grey">
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum mollitia culpa esse, temporibus soluta distinctio quidem quis cupiditate fugiat ea reiciendis. Necessitatibus, labore dolore in ut beatae sit deleniti.</p>

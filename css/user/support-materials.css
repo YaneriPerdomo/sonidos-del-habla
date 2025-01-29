@@ -2,6 +2,9 @@
   padding: 1rem;
   color: rgb(47, 47, 47);
   border-radius: 6px;
+  max-width: 200px;
+  text-align: center;
+  min-width: 100px;
   border: solid 2px var(--color-orange);
 }
 

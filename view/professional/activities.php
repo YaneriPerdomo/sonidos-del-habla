@@ -140,7 +140,7 @@ include './../../php/validation/authorized-user.php';
         </div>
     </div>
 </div>
-<div class="container-modal align-items-start" style="display: none;" data-modal="search-data" >
+<div class="container-modal align-items-start" style="display: none;" data-modal="search-data">
     <div class="modal-content content mt-2 ">
         <div class="modal-header">
             <div class="text-center w-100">
@@ -149,33 +149,25 @@ include './../../php/validation/authorized-user.php';
                 </h1>
             </div>
         </div>
-        <div class="modal-body p-3">
-            <article>
-                <div class="search-message text-center mb-2 text__grey">
-                    <small class="">Solo se le mostrarán 10 registros para no sobrecargar la página. Por favor sea muy preciso en la búsqueda de pacientes.</small>
-                </div>
-                <div class="form-check form-switch flex-center-full mb-3">
-                    <input class="form-check-input" 
-                        type="checkbox" 
-                        name="on-show-all" 
-                        role="switch" 
-                        id="flexSwitchCheckChecked" 
-                        value="true" 
-                        checked>
-                </div>
-                <div class="input-group">
-                    <label id="search-data-activities" class="input-group-text" id="basic-addon1">
-                        <i class="bi bi-search"></i>
-                    </label>
-                    <input type="search" id="search-data-input" name="search-data-activities" class="form-control"
-                        placeholder="Buscar..." aria-label="Username" class="" data-php="search-activities" aria-describedby="basic-addon1">
-                    
-                </div>
-                <hr>
-                <div class="results-data">
-                </div>
-            </article>
+        <div class="p-3">
+        <div class="modal-body ">
+            <div class="input-group">
+                <span id="search-data-activities" class="input-group-text" id="basic-addon1">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="search" id="search-data-input" name="search-data-activities" class="form-control"
+                    placeholder="Buscar..." aria-label="Username" class="" data-php="search-activities" aria-describedby="basic-addon1">
 
+            </div>
+            <hr>
+        </div>
+        <div class="modal-footer flex-center-full gap-4">
+            <div class="searchClick text-center">
+                <a href="./activities-patient.php?search_query=''" class="searchClick__link">
+                    <button class="searchClick__button  button__green button-a ">Buscar</button>
+                </a>
+            </div>
+        </div>
         </div>
     </div>
 </div>
@@ -183,10 +175,17 @@ include './../../php/validation/authorized-user.php';
 
 
 <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" type="module"></script>
-<script src="../../js/helpers/get-data-search.js"></script>
-
+<script src="../../js/admin/ajax/get-activities.js" type="module"></script>
 
 <script>
+    let $seeker_activities_input = document.querySelector("[name='search-data-activities']");
+    let $search__link = document.querySelector(".searchClick__link");
+    $seeker_activities_input.addEventListener('input', e => {
+        let search_query = e.target.value.trim() || '';
+        return $search__link.setAttribute('href', `./activities-patient.php?search_query=${search_query}`);
+    })
+
+
     let $modal_detele_activities = document.querySelector("[data-modal='detele-activities']");
     let $modal_search_activities = document.querySelector('[data-modal="search-data"]');
     document.addEventListener('click', e => {
@@ -202,13 +201,10 @@ include './../../php/validation/authorized-user.php';
             $modal_search_activities.removeAttribute('style');
         }
 
-        if(e.target.matches('[data-modal="search-data"]')){
-            $modal_search_activities.style.display =  'none';
+        if (e.target.matches('[data-modal="search-data"]')) {
+            $modal_search_activities.style.display = 'none';
         }
     })
-
-
-
 </script>
 
 
