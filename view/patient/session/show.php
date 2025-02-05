@@ -13,7 +13,7 @@ function show_welcome_message()
     $row_information_therapy = $get_information_therapy_stmt->fetch(PDO::FETCH_ASSOC);
 
     $imagenes_visuales = count(explode(',', $row_information_therapy['ejercicios'])) -1 ;
-    $message_count_img =  $imagenes_visuales == 1 ? 'que es una imagen visual la que se va a mostrar.' : 'hay '.$imagenes_visuales .' imagenes visuales que se van a mostrar.'; 
+    $message_count_img =  $imagenes_visuales == 1 ? 'que es una imagen visual la que se va a mostrar.' : 'Se mostrarán '.$imagenes_visuales .' imagenes visuales que se van a mostrar.'; 
     echo '
      <p  data-exercise="' . $row_information_therapy['ejercicios'] . '" > En primer lugar, cada ejercicio tendrá una duración  de
      <span class="duration_each_exercise"> ' . intval($row_information_therapy['duracion_cada_ejercicio']) / 1000 . ' </span>segundos, teniendo en cuenta que 
@@ -32,7 +32,7 @@ function show_welcome_message()
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sesión de terapias de lenguaje | Sonidos de habla</title>
+    <title>Sesión de hoy | Sonidos del habla</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">

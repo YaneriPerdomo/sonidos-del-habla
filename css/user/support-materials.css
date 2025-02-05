@@ -2,10 +2,14 @@
   padding: 1rem;
   color: rgb(47, 47, 47);
   border-radius: 6px;
-  max-width: 200px;
+  width: 200px;
   text-align: center;
   min-width: 100px;
   border: solid 2px var(--color-orange);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 }
 
 .card-sopport-materials > a {
@@ -19,4 +23,9 @@
   border-radius: 1rem 1rem 0rem 0rem;
   padding: 0.6rem 1rem;
   margin-top: 0;
+}
+
+
+.support-materials__back > a{
+  color:rgb(47, 47, 47);
 }

@@ -2,61 +2,9 @@
 session_start();
 
 include '../../connectionBD.php';
+include '../../auxiliary.php';
 $id_patient = $_SESSION['id_patient'];
 
-function add_history($state_messege, $id_paciente)
-{
-    include '../../connectionBD.php';
-
-    try {
-        $id_patient = $id_paciente;
-
-        // Get necessary treatment from the database
-        $get_necessary_treatment_query = 'SELECT ejercicios FROM terapias_lenguaje WHERE id_paciente = :id_paciente';
-        $get_necessary_treatment_stmt = $pdo->prepare($get_necessary_treatment_query);
-        $get_necessary_treatment_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
-        $get_necessary_treatment_stmt->execute();
-        $row_necessary_treatment = $get_necessary_treatment_stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Determine exercise types based on 'ejercicios' field
-        $exercise_types = [];
-        if (preg_match("/rotacismo0|rotacismo1|seseo0|seseo1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types[] = '<i>Ejercicios de pronunciación de fonemas.</i>';
-        }
-        if (preg_match("/musculos de la lengua0|musculos de la lengua1|el ritmo del habla0|el ritmo del habla1|labio0|labio1|mejilla0|mejilla1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types[] = '<i>Fortalecimiento muscular.</i>';
-        }
-        if (preg_match("/el ritmo del habla0|el ritmo del habla1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types[] = '<i>Fluidez.</i>';
-        }
-
-        // Construct the exercise list
-        $exercises = implode(', ', $exercise_types);
-
-        // Prepare the message
-        $user = '<b> '. $_SESSION['user'].'</b>';
-        $messege = '';
-        if ($state_messege == 'completed') {
-            $messege = "$user ha completado su sesión de terapia de: $exercises";
-        } else {
-            $messege = "$user ha completado de nuevo su sesión de terapia de: $exercises";
-        }
-
-        // Insert the history record
-        $insert_history_query = 'INSERT INTO actividades (id_paciente, mensaje, fecha_hora) VALUES (:id_paciente, :mensaje, NOW())';
-        $insert_history_stmt = $pdo->prepare($insert_history_query);
-        $insert_history_stmt->bindParam('id_paciente', $id_paciente, PDO::PARAM_INT);
-        $insert_history_stmt->bindParam('mensaje', $messege, PDO::PARAM_STR);
-        $insert_history_stmt->execute();
-
-        if ($insert_history_stmt->rowCount() > 0) {
-        } else {
-            echo 'error ';
-        }
-    } catch (PDOException $ex) {
-        echo $ex->getMessage();
-    }
-}
 
 
 try {

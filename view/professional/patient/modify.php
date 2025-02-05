@@ -44,32 +44,25 @@ function show_information_patient()
 
 
         $row_materiales_apoyo = $get_materiales_apoyo_stmt->fetchAll(PDO::FETCH_ASSOC);
-        /*  <option value="1">Ejercicios en formato PDF para pronunciar el fonema r y la doble rr</option>
-                            <option value="2">Juego para discriminar sonidos</option>
-                            <option value="3">Juego para identificar errores en la propia pronunciación</option>
-                            <option value="4">Juego para mejorar el vocabulario, nivel basico</option>
-                            <option value="5">Imágenes de trabalenguas fáciles para niños entre 7 y 10 años</option>
-                            <option value="6" selected>Video para aprende a pronunciar el fonema Ñ</option>
-                            <option value="7" >Imagenes de Trabalenguas </option> */
         $id_materiales_apoyo = array(
             0 => 'Ejercicios para pronunciación el fonema r y la doble rr',
             1 => 'Actividades para discriminar sonidos',
-            2 => 'Ejercicios para identificar errores en la propia pronunciación',
-            3 => 'Actividades para mejorar el vocabulario',
-            4 => 'Trabalenguas fáciles',
-            5 => 'Aprende a pronunciar el fonema Ñ',
-            6 => 'Trabalenguas',
-            7 => 'Ejercicios de respiración',
+            2 => 'Vocabulario',
+            3 => 'Trabalenguas fáciles',
+            4 => 'Aprende a pronunciar el fonema Ñ',
+            5 => 'Trabalenguas',
+            6 => 'Ejercicios de respiración',
         );
 
+        $count = 0;
         $options_materiales_apoyo = '';
         for ($i = 0; $i < count($id_materiales_apoyo); $i++) {
-            echo $row_information_patient[$i]['id_material_apoyo'] ?? '';
-            if ($row_materiales_apoyo[$i]['id_material_apoyo'] ?? '' == $i) {
-                $options_materiales_apoyo .= '<option value="' . $id_materiales_apoyo[$i] . '" selected  >' . $id_materiales_apoyo[$i] . '</option>';
+            if ($row_materiales_apoyo[$i]['id_material_apoyo'] ?? '' == $count) {
+                $options_materiales_apoyo .= '<option value="' . $count . '" selected  >' . $id_materiales_apoyo[$i] . '</option>';
             } else {
-                $options_materiales_apoyo .= '<option value="' . $id_materiales_apoyo[$i] . '" >' . $id_materiales_apoyo[$i] . '</option>';
+                $options_materiales_apoyo .= '<option value="' . $count . '" >' . $id_materiales_apoyo[$i] . '</option>';
             }
+            $count++;
         }
 
 

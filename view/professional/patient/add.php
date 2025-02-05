@@ -290,12 +290,11 @@ include '../../../php/validation/authorized-user.php';
                         <select name="support-materials[]" class="form-control" id="support-materials" multiple>
                             <option value="0">Ejercicios para pronunciación el fonema r y la doble rr</option>
                             <option value="1">Actividades para discriminar sonidos</option>
-                            <option value="2">Ejercicios para identificar errores en la propia pronunciación</option>
-                            <option value="3">Actividades para mejorar el vocabulario</option>
-                            <option value="4">Trabalenguas fáciles</option>
-                            <option value="5">Aprende a pronunciar el fonema Ñ</option>
-                            <option value="6">Trabalenguas</option>
-                            <option value="7">Ejercicios de respiración</option>
+                            <option value="2">Vocabulario</option>
+                            <option value="3">Trabalenguas fáciles</option>
+                            <option value="4">Aprende a pronunciar el fonema Ñ</option>
+                            <option value="5">Trabalenguas</option>
+                            <option value="6">Ejercicios de respiración</option>
                         </select>
                     </section>
                     <br><br><br><br>
