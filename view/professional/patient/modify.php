@@ -596,7 +596,8 @@ function show_information_patient()
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum mollitia culpa esse, temporibus soluta distinctio quidem quis cupiditate fugiat ea reiciendis. Necessitatibus, labore dolore in ut beatae sit deleniti.</p>
             </div>
             <form action="../../../php/admin/patient.php" method="post">
-                <input type="hidden" name="state" value="add">
+                <input type="hidden" name="state" value="update">
+                <input type="hidden" name="id_patient" value="">
                 <div class="row">
                     <?php
                     show_information_patient();
@@ -639,6 +640,28 @@ function show_information_patient()
 
     <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/js/multi-select-tag.js"></script>
     <script src="../../../js/admin/add-modify-patient.js" type="module"> </script>
+
+    <script>
+        function get_url_attribute(url, search){
+            try {
+                const OBJ_URL = new URL(url);
+            return{
+                HOST_NAME : OBJ_URL.hostname,
+                PATH_NAME :OBJ_URL.pathname,
+                search :OBJ_URL.searchParams.get(search),
+                HASH:OBJ_URL.hash
+            }
+            } catch (error) {
+                console.error(error);
+                return null;
+            }
+        }
+
+        let $id_patient_input = document.querySelector("[name='id_patient']");
+        $id_patient_input.value = get_url_attribute(window.location.href, 'id').search;
+
+        console.info(get_url_attribute(window.location.href, 'id').search)
+    </script>
 </body>
 
 </html>
