@@ -76,9 +76,9 @@
                   <span class="input-group-text" for="inputGroupSelect01"><i class="bi bi-person-bounding-box"></i></span>
                   <select class="form-select" name="specialty" id="specialty">
                     <option selected disabled>Seleccione una opcion...</option>
-                    <option value="1">Logopeda</option>
-                    <option value="2">Foniatra</option>
-                    <option value="3">Terapeuta del Lenguaje</option>
+                    <option value="1">Terapia de lenguaje</option>
+                    <option value="2">Foniatría</option>
+                    <option value="3">Otro</option>
                   </select>
                 </div>
                 <label for="work-center">Centro de trabajo</label><br>

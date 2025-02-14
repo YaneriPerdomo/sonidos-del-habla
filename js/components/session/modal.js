@@ -9,12 +9,20 @@ import {
   $count_down,
   $data_exercise,
   $duration_each_exercise,
-  $session_img,
-  $amount_span,
-  $modal_counting_number,
-  $form_representative_send,
-  $form_representative_verify
+  $MODAL_EXIT,
+  $form_representative_verify,
+  $session_img
 } from "./variable.js";
+
+import {
+  cancel_voice,
+  duration_each_exercise,
+  sound_img,
+
+} from './functions.js'
+
+
+
 
 import { counting_1_3, show_img } from "./functions.js";
 document.addEventListener("click", (e) => {
@@ -26,6 +34,11 @@ document.addEventListener("click", (e) => {
       "Para garantizar la calidad de la atención, es necesario que el representante valide la veracidad de los datos suministrados. Posterior a esta verificación, podrá realizar sus observaciones.";
   }
 
+
+  if (e.target.matches('.bi-volume-up')) {
+    cancel_voice();
+    sound_img($session_img.getAttribute("alt"));
+  }
   if (e.target.matches('.btn-exit-welcome')) {
     $modal_welcome.style.display = 'none';
     let amount_e = $data_exercise.getAttribute('data-exercise').split(',').length;
@@ -39,7 +52,18 @@ document.addEventListener("click", (e) => {
     $count_down.play()
     $background_song.play()
     setTimeout(() => {
+      
       show_img();
     }, 3000);
   }
+  if (e.target.matches('.btn-exit')) {
+    duration_each_exercise(0, "resume"); // El valor de ms no importa aquí
+    $MODAL_EXIT.classList.add('d-none');
+  }
+  if (e.target.matches('.back')) {
+    duration_each_exercise(0, "pause"); // El valor de ms no importa aquí
+
+    $MODAL_EXIT.classList.remove('d-none');
+  }
 });
+

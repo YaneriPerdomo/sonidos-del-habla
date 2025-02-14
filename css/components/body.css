@@ -9,11 +9,9 @@ main {
   flex-grow: 2;
   margin: 0rem;
   padding: 0rem;
-  background: rgb(232, 232, 232)
+  background: rgb(232, 232, 232);
 }
 
 header {
   max-height: 65.1px;
 }
-
-

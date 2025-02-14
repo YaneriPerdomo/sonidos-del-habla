@@ -9,7 +9,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
 
 .card-sopport-materials > a {
@@ -25,7 +24,23 @@
   margin-top: 0;
 }
 
+.support-materials__back > a {
+  color: rgb(47, 47, 47);
+}
 
-.support-materials__back > a{
-  color:rgb(47, 47, 47);
+.animation__rotate {
+  animation: rotate 2s both ease-out;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+    transition: all 1.5s ease-out;
+  }
+
+  to {
+    color: var(--color-green);
+    font-weight: bold;
+    transform: rotateZ(360deg);
+  }
 }

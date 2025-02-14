@@ -48,7 +48,7 @@
         <div class="col-6 create-account flex-center-full">
           <form action="../php/login.php" class="w-100" method="POST">
             <legend class="text-center create-account__title">
-              <h2 class=" fw-bold">Inicia sesion</h2>
+              <h2 class=" fw-bold">Inicia sesión</h2>
             </legend>
             <div class="validations text-center fw-bold">
               <span class="one"></span>

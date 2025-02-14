@@ -12,12 +12,12 @@ function show_welcome_message()
     $get_information_therapy_stmt->execute();
     $row_information_therapy = $get_information_therapy_stmt->fetch(PDO::FETCH_ASSOC);
 
-    $imagenes_visuales = count(explode(',', $row_information_therapy['ejercicios'])) -1 ;
-    $message_count_img =  $imagenes_visuales == 1 ? 'que es una imagen visual la que se va a mostrar.' : 'Se mostrarán '.$imagenes_visuales .' imagenes visuales que se van a mostrar.'; 
+    $imagenes_visuales = count(explode(',', $row_information_therapy['ejercicios'])) - 1;
+    $message_count_img =  $imagenes_visuales == 1 ? 'que es una imagen visual la que se va a mostrar.' : 'Se mostrarán ' . $imagenes_visuales . ' imagenes visuales que se van a mostrar.';
     echo '
      <p  data-exercise="' . $row_information_therapy['ejercicios'] . '" > En primer lugar, cada ejercicio tendrá una duración  de
      <span class="duration_each_exercise"> ' . intval($row_information_therapy['duracion_cada_ejercicio']) / 1000 . ' </span>segundos, teniendo en cuenta que 
-         ' .$message_count_img. '';
+         ' . $message_count_img . '';
     if (strlen($row_information_therapy['nota']) != 0) {
         echo ' Por otro lado, tu profesional te envió una nota para que la tengas en cuenta, la cual es 
                 la siguiente: "' . trim($row_information_therapy['nota']) . '."<p>';
@@ -47,7 +47,7 @@ function show_welcome_message()
     <link rel="stylesheet" href="../../../css/user/session.css">
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
-    
+
 </head>
 
 <body>
@@ -105,6 +105,7 @@ function show_welcome_message()
                     ?>
                 </div>
                 <div class="content__footer text-end">
+                    <a href="../home.php" class="text-decoration-none button-a button__grey"> Salir</a>
                     <button class="button__orange btn-exit-welcome">Comenzar</button>
                 </div>
             </div>
@@ -123,15 +124,47 @@ function show_welcome_message()
                     </p>
                     <div class="content__body-form">
                         <form action="" class="form-representative-verify d-none">
-                            <input type="text" name="email">
-                            <input type="text" name="password">
-                            <button class="button__orange">Verificar</button>
+                            <label for="">Correo electronico</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-ear"></i></span>
+                                <input type="text" name="email" class="form-control" placeholder="Introduzca su correo electronico"
+                                    aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
+                            </div>
+                            <label for="" class="">Contraseña</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-ear"></i></span>
+                                <input type="password" name="password" class="form-control" placeholder="Introduzca su contraseña"
+                                    aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
+                            </div>
+                            <div class="flex-end-full">
+                                <a href="../home.php" class="text-decoration-none button-a button__grey"> Salir</a>
+
+                                <button class="button__orange">Verificar</button>
+                            </div>
                         </form>
                         <form action="" class="form-representative-send d-none">
-                            <input type="text" name="observations">
-                            <input type="text" name="evaluation">
-                            <input type="number" name="objectives">
-                            <button class="button__orange">Enviar</button>
+                            <label for="" class="obligatory">Observaciones</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-ear"></i></span>
+                                <input type="text" name="observations" class="form-control" placeholder="Introduzca sus observaciones"
+                                    aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
+                            </div>
+                            <label for="">Objetivos alcanzados</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-ear"></i></span>
+                                <input type="text" name="objectives" class="form-control" placeholder="Introduzca sus objetivos alcanzados"
+                                    aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
+                            </div>
+                            <label for="" class="obligatory">Evaluacion</label>
+                            <div class="input-group mb-2">
+                                <span class="input-group-text" id="basic-addon1"><i class="bi bi-ear"></i></span>
+                                <input type="number" name="evaluation" class="form-control" placeholder="Introduzca su evalucacion"
+                                    aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
+                            </div>
+                            <div class="flex-end-full">
+                                <a href="../home.php" class="text-decoration-none button-a button__grey"> Salir</a>
+                                <button class="button__orange button__send">Enviar</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -144,11 +177,34 @@ function show_welcome_message()
             </div>
         </div>
     </div>
+
+    <div class="modal-exit container-modal d-none ">
+        <div class="modal-content flex-center-full flex-column ">
+            <div class="content__header w-100  ">
+                <h1 class="content__header-title">
+                    ¿Seguro que quieres salir?
+                </h1>
+            </div>
+            <div class="p-3 w-100">
+                <div class="content__body">
+                    <p>Si sales, perderás todo el progreso no guardado.</p>
+                </div>
+                <div class="content__footer text-end">
+                    <div class="content__footer-buttons-end ">
+                        <button class="btn-exit button__orange">No, gracias</button>
+                        <a href="../home.php" class="text-decoration-none"> <button class="btn-one button__grey">Si</button></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal modal-counting container-modal d-none">
         <div class="content flex-center-full flex-column" style="background:none;">
             <strong class="from-one-to-three fs-2 flex-center-full">3</strong>
         </div>
     </div>
+
 
     <section class="audios">
         <audio src="../../../sound/count_down.mp3" class="audio__count-down"></audio>
@@ -159,6 +215,10 @@ function show_welcome_message()
     </script>
 </body>
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+
+<script>
+
+</script>
 
 <script src="../../../js/components/session/variable.js" type="module"></script>
 <script src="../../../js/components/session/modal.js" type="module"></script>

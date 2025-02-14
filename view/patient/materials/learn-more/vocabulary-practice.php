@@ -47,10 +47,12 @@ include '../../../../php/validation/authorized-user.php';
                     ?>
                 </span>
             </div>
+
             <strong class="support-materials__title fs-4">
                 <span class="support-materials__title-text">Examen</span>
                 <small>de:</small>
             </strong>
+            <hr>
             <div class="topic-selection d-flex gap-3 mb-3">
                 <div class="topic-selection__tecnologia">
                     <label for="tecnologia">Tecnologia</label>
@@ -69,46 +71,47 @@ include '../../../../php/validation/authorized-user.php';
                     <input type="radio" name="selection-exam" id="arte" value="art">
                 </div>
             </div>
+
             <div class="vocabulary-practice">
                 <form class="vocabulary-practice__questions vocabulary-practice--form">
                     <input type="hidden" name="id_support_material" value="3">
                     <input type="hidden" name="">
-                    <label class="vocabulary-practice__question-title">1. ¿Que es la computadora?</label><br>
+                    <label class="vocabulary-practice__question-title"><b>1. ¿Que es la computadora?</b></label><br>
                     <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
+                        <span class="input-group-text" id="basic-addon1"><i class="bi  bi-question-square"></i></span>
                         <select name="" id="" class="form-control vocabulary-practice__select" data-answer-true=""
                             aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
 
                         </select><br>
                     </div>
-                    <label class="vocabulary-practice__question-title">2. ¿Que hace la computadora?</label><br>
+                    <label class="vocabulary-practice__question-title"><b>2. ¿Que hace la computadora?</b></label><br>
                     <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
+                        <span class="input-group-text" id="basic-addon1"><i class="bi  bi-question-square"></i></span>
                         <select name="" id="" class="vocabulary-practice__select form-control " data-answer-true=""
                             aria-label="Username" aria-describedby="basic-addon1" autofocus="true"><br>
                         </select><br>
                     </div>
 
-                    <label class="vocabulary-practice__question-title">3. ¿La programación permite la creación de programas?</label><br>
+                    <label class="vocabulary-practice__question-title"><b>3. ¿La programación permite la creación de programas?</b></label><br>
                     <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
+                        <span class="input-group-text" id="basic-addon1"><i class="bi  bi-question-square"></i></span>
                         <select name="" id="" class="vocabulary-practice__select  form-control" data-answer-true=""
                             aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
 
                         </select><br>
                     </div>
 
-                    <label class="vocabulary-practice__question-title">4. ¿Gracias a los lenguajes de programación, es posible programar programas?</label><br>
+                    <label class="vocabulary-practice__question-title"><b>4. ¿Gracias a los lenguajes de programación, es posible programar programas?</b></label><br>
                     <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
+                        <span class="input-group-text" id="basic-addon1"><i class="bi  bi-question-square"></i></span>
                         <select name="" id="" class="vocabulary-practice__select  form-control" data-answer-true=""
                             aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
 
                         </select><br>
                     </div>
-                    <label class="vocabulary-practice__question-title">6. ¿Un lenguaje de programación NO trabaja con instrucciones para crear programas?</label><br>
+                    <label class="vocabulary-practice__question-title"><b>6. ¿Un lenguaje de programación NO trabaja con instrucciones para crear programas?</b></label><br>
                     <div class="input-group mb-2">
-                        <span class="input-group-text" id="basic-addon1"><i class="bi bi-key"></i></span>
+                        <span class="input-group-text" id="basic-addon1"><i class="bi  bi-question-square"></i></span>
                         <select name="" id="" class="vocabulary-practice__select  form-control" data-answer-true=""
                             aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
 
@@ -153,7 +156,7 @@ include '../../../../php/validation/authorized-user.php';
         }
         let $selection_exam = document.querySelector("[name='selection-exam']");
         const $SELECTS_HTML = document.querySelectorAll('[data-answer-true=""]');
-        const $QUESTIONS_TITLE = document.querySelectorAll('.vocabulary-practice__question-title');
+        const $QUESTIONS_TITLE = document.querySelectorAll('.vocabulary-practice__question-title > b');
         const $VOCABULARY_QUESTIONS = document.querySelectorAll('.vocabulary-practice__select');
         let $input_group_text = document.querySelectorAll('.input-group-text');
         let $id_support_material = document.querySelector("[name='id_support_material']")

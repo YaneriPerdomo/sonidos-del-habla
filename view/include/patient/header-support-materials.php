@@ -2,8 +2,11 @@
     <nav class="">
         <section class="logo">
             <figure class="p-0 m-0">
-                <img src="./../../../../img/header-professional.png" class="header-img fluid-img" alt="">
-                <span>logo</span>
+                <a href="../../home.php">
+                    <figure>
+                        <img src="../../../../img/logo-2.png" class="logo__img" alt="">
+                    </figure>
+                </a>
             </figure>
         </section>
         <section class="profile">

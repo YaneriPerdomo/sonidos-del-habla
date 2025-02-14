@@ -106,7 +106,7 @@ $html = '
         </style>
     </head>
     <body>
-        <strong> Sonidos de habla </strong>
+        <strong> Sonidos del habla </strong>
         <div class="text-r"> ' . date('d-m-Y') . '<div>
         <div style="width: 100%;">
             <table class="table">

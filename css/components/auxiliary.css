@@ -72,3 +72,9 @@ h1{
   justify-content: space-around;
   align-items: center;
 }
+
+.flex-end-full{
+  display: flex;
+  justify-content: end;
+  gap:1rem;
+}

@@ -43,10 +43,10 @@ include '../../../../php/validation/authorized-user.php';
             </div>
             <strong class="support-materials__title fs-4"><span>Vocabulario</span> </strong>
             <hr>
-            <div class="gap-3 flex-wrap flex-center-full  flex-column">
+            <div class="gap-3 flex-wrap flex-center-full  flex-row flex-wrap">
                 <details class="vocabulary">
                     <summary class="">
-                        <img src="../../../../img/vocabulary/tecnologia/tecnologia.jpg" class="fluid-img vocabulary__img" alt="">
+                        <img src="../../../../img/vocabulary/tecnologia/tecnologia.png" class="fluid-img vocabulary__img" alt="">
                     </summary>
                     <div class="vocabulary__show-more">
                         <details>
@@ -65,7 +65,7 @@ include '../../../../php/validation/authorized-user.php';
                 </details><br>
                 <details>
                     <summary class="">
-                        <img src="../../../../img/vocabulary/tecnologia/tecnologia.jpg" class="fluid-img vocabulary__img" alt="">
+                        <img src="../../../../img/vocabulary/sociedad/sociedad.png" class="fluid-img vocabulary__img" alt="">
                     </summary>
                     <div class="vocabulary__show-more">
                         <details>
@@ -90,7 +90,7 @@ include '../../../../php/validation/authorized-user.php';
                 </details>
                 <details>
                     <summary class="">
-                        <img src="../../../../img/vocabulary/tecnologia/tecnologia.jpg" class="fluid-img vocabulary__img" alt="">
+                        <img src="../../../../img/vocabulary/lengua/lengua.jpg" class="fluid-img vocabulary__img" alt="">
                     </summary>
                     <div class="vocabulary__show-more">
                         <details>
@@ -115,7 +115,7 @@ include '../../../../php/validation/authorized-user.php';
                 </details>
                 <details>
                     <summary class="">
-                        <img src="../../../../img/vocabulary/tecnologia/tecnologia.jpg" class="fluid-img vocabulary__img" alt="">
+                        <img src="../../../../img/vocabulary/arte/arte.png" class="fluid-img vocabulary__img" alt="">
                     </summary>
                     <div class="vocabulary__show-more">
                         <details>
@@ -138,6 +138,9 @@ include '../../../../php/validation/authorized-user.php';
                         </details>
                     </div>
                 </details>
+            </div>
+            <hr>
+            <div class="support-materials__button-next text-center mt-3">
                 <a href="./vocabulary-practice.php" class="button-a">
                     <button class="button__green">Practicar</button>
                 </a>

@@ -13,7 +13,7 @@ try {
         $get_representative_stmt->bindParam('email', $email, PDO::PARAM_STR);
         $get_representative_stmt->execute();
         $row_representative = $get_representative_stmt->fetch(PDO::FETCH_ASSOC);
-        $hash_stored = $row_representative['clave_secreta'];
+        $hash_stored = $row_representative['clave_secreta'] ?? '';
         if ($get_representative_stmt->rowCount() > 0) {
             if(password_verify($password, $hash_stored)){
                 http_response_code(200);

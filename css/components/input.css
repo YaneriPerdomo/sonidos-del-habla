@@ -1,5 +1,8 @@
-label::after {
+.obligatory::after {
   content: "*";
   color: #ff5d5d;
 }
 
+label{
+  margin: 0.2rem 0rem;
+}

@@ -21,7 +21,18 @@ include '../../php/validation/authorized-user.php';
     <link rel="stylesheet" href="../../css/admin/header.css">
     <link rel="stylesheet" href="../../css/admin/dashboard.css">
     <link rel="stylesheet" href="../../css/components/table.css">
+    <style>
+        .card-patient {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-patient>div:nth-of-type(2) {
+            flex-grow: 2;
+        }
+    </style>
 </head>
+
 <body>
 
     <?php include '../include/professional/header.php'; ?>
@@ -106,8 +117,8 @@ include '../../php/validation/authorized-user.php';
                                     $img_gender = $value['Id_genero'] == 1 ? 'boy' : 'girl';
                                     $bg_card_patient = $value['Id_genero'] == 1 ? '' : 'card-patient--bgPink';
                                     echo '
-                                        <div class="card-patient '.$bg_card_patient .'">
-                                           <br>
+                                        <div class="card-patient p-2 ' . $bg_card_patient . '">
+                                          
                                            <div class="card-patient__img flex-center-full">
                                                <img src="../../img/patients/childs/' . $img_gender . '.png" class="" alt="">
                                            </div>
@@ -117,12 +128,16 @@ include '../../php/validation/authorized-user.php';
                                                <b>Apellido:</b>  ' . $value['Apellido'] . '<span></span><br>
                                                <b>Edad:</b><span>  ' . $value['Edad'] . '</span><br>
                                                <b>Ejercicios: </b><span>' . $joint . '' . $muscle_strengthening . '' . $fluency . '</span>
-                                           </div>
+                                         
+                                               </div>
+                                      
+                                           <div class="">
                                            <hr>
                                            <div class="card-patient__operation flex-center-full gap-4">
-                                               <i class="bi bi-trash openModalDelete" data-idPatient="'.$value['Id_paciente'].'"  data-idUser = "'.$value['Id_usuario'].'"   ></i>
-                                               <a href="./patient/modify.php?id='.$value['Id_paciente'].'" class="text-decoration-none text__black" > <i class="bi bi-person-lines-fill" > </i></a>
-                                               <i class="bi bi-calendar3" data-idProgress="'.$value['Id_paciente'].'"></i>
+                                           <i class="bi bi-trash openModalDelete" data-idPatient="' . $value['Id_paciente'] . '"  data-idUser = "' . $value['Id_usuario'] . '"   ></i>
+                                               <a href="./patient/modify.php?id=' . $value['Id_paciente'] . '" class="text-decoration-none text__black" > <i class="bi bi-person-lines-fill" > </i></a>
+                                               <a href="./patient/attendance.php?id='.$value['Id_paciente'].'"class="text-doration-none text__black"  >  <i class="bi bi-calendar3" data-idProgress="' . $value['Id_paciente'] . '"></i> </a>
+                                               </div>
                                            </div>
                                        </div> 
                                    
@@ -240,16 +255,16 @@ include '../../php/validation/authorized-user.php';
             <div class="modal-body p-3 pb-4">
                 <p class="text-center">
                     Antes de confirmar, tenga en cuenta que al eliminar este paciente perderá el acceso a su plan de aprendizaje, incluido su historial de actividades registradas
-                     de aprendizaje. 
+                    de aprendizaje.
                 </p>
                 <form action="../../php/admin/patient.php" method="POST">
-                    <input type="hidden" name="state" value='delete' >
+                    <input type="hidden" name="state" value='delete'>
                     <input type="hidden" name="id_patient" class="id_patient_delete">
                     <input type="hidden" name="id_user" class="id_user_delete">
                     <div class="modal-footer flex-center-full gap-4">
                         <button class="button__grey cancel-modal-delete" type="button">Cancelar</button>
                         <button type="submit" class="button__red">Eliminar</button>
-                    </div>    
+                    </div>
                 </form>
             </div>
         </div>
@@ -258,12 +273,12 @@ include '../../php/validation/authorized-user.php';
 
     <script>
         let $modal_search_activities = document.querySelector('[data-modal="search-data"]');
-        let $modal_delete_patient =document.querySelector('[data-modal="delete-patient"]')
-        let $id_patient_delete_input =document.querySelector('.id_patient_delete');
-        let $id_user_delete_input =document.querySelector('.id_user_delete');
+        let $modal_delete_patient = document.querySelector('[data-modal="delete-patient"]')
+        let $id_patient_delete_input = document.querySelector('.id_patient_delete');
+        let $id_user_delete_input = document.querySelector('.id_user_delete');
         document.addEventListener('click', e => {
 
-            if(e.target.matches('.openModalDelete')){
+            if (e.target.matches('.openModalDelete')) {
                 $modal_delete_patient.removeAttribute("style");
                 $id_patient_delete_input.value = e.target.getAttribute('data-idPatient');
                 $id_user_delete_input.value = e.target.getAttribute('data-idUser')
@@ -274,7 +289,7 @@ include '../../php/validation/authorized-user.php';
                 $modal_search_activities.removeAttribute('style');
             }
 
-            if(e.target.matches('.cancel-modal-delete')){
+            if (e.target.matches('.cancel-modal-delete')) {
                 $modal_delete_patient.style.display = "none";
             }
             if (e.target.matches('[data-modal="search-data"]')) {

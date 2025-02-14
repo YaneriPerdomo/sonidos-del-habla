@@ -97,7 +97,7 @@ include './../../php/validation/authorized-user.php';
                         echo '</div>';
                         // Verificar si hay más mensajes para mostrar
                         if ($start + 4 < $total_messages) {
-                            echo "<small class='load-more text__blue'> <a href='#' class='text-decoration-none' > Ver registros anteriores </a></small>";
+                            echo "<small class='load-more '> <a href='#' class='text-decoration-none text__blue' > Ver registros anteriores </a></small>";
                         }
                     } else {
 

@@ -1,7 +1,17 @@
 header {
-  background: rgb(0, 166, 166);
+  background: var(--color-green);
 }
 
 .navbar-collapse {
   flex-grow: 0 !important;
+}
+
+.logo__img {
+  height: 50px;
+  clip-path: none !important;
+  width: auto !important;
+}
+
+figure {
+  margin: 0rem !important;
 }

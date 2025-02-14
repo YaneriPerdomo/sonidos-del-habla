@@ -19,3 +19,7 @@ export let $background_song = document.querySelector('.audio__background-song')
 export let $modal_counting = document.querySelector(".modal-counting");
 export let $modal_counting_number = document.querySelector(".modal-counting > div > strong");
 
+ 
+export const $MODAL_EXIT =document.querySelector(".modal-exit")
+ 
+ 

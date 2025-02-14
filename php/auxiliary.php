@@ -79,13 +79,13 @@ function add_history($state_messege, $id_paciente)
         // Determine exercise types based on 'ejercicios' field
         $exercise_types = "";
         if (preg_match("/rotacismo0|rotacismo1|seseo0|seseo1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types .= '<i>Ejercicios de pronunciación de fonemas.</i>';
+            $exercise_types .= ' <i> Ejercicios de pronunciación de fonemas.</i>';
         }
         if (preg_match("/musculos de la lengua0|musculos de la lengua1|el ritmo del habla0|el ritmo del habla1|labio0|labio1|mejilla0|mejilla1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types .= '<i>Fortalecimiento muscular.</i>';
+            $exercise_types .= ' <i> Fortalecimiento muscular.</i>';
         }
         if (preg_match("/el ritmo del habla0|el ritmo del habla1/", $row_necessary_treatment['ejercicios'])) {
-            $exercise_types .= '<i>Fluidez.</i>';
+            $exercise_types .= ' <i> Fluidez.</i>';
         }
  
         // Prepare the message

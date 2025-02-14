@@ -29,21 +29,21 @@ function showInformationProfessional()
             $show_specialty = match ($row_professional['id_especialidad']) {
                 1 => '<select class="form-select" name="specialty" id="specialty" disabled>
                                             <option  disabled>Seleccione una opcion...</option>
-                                            <option value="1" selected>Logopeda</option>
-                                            <option value="2">Foniatra</option>
-                                            <option value="3">Terapeuta del Lenguaje</option>
+                                            <option value="1" selected>Terapia de Lenguaje</option>
+                                            <option value="2">Foniatría </option>
+                                            <option value="3">Otro</option>
                                         </select>',
                 2 => '<select class="form-select" name="specialty" id="specialty" disabled>
                                             <option  disabled>Seleccione una opcion...</option>
-                                            <option value="1" >Logopeda</option>
-                                            <option value="2" selected>Foniatra</option>
-                                            <option value="3">Terapeuta del Lenguaje</option>
+                                            <option value="1" >Terapia de Lenguaje</option>
+                                            <option value="2" selected>Foniatría</option>
+                                            <option value="3">Otro</option>
                                         </select>',
                 3 => '<select class="form-select" name="specialty" id="specialty" disabled>
                                             <option  disabled>Seleccione una opcion...</option>
-                                            <option value="1">Logopeda</option>
-                                            <option value="2">Foniatra</option>
-                                            <option value="3" selected>Terapeuta del Lenguaje</option>
+                                            <option value="1">Terapia de Lenguaje</option>
+                                            <option value="2">Foniatría</option>
+                                            <option value="3" selected>Otro</option>
                                         </select>',
             };
 

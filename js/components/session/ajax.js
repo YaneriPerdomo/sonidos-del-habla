@@ -77,7 +77,7 @@ $form_representative_send.addEventListener("submit", (e) => {
       }
     })
     .catch((error) => {
-      console.warn("Sucedio un error");
+      console.warn(error + ": Sucedio un error");
     })
     .finally();
 });

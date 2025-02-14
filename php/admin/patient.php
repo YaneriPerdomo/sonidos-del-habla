@@ -148,37 +148,36 @@ try {
                 $id_patient = $_POST['id_patient'];
 
                 //Datos del paciente
-                $name = $_POST['name'];
-                $lastname = $_POST['lastname'];
-                $date_birth = $_POST['date-birth'];
-                $id_gender = $_POST['id-gender'];
-                $id_professional =  $_SESSION['id_professional'];
+                $name = trim($_POST['name']);
+                $lastname = trim($_POST['lastname']);
+                $date_birth = trim($_POST['date-birth']);
+                $id_gender = trim($_POST['id-gender']);
+                $id_professional = trim($_SESSION['id_professional']);
 
                 //representative
-                $representative_name = $_POST['representative__name'] ?? '';
-                $representative_lastname = $_POST['representative__lastname'] ?? '';
-                $representative_email = $_POST['representative__email'] ?? '';
-                $representative_phone_number = $_POST['representative-phone-number'] ?? '';
-                $representative_secret_code = $_POST['representative__secret-code'] ?? '';
+                $representative_name = trim($_POST['representative__name'] ?? '');
+                $representative_lastname = trim($_POST['representative__lastname'] ?? '');
+                $representative_email = trim($_POST['representative__email'] ?? '');
+                $representative_phone_number = trim($_POST['representative-phone-number'] ?? '');
+                $representative_secret_code = trim($_POST['representative__secret-code'] ?? '');
 
                 //User
-                $user = $_POST['user'];
-                $password = $_POST['password'];
+                $user = trim($_POST['user']);
+                $password = trim($_POST['password']);
 
                 //Information about dyslalia
-                $dyslalia_type = $_POST['dyslalia-type'] ?? NULL;
-                $dyslalia_classification = $_POST['classification'] ?? NULL;
-                $dyslalia_observations = $_POST['observations'] ?? '';
-                $dyslalia_phonemes = $_POST['phonemes'] ?? null;
-                $dyslalia_gravity = $_POST['gravity'] ?? null;
+                $dyslalia_type = trim($_POST['dyslalia-type'] ?? NULL);
+                $dyslalia_classification = trim($_POST['classification'] ?? NULL);
+                $dyslalia_observations = trim($_POST['observations'] ?? '');
+                $dyslalia_phonemes = trim($_POST['phonemes'] ?? null);
+                $dyslalia_gravity = trim($_POST['gravity'] ?? null);
 
                 //Personalization of the therapy session
-                $duration_each_exercise = $_POST['duration-each-exercise'] ?? NULL;
-                $session_duration = $_POST['duration-each-exercise'] ?? NULL;
-                $input_therapys = $_POST['input-therapys'];
-                $support_materials = $_POST['support-materials'] ?? [];
-                $note = $_POST['note'] ?? null;
-
+                $duration_each_exercise = trim($_POST['duration-each-exercise'] ?? NULL);
+                $session_duration = trim($_POST['duration-each-exercise'] ?? NULL); 
+                $input_therapys = trim($_POST['input-therapys']);
+                $support_materials = $_POST['support-materials'] ?? []; 
+                $note = trim($_POST['note'] ?? null);
                 $search_user_query = "SELECT 
                                         usuario , usuarios.id_usuario AS id_usuario
                                     FROM 
@@ -193,10 +192,11 @@ try {
                 $search_user_stmt->execute();
 
                 if ($search_user_stmt->rowCount() > 0) {
-                    echo "<script> 
-                                alert('Lo sentimos, el nombre de usuario \"$user\" ya está en uso.')
-                                window.location.href = './../../view/professional/patient/modify.php?id=" . $id_patient . "';
-                              </script>";
+                    showMsg(
+                        "Lo sentimos, el nombre de usuario \"$user\" ya está en uso.",
+                        "./../../view/professional/patient/modify.php?id=" . $id_patient . ""
+                    );
+
                     return;
                 }
 
@@ -207,13 +207,15 @@ try {
                 $search_representative_stmt->execute();
 
                 if ($search_representative_stmt->rowCount() > 0) {
-                    echo "<script> 
-                                alert('Lo sentimos, el correo electronico del representante \"$representative_email\" ya está en uso.')
-                                window.location.href = './../../view/professional/patient/modify.php?id=" . $id_patient . "';
-                              </script>";
+                    showMsg(
+                        "Lo sentimos, el correo electronico del representante \"$representative_email\" ya está en uso.",
+                        "./../../view/professional/patient/modify.php?id=" . $id_patient . ""
+                    );
+
                     return;
                 }
 
+                echo 0;
                 if (
                     $representative_name != "" || $representative_lastname != "" || $representative_email != ""
                     && $representative_phone_number != "" || $representative_secret_code != ""
@@ -222,20 +224,33 @@ try {
                     $if_representative_stmt = $pdo->prepare($if_representative_query);
                     $if_representative_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
                     $if_representative_stmt->execute();
+                    echo 'end2 <br>';
                     if ($if_representative_stmt->rowCount() > 0) {
-                        $update_representative_query = 'UPDATE  representantes SET nombre = :nombre, apellido =:apellido ,correo_electronico =:correo_electronico,  
-                        numero_telefonico =:numero_telefonico, clave_secreta =:clave_secreta WHERE id_paciente =:id_paciente';
-                        $update_representative_stmt = $pdo->prepare($update_representative_query);
-                        $update_representative_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
-                        $update_representative_stmt->bindParam('nombre', $representative_name, PDO::PARAM_STR);
-                        $update_representative_stmt->bindParam('apellido', $representative_lastname, PDO::PARAM_STR);
-                        $update_representative_stmt->bindParam('correo_electronico', $representative_email, PDO::PARAM_STR);
-                        $update_representative_stmt->bindParam('numero_telefonico', $representative_phone_number, PDO::PARAM_INT);
-                        $hash_secrect_code = password_hash($representative_secret_code, PASSWORD_DEFAULT);
+
                         if ($representative_secret_code != "") {
+                            $update_representative_query = 'UPDATE  representantes SET nombre = :nombre, apellido =:apellido ,correo_electronico =:correo_electronico,  
+                            numero_telefonico =:numero_telefonico, clave_secreta =:clave_secreta WHERE id_paciente =:id_paciente';
+                            $update_representative_stmt = $pdo->prepare($update_representative_query);
+                            $update_representative_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
+                            $update_representative_stmt->bindParam('nombre', $representative_name, PDO::PARAM_STR);
+                            $update_representative_stmt->bindParam('apellido', $representative_lastname, PDO::PARAM_STR);
+                            $update_representative_stmt->bindParam('correo_electronico', $representative_email, PDO::PARAM_STR);
+                            $update_representative_stmt->bindParam('numero_telefonico', $representative_phone_number, PDO::PARAM_INT);
+                            $hash_secrect_code = password_hash($representative_secret_code, PASSWORD_DEFAULT);
                             $update_representative_stmt->bindParam('clave_secreta', $hash_secrect_code, PDO::PARAM_STR);
+                            $update_representative_stmt->execute();
+                        } else {
+                            $update_representative_query = 'UPDATE  representantes SET nombre = :nombre, apellido =:apellido ,correo_electronico =:correo_electronico,  
+                            numero_telefonico =:numero_telefonico WHERE id_paciente =:id_paciente';
+                            $update_representative_stmt = $pdo->prepare($update_representative_query);
+                            $update_representative_stmt->bindParam('id_paciente', $id_patient, PDO::PARAM_INT);
+                            $update_representative_stmt->bindParam('nombre', $representative_name, PDO::PARAM_STR);
+                            $update_representative_stmt->bindParam('apellido', $representative_lastname, PDO::PARAM_STR);
+                            $update_representative_stmt->bindParam('correo_electronico', $representative_email, PDO::PARAM_STR);
+                            $update_representative_stmt->bindParam('numero_telefonico', $representative_phone_number, PDO::PARAM_INT);
+                            $hash_secrect_code = password_hash($representative_secret_code, PASSWORD_DEFAULT);
+                            $update_representative_stmt->execute();
                         }
-                        $update_representative_stmt->execute();
                     } else {
                         $add_representative_query = 'INSERT INTO representantes (id_paciente, nombre, apellido, correo_electronico, numero_telefonico, 
                         clave_secreta) VALUES (:id_paciente, :nombre, :apellido, :correo_electronico, :numero_telefonico, :codigo_secreto)';
@@ -250,6 +265,8 @@ try {
                         $add_representative_stmt->execute();
                     }
                 }
+
+                echo 'end';
                 $get_id_user_query = "SELECT 
                                     usuarios.id_usuario AS id_usuario
                                     FROM 
@@ -265,15 +282,26 @@ try {
                 $id_user = $row_id_user['id_usuario'];
 
 
-                $update_user_query = 'UPDATE usuarios SET usuario =:user, clave =:clave WHERE id_usuario =:id_user';
-                $update_user_stmt = $pdo->prepare($update_user_query);
-                $update_user_stmt->bindParam('user', $user, PDO::PARAM_STR);
+
                 if ($password != "") {
+                    $update_user_query = 'UPDATE usuarios SET usuario =:user, clave =:clave WHERE id_usuario =:id_user';
+                    $update_user_stmt = $pdo->prepare($update_user_query);
+                    $update_user_stmt->bindParam('user', $user, PDO::PARAM_STR);
                     $hash = password_hash($password, PASSWORD_DEFAULT);
                     $update_user_stmt->bindParam('clave', $hash, PDO::PARAM_STR);
+                    $update_user_stmt->bindParam('id_user', $id_user, PDO::PARAM_INT);
+                    $update_user_stmt->execute();
+                } else {
+                    $update_user_query = 'UPDATE usuarios SET usuario =:user WHERE id_usuario =:id_user';
+                    $update_user_stmt = $pdo->prepare($update_user_query);
+                    $update_user_stmt->bindParam('user', $user, PDO::PARAM_STR);
+
+                    $update_user_stmt->bindParam('id_user', $id_user, PDO::PARAM_INT);
+                    $update_user_stmt->execute();
                 }
-                $update_user_stmt->bindParam('id_user', $id_user, PDO::PARAM_INT);
-                $update_user_stmt->execute();
+
+                echo 22;
+
 
                 $update_patient_query = 'UPDATE pacientes SET nombre = :nombre, apellido = :apellido, id_genero = :id_genero, fecha_nacimiento = :fecha_nacimiento 
                 WHERE id_paciente = :id_paciente';
@@ -323,12 +351,10 @@ try {
                     }
                 }
 
-
-                if ($update_patient_stmt->rowCount() > 0 || $update_patient_diagnosis_stmt->rowCount() > 0 || $update_therapy_stmt->rowCount() > 0) {
-                    echo 'bien';
-                } else {
-                    echo 'mal';
-                }
+                showMsg(
+                    "Datos del paciente actualizados con éxito.",
+                    "./../../view/professional/patient/modify.php?id=" . $id_patient . ""
+                );
 
                 echo $id_patient;
 
