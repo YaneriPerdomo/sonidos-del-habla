@@ -27,8 +27,11 @@
         <div class="col-6 presentation">
           <div class="presentation__content">
             <section class="logo flex-center-full">
-              <span>LOGO</span>
-              <figure></figure>
+              <a href="../index.php">
+                <figure>
+                  <img src="../img/logo-2.png" class="logo__img" alt="">
+                </figure>
+              </a>
             </section><br>
             <section class="qualities">
               <h2 class="color-white">Una herramienta interactiva innovadora para sesiones de terapia del lenguaje en dislalia.</h2>

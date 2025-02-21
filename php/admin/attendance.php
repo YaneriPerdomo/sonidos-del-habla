@@ -10,7 +10,7 @@ try {
     $start = $_POST['start'];  // <-- Recibir la fecha de inicio
     $end = $_POST['end'];      // <-- Recibir la fecha de fin
 
-    $get_attendance_query = 'SELECT fecha FROM sesiones WHERE id_paciente = :id_patient AND fecha >= :start AND fecha <= :end'; // <-- Filtrar por fecha
+    $get_attendance_query = 'SELECT id_sesion, fecha FROM sesiones WHERE id_paciente = :id_patient AND fecha >= :start AND fecha <= :end'; // <-- Filtrar por fecha
 
     $get_attendance_stmt = $pdo->prepare($get_attendance_query);
     $get_attendance_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
@@ -20,14 +20,8 @@ try {
 
     $row_attendace = $get_attendance_stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Formatear las fechas si es necesario (FullCalendar espera YYYY-MM-DD)
-    $formatted_attendance = array_map(function ($row) {
-        $row['fecha'] = date('Y-m-d', strtotime($row['fecha']));  // <-- Formatear la fecha
-        return $row;
-    }, $row_attendace);
-
-
-    $resultados_JSON = json_encode($formatted_attendance); // Codificar el array formateado
+     
+    $resultados_JSON = json_encode($row_attendace); // Codificar el array formateado
 
     header('Content-Type: application/json');
     echo $resultados_JSON;

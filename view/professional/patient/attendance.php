@@ -31,15 +31,31 @@ include '../../../php/validation/authorized-user.php';
             background-color: rgb(26 139 87) !important;
         }
 
-        .fc-daygrid-day-number , .fc-col-header-cell, .fc-day, [role="columnheader"], .fc-col-header-cell-cushion{
+        .fc-daygrid-day-number,
+        .fc-col-header-cell,
+        .fc-day,
+        [role="columnheader"],
+        .fc-col-header-cell-cushion {
             text-decoration: navajowhite;
-            border:none;
-            color: var(--color-orange) !important;
-         }
+            border: none;
+            color: var(--color-blue) !important;
+        }
 
-         .main__content{
+        .main__content {
             border-radius: 6px;
-         }
+        }
+
+        .back__link {
+            color: rgb(47, 47, 47);
+        }
+
+        .fc-daygrid-event-dot {
+            border: calc(var(--fc-daygrid-event-dot-width)/2) solid rgb(41, 183, 91);
+        }
+
+        .fc-event-title {
+            color: rgb(41, 183, 91)
+        }
     </style>
 </head>
 
@@ -48,9 +64,9 @@ include '../../../php/validation/authorized-user.php';
     <?php include '../../include/professional/account/header.php'; ?>
     <main class="flex-start-full ">
         <div class="main__content  z-1 ">
-            <div class="link-back">
-                <a href="../dashboard.php" class="text-decoration-none text__more-black">
-                    <i class="bi bi-arrow-left-square"></i>
+            <div class="back">
+                <a href="../dashboard.php" class="text-decoration-none text__more-black back__link">
+                    <i class="bi bi-arrow-left-square back__icon"></i>
                     Regresar
                 </a>
             </div>
@@ -72,9 +88,25 @@ include '../../../php/validation/authorized-user.php';
             const params = new URLSearchParams(window.location.search);
             const ID_PATIENT = params.get("id") || "";
             const calendarEl = document.getElementById('calendar');
-            let calendar;
 
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                locale: 'es',
+                headerToolbar: {
+                    left: 'prev,next',
+                    center: 'title',
+                    right: 'today'
+                },
+                buttonText: {
+                    today: 'Mes actual',  
+                },
+                datesSet: function(fetchInfo) {
+                    // Llama a la función para cargar eventos cuando cambia el rango de fechas
+                    cargarEventos(fetchInfo);
+                }
+            });
 
+            calendar.render();
 
             function cargarEventos(fetchInfo) {
                 const fechaInicio = fetchInfo.start.toISOString().slice(0, 10);
@@ -96,53 +128,23 @@ include '../../../php/validation/authorized-user.php';
                     })
                     .then((data) => {
                         let eventos = data.map(element => ({
-                            title: 'hola',
+                            id: element.id_sesion,
+                            title: 'Completada',
                             start: element.fecha,
+                            display: 'list-item'
                         }));
-                        if (calendar) {
-                            calendar.destroy(); // Destruye la instancia anterior
-                        }
-                        calendar = new FullCalendar.Calendar(calendarEl, {
-                            initialView: 'dayGridMonth',
-                            locale: 'es',
-                            events: eventos,
-                            borderColor: 'none',
-                         
-                        });
-                        calendar.render();
+                        console.info(eventos)
+
+                        // Elimina los eventos existentes y agrega los nuevos
+                        calendar.removeAllEvents();
+                        calendar.addEventSource(eventos);
                     })
                     .catch((error) => {
                         console.error("Error:", error);
-                        if (calendar) {
-                            calendar.destroy();
-                        }
-                        calendar = new FullCalendar.Calendar(calendarEl, {
-                            initialView: 'dayGridMonth',
-                            locale: 'es',
-                            
-                            events: [],
-                        });
-                        calendar.render();
-
+                        calendar.removeAllEvents(); // Limpia los eventos en caso de error
                     });
             }
-
-            calendar = new FullCalendar.Calendar(calendarEl, {
-                initialView: 'dayGridMonth',
-                locale: 'es',
-                events: cargarEventos,
-                weekNumbers : true
-            });
-
-            calendar.render();
-       
         });
-        /*
-                 $(document).ready(function() {
-                     $('#calendar').fullCalendar({
-
-                     });
-                 });  */
     </script>
 
     <?php include '../../include/footer.php'; ?>
