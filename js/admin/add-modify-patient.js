@@ -2,7 +2,7 @@ let $input_therapy_elements = document.querySelector(".input-therapys");
 let $card_exercise_img = document.querySelectorAll(".card-exercise > figure > img");
 let $therapy_elements = document.querySelectorAll(".therapy");
 let $delete_therapy = document.querySelectorAll(".delete-therapy > i");
-let $data_checked = document.querySelectorAll(".selection-gender > label > img");
+let $data_checked = document.querySelectorAll(".selection-avatar > label > img");
 let $exercises = document.querySelector('#exercises');
 let $aim = document.querySelector("#aim");
 let $session_duration = document.querySelector("#session_duration");
@@ -19,20 +19,18 @@ let $show_modal_image_therapy = document.querySelector("[ data-modal='show_thera
 let $show_therapy_img_content = document.querySelector("[data-modal='show_therapy_img'] > .content");
 let $therapy_img_modal = document.querySelector(".modal-body__therapy_img");
 
-new MultiSelectTag('support-materials', {
-    rounded: true, // default true
-    shadow: false, // default false
-    placeholder: 'Search', // default Search...
-    tagColor: {
-        textColor: 'rgb(47,47,47)',
-        borderColor: '#ffa2c1',
-        bgColor: '#eaffe6',
-    },
-    onChange: function (values) {
-        console.log(values)
+
+document.addEventListener('click', e => {
+    
+    if (e.target.matches(".selection-avatar > label > img")) {
+        for (let i = 0; i < $data_checked.length; i++) {
+            $data_checked[i].removeAttribute("data-checked");
+            $data_checked[i].classList.remove("checked")
+        }
+        e.target.classList.add("checked");
+        e.target.setAttribute("data-checked", "true");
     }
 })
-
 
 document.addEventListener('change', e => {
 
@@ -212,7 +210,7 @@ document.addEventListener("click", e => {
         }
     }
 
-    if (e.target.matches(".selection-gender > label > img")) {
+    if (e.target.matches(".selection-avatar > label > img")) {
         for (let i = 0; i < $data_checked.length; i++) {
             $data_checked[i].removeAttribute("data-checked");
             $data_checked[i].classList.remove("checked")
@@ -285,6 +283,21 @@ document.addEventListener("click", e => {
     }
 })
 
+
+
+new MultiSelectTag('support-materials', {
+    rounded: true, // default true
+    shadow: false, // default false
+    placeholder: 'Search', // default Search...
+    tagColor: {
+        textColor: 'rgb(47,47,47)',
+        borderColor: '#ffa2c1',
+        bgColor: '#eaffe6',
+    },
+    onChange: function (values) {
+        console.log(values)
+    }
+})
 
 
 

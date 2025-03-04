@@ -1,0 +1,16 @@
+{
+    "php.version": "8.4",
+    "window.zoomLevel": 2,
+    "liveServer.settings.donotVerifyTags": true,
+    "liveServer.settings.donotShowInfoMsg": true,
+    "git.openRepositoryInParentFolders": "always",
+    "editor.minimap.enabled": false,
+    "workbench.iconTheme": "vscode-icons",
+    "[php]": {
+        "editor.defaultFormatter": "vscode.debug-auto-launch"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    },
+    "workbench.editor.enablePreview": false
+}

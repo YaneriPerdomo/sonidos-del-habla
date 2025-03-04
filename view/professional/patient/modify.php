@@ -1,7 +1,7 @@
 <?php
 include '../../../php/validation/authorized-user.php';
 
-function show_information_patient()
+function show_information_patient(): void
 {
 
     include '../../../php/connectionBD.php';
@@ -10,21 +10,21 @@ function show_information_patient()
 
         $id_patient = $_GET['id'] ?? '';
 
-        $get_information_patient_query = "SELECT 
-                                            pacientes.nombre, pacientes.apellido, pacientes.id_genero, pacientes.fecha_nacimiento, usuarios.usuario,
-                                            pacientes_diagnosticados.id_tipo_dislalia, pacientes_diagnosticados.id_calificacion_dislalia, pacientes_diagnosticados.fonemas,
-                                            pacientes_diagnosticados.gravedad, pacientes_diagnosticados.observacion,
-                                            SUBSTRING(terapias_lenguaje.ejercicios,15) AS ejercicios, terapias_lenguaje.duracion_cada_ejercicio, terapias_lenguaje.nota, terapias_lenguaje.duracion_total
-                                        FROM
-                                            usuarios
-                                        INNER JOIN 
-                                            pacientes ON usuarios.id_usuario = pacientes.id_usuario
-                                        INNER JOIN
-                                            pacientes_diagnosticados ON pacientes.id_paciente = pacientes_diagnosticados.id_paciente
-                                        INNER JOIN 
-                                            terapias_lenguaje ON pacientes_diagnosticados.id_paciente = terapias_lenguaje.id_paciente
-                                        WHERE 
-                                            pacientes.id_paciente = :id";
+        $get_information_patient_query =    "SELECT 
+                                                pacientes.nombre, pacientes.apellido, pacientes.id_genero, pacientes.fecha_nacimiento, usuarios.usuario,
+                                                pacientes_diagnosticados.id_tipo_dislalia, pacientes_diagnosticados.id_calificacion_dislalia, pacientes_diagnosticados.fonemas,
+                                                pacientes_diagnosticados.gravedad, pacientes_diagnosticados.observacion,
+                                                SUBSTRING(terapias_lenguaje.ejercicios,15) AS ejercicios, terapias_lenguaje.duracion_cada_ejercicio, terapias_lenguaje.nota, terapias_lenguaje.duracion_total
+                                            FROM
+                                                usuarios
+                                            INNER JOIN 
+                                                pacientes ON usuarios.id_usuario = pacientes.id_usuario
+                                            INNER JOIN
+                                                pacientes_diagnosticados ON pacientes.id_paciente = pacientes_diagnosticados.id_paciente
+                                            INNER JOIN 
+                                                terapias_lenguaje ON pacientes_diagnosticados.id_paciente = terapias_lenguaje.id_paciente
+                                            WHERE 
+                                                pacientes.id_paciente = :id";
         $get_information_patient_stmt = $pdo->prepare($get_information_patient_query);
         $get_information_patient_stmt->bindParam("id", $id_patient, PDO::PARAM_INT);
         $get_information_patient_stmt->execute();
@@ -32,16 +32,68 @@ function show_information_patient()
         $row_information_patient = $get_information_patient_stmt->fetch(PDO::FETCH_ASSOC);
 
 
-        $get_representative_query = "SELECT nombre, apellido , correo_electronico, numero_telefonico FROM representantes WHERE id_paciente = :id_patient";
+        $get_representative_query = "SELECT 
+                                         nombre, apellido , correo_electronico, numero_telefonico 
+                                     FROM 
+                                         representantes 
+                                     WHERE 
+                                         id_paciente = :id_patient";
         $get_representative_stmt = $pdo->prepare($get_representative_query);
         $get_representative_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
         $get_representative_stmt->execute();
 
-        $get_materiales_apoyo_query = "SELECT  	id_material_apoyo  FROM `pacientes_materiales_apoyo` WHERE id_paciente = :id_patient ";
+        $get_materiales_apoyo_query = " SELECT 
+                                            id_material_apoyo  
+                                        FROM 
+                                            `pacientes_materiales_apoyo` 
+                                        WHERE 
+                                            id_paciente = :id_patient ";
         $get_materiales_apoyo_stmt = $pdo->prepare($get_materiales_apoyo_query);
         $get_materiales_apoyo_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
         $get_materiales_apoyo_stmt->execute();
 
+
+        $get_patient_avatar_query = "SELECT 
+                                         avatares.id_avatar,nombre_avatar 
+                                     FROM 
+                                         pacientes_avatar 
+                                     INNER JOIN 
+                                        avatares 
+                                     ON 
+                                          pacientes_avatar.id_avatar = avatares.id_avatar 
+                                     WHERE
+                                        id_paciente = :id_patient ";
+        $get_patient_avatar_stmt = $pdo->prepare($get_patient_avatar_query);
+        $get_patient_avatar_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+        $get_patient_avatar_stmt->execute();
+        $row_patient_avatar = $get_patient_avatar_stmt->fetch(PDO::FETCH_ASSOC);
+        $id_avatar = array (
+            0 => 'default',
+            1 => 'boy',
+            2 => 'girl',
+            3 => 'dinosaur',
+            4 => 'young-snow-m',
+            5 => 'young-snow-f',
+        );
+
+        $count_a = 0;
+        $id_avatar_stmt = $row_patient_avatar['id_avatar'] ?? 0;
+        $input_label_avatar= "";
+        for($i =0; $i < count($id_avatar); $i++){
+            if($id_avatar_stmt == $count_a  ){     
+                $input_label_avatar .= '<label for="'.$count_a.'" data-checked="true">
+                                            <input type="radio" id="'.$count_a.'" name="id-avatar" value="'.$count_a.'" checked class="input-radio--hidden ">
+                                            <img src="../../../img/patients/avatares/'.$id_avatar[$i].'.png"  alt="" class="selection-img checked ">
+                                        </label>';
+            }else{
+                $input_label_avatar .= ' <label for="'.$count_a.'" >
+                                            <input type="radio" id="'.$count_a.'" name="id-avatar" value="'.$count_a.'"class="input-radio--hidden ">
+                                            <img src="../../../img/patients/avatares/'.$id_avatar[$i].'.png" alt="" class="selection-img">
+                                        </label>';
+            }
+            $count_a++;
+        }
+    
 
         $row_materiales_apoyo = $get_materiales_apoyo_stmt->fetchAll(PDO::FETCH_ASSOC);
         $id_materiales_apoyo = array(
@@ -77,24 +129,16 @@ function show_information_patient()
 
 
 
-        $patient_gender = '';
+        $patient_gender = '';       
         $patient_gender =  match ($row_information_patient['id_genero']) {
-            1 =>  '<label for="M" data-checked="true">
-                                <input type="radio" id="M" name="id-gender" value="1" checked>
-                                <img src="../../../img/patients/childs/boy.png" alt="" class="checked">
-                            </label>
-                            <label for="F">
-                                <input type="radio" id="F" name="id-gender" value="2">
-                                <img src="../../../img/patients/childs/girl.png" alt="">
-                            </label>',
-            2 => '<label for="M" data-checked="true">
-                                <input type="radio" id="M" name="id-gender" value="1" >
-                                <img src="../../../img/patients/childs/boy.png" alt="" >
-                            </label>
-                            <label for="F">
-                                <input type="radio" id="F" name="id-gender" value="2" checked>
-                                <img src="../../../img/patients/childs/girl.png" alt="" class="checked">
-                            </label>'
+            1 => '<option disabled value="">Elige el genero</option>
+                  <option value="1" selected>Masculino</option>
+                  <option value="2">Femenina</option>',
+            2 => '<option disabled value="" >Elige el genero</option>
+                  
+                  <option value="1">Masculino</option>
+                  <option value="2" selected>Femenina</option>
+                  '
         };
 
         $id_type_dyslalia = array(
@@ -190,7 +234,7 @@ function show_information_patient()
             'z' => 'z'
         );
 
-        function options_selected($arreglo, $row, $first_select, $last_select)
+        function options_selected($arreglo, $row, $first_select, $last_select): string 
         {
             $options = '';
             $options .= $first_select;
@@ -204,46 +248,13 @@ function show_information_patient()
             $options .= $last_select;
             return $options;
         }
-
-
-       
-
-        
-        $array_imgs_therapys = array(
-            'rotacismo0' => 'rotacismo0',
-            'rotacismo1' => 'rotacismo1',
-            'seseo0' => 'seseo0',
-            'seseo1' => 'seseo1',
-            'jotacismo0' => 'jotacismo0',
-            'jotacismo1' => 'jotacismo1',
-            'lambdacismo0' => 'lambdacismo0',
-            'lambdacismo1' => 'lambdacismo1',
-            'muñación1' => 'muñación1',
-            'muñación0' => 'muñación0',
-            'mumación0' => 'mumación0',
-            'mumación1' => 'mumación1',
-            'yeismo0' => 'yeismo0',
-            'yeismo1' => 'yeismo1',
-            'el ritmo del habla0' => 'el ritmo del habla0',
-            'el ritmo del habla1' => 'el ritmo del habla1',
-            'musculos de la lengua0' => 'musculos de la lengua0',
-            'musculos de la lengua1' => 'musculos de la lengua1',
-            'labio0' => 'labio0',
-            'labio1' => 'labio1',
-            'mejillas1' => 'mejillas1',
-            'mejillas0' => 'mejillas0',
-        );
- 
- 
- 
- 
-        function show_therapys($row)
+        function show_therapys($row): string
         {
             $therapy_html = '';
-            $array_row = explode(',', $row);
+            $array_row = explode(separator: ',', string: $row);
             $count = 0;
 
-            for($i = 0; $i < count($array_row) ; $i++){
+            for($i = 0; $i < count(value: $array_row) ; $i++){
                 $count++;
                 $file = '';
                 switch ($array_row[$i]) {
@@ -381,14 +392,23 @@ function show_information_patient()
                                 aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
                         </div>
                         <label for="gender">Genero </label><br>
-
-                        <p class="d-flex gap-2 selection-gender">
-                            ' . $patient_gender . '
-                        </p>
+                           <div class="input-group mb-2">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-journal-text"></i></span>
+                            <select class="form-control" name="id-gender">
+                                 ' . $patient_gender . '
+                            </select>
+                       
+                        </div>
+                        
 
                     </div>
                     <div class="col-6">
                         <b>Datos de la cuenta</b><br>
+                         <label for="avatar">Avatar</label>
+                        <p>Seleccione un avata para el paciente</p>
+                        <p class="selection-avatar selection-img d-flex-flex-wrap w-100">
+                            '.$input_label_avatar.'
+                        </p>
                         <label for="user">Usuario</label><br>
                         <div class="input-group mb-2">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>
@@ -558,10 +578,6 @@ function show_information_patient()
         $pdo = null;
     }
 }
-
-
-
-
 ?>
 
 <!doctype html>
@@ -583,9 +599,15 @@ function show_information_patient()
     <link rel="stylesheet" href="../../../css/admin/header.css">
     <link rel="stylesheet" href="../../../css/components/view-add-modify-patient.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/css/multi-select-tag.css">
-
 </head>
-
+<style>
+     .selection-img > label > img{
+            cursor: pointer;
+            border: 0rem;
+            width: 100px;
+            clip-path: circle();
+        }
+</style>
 <body>
 
     <?php include '../../include/professional/account/header.php'; ?>
@@ -602,20 +624,15 @@ function show_information_patient()
                     <?php
                     show_information_patient();
                     ?>
-
-
                     <hr>
                     <div class="flex-center-full gap-3">
                         <a href="../dashboard.php" class="text-decoration-none text-white button__grey button-a">Regresar</a>
                         <input type="submit" class="button__orange" value="Agregar">
                     </div>
-
-
                 </div>
             </form>
         </div>
     </main>
-
     <div class="container-modal" data-modal="show_therapy_img" style="display:none">
         <div class="modal-content content">
             <div class="modal-header">

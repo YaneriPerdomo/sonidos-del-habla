@@ -1,48 +1,50 @@
 <?php
-include '../../../php/validation/authorized-user.php';
-?>
+include '../../php/validation/authorized-user.php';
 
+?>
 <!doctype html>
 <html lang="es" class="full-heigh">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Agregar paciente | Sonidos del habla</title>
-    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../../css/reset.css">
-    <link rel="stylesheet" href="../../../css/components/body.css">
-    <link rel="stylesheet" href="../../../css/components/footer.css">
-    <link rel="stylesheet" href="../../../css/components/button.css">
-    <link rel="stylesheet" href="../../../css/components/header.css">
-    <link rel="stylesheet" href="../../../css/components/auxiliary.css">
-    <link rel="stylesheet" href="../../../css/components/modal-window.css">
-    <link rel="stylesheet" href="../../../css/admin/header.css">
-    <link rel="stylesheet" href="../../../css/components/view-add-modify-patient.css">
-    <link rel="stylesheet" href="../../../css/admin/attendance.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/css/multi-select-tag.css">
-    <style>
-    </style>
+    <title>Calendario de asistencia | Sonidos del habla</title>
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/components/body.css">
+    <link rel="stylesheet" href="../../css/components/footer.css">
+    <link rel="stylesheet" href="../../css/components/button.css">
+    <link rel="stylesheet" href="../../css/components/input.css">
+    <link rel="stylesheet" href="../../css/components/header.css">
+    <link rel="stylesheet" href="../../css/components/auxiliary.css">
+    <link rel="stylesheet" href="../../css/components/modal-window.css">
+    <link rel="stylesheet" href="../../css/admin/header.css">
+    <link rel="stylesheet" href="../../css/user/support-materials.css">
+    <link rel="stylesheet" href="../../css/user/main.css">
+    <link rel="stylesheet" href="../../css/admin/attendance.css">
+
 </head>
 
 <body>
 
-    <?php include '../../include/professional/account/header.php'; ?>
+    <?php include '../include/patient/header.php'; ?>
     <main class="flex-start-full ">
-        <div class="main__content  z-1 ">
-            <div class="back">
-                <a href="../dashboard.php" class="text-decoration-none text__more-black back__link">
-                    <i class="bi bi-arrow-left-square back__icon"></i>
+        <section class="main__content support-materials ">
+            <div class="back mb-3">
+                <a href="./home.php" class="text-decoration-none text__more-black">
+                    <i class="bi bi-arrow-left-square"></i>
                     Regresar
                 </a>
-            </div>
-            <h1 class="text-center fw-bold">Asistencia del paciente</h1>
-            <div>
-                <div id='calendar'></div>
-            </div>
-        </div>
+            </div> 
+            <strong class="support-materials__title fs-4">Calendario de asistencia</strong>
+            <hr> 
+                 <div class="d-flex gap-3 flex-wrap w-100">
+                    <div id='calendar' class="w-100"></div>
+                </div>
+         </section>
     </main>
+
     <script
         src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
@@ -79,7 +81,7 @@ include '../../../php/validation/authorized-user.php';
                 const fechaInicio = fetchInfo.start.toISOString().slice(0, 10);
                 const fechaFin = fetchInfo.end.toISOString().slice(0, 10);
 
-                fetch("../../../php/admin/attendance.php", {
+                fetch("../../php/admin/attendance.php", {
                         method: "POST",
                         body: new URLSearchParams({
                             id_patient: ID_PATIENT,
@@ -113,16 +115,12 @@ include '../../../php/validation/authorized-user.php';
             }
         });
     </script>
-
-    <?php include '../../include/footer.php'; ?>
+    <?php include '../include/footer.php'; ?>
     <script type="module" src="https://unpkg.com/@padawanstrainer/select-multiple"></script>
-
-
-
-    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js" type="module"></script>
     <script src=" https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js "></script>
-    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/js/multi-select-tag.js"></script>
-    <script src="../../../js/admin/add-modify-patient.js" type="module"> </script>
+
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

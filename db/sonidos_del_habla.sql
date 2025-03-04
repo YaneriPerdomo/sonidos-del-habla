@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-02-2025 a las 23:30:09
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 22-02-2025 a las 12:27:37
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -42,37 +42,65 @@ CREATE TABLE `actividades` (
 --
 
 INSERT INTO `actividades` (`id_actividad`, `id_paciente`, `mensaje`, `fecha_hora`) VALUES
-(98, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Calificación Inválida', '2025-02-03 19:07:53'),
-(99, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:08:10'),
-(100, 43, '<b>Elimita </b>calificó con C en el material de apoyo de: Calificación Inválida', '2025-02-03 19:09:01'),
-(101, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Calificación Inválida', '2025-02-03 19:10:28'),
-(102, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:10:35'),
-(103, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Calificación Inválida', '2025-02-03 19:34:23'),
-(104, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:34:37'),
-(105, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:35:23'),
-(106, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:35:47'),
-(107, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:36:21'),
-(108, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Calificación Inválida', '2025-02-03 19:37:52'),
-(109, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:38:03'),
-(110, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Calificación Inválida', '2025-02-03 19:39:09'),
-(111, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:39:16'),
-(112, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:39:34'),
-(113, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 19:39:55'),
-(114, 43, '<b>Elimita </b>calificó con C en el material de apoyo de: Calificación Inválida', '2025-02-03 19:40:03'),
-(115, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Calificación Inválida', '2025-02-03 21:48:36'),
-(116, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Calificación Inválida', '2025-02-03 21:48:45'),
-(117, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 21:48:51'),
-(118, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Calificación Inválida', '2025-02-03 21:49:14'),
-(121, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Vocabulario', '2025-02-04 15:19:12'),
-(122, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Vocabulario', '2025-02-04 15:19:22'),
-(123, 43, '<b>Elimita </b>calificó con [object Promise] en el material de apoyo de: Vocabulario', '2025-02-04 15:22:00'),
-(124, 43, '<b>Elimita </b>calificó con [object Promise] en el material de apoyo de: Vocabulario', '2025-02-04 15:22:43'),
-(125, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Vocabulario', '2025-02-04 15:22:52'),
-(126, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Vocabulario', '2025-02-04 15:23:05'),
-(127, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Vocabulario', '2025-02-04 15:23:14'),
-(128, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Vocabulario', '2025-02-04 15:24:56'),
-(129, 43, '<b>Elimita </b>calificó con D en el material de apoyo de: Vocabulario', '2025-02-04 15:25:02'),
-(130, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Vocabulario', '2025-02-04 15:26:35');
+(145, 43, '<b> Elimita</b> ha completado su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:19:34'),
+(146, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:27:27'),
+(147, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:33:45'),
+(148, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:41:57'),
+(149, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:44:40'),
+(150, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:49:02'),
+(151, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:50:09'),
+(152, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:55:09'),
+(153, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 07:56:58'),
+(154, 12, '<b> Emilita</b> ha completado su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 19:25:13'),
+(155, 12, '<b> Emilita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:08:27'),
+(156, 12, '<b> Emilita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:10:51'),
+(157, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:15:22'),
+(158, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:17:26'),
+(159, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:23:59'),
+(160, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:25:45'),
+(161, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:27:44'),
+(162, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:29:05'),
+(163, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:31:00'),
+(164, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:39:20'),
+(165, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:40:29'),
+(166, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:41:39'),
+(167, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:42:44'),
+(168, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:43:30'),
+(169, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:44:10'),
+(170, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:45:14'),
+(171, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:50:55'),
+(172, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:51:42'),
+(173, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:54:45'),
+(174, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:55:59'),
+(175, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:58:09'),
+(176, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 20:59:45'),
+(177, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 21:00:42'),
+(178, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 21:02:36'),
+(179, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 21:07:50'),
+(180, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 21:08:25'),
+(181, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 21:09:09'),
+(182, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 21:13:12'),
+(183, 43, '<b> Elimita</b> ha completado de nuevo su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-12 21:15:01'),
+(184, 43, '<b>Elimita </b>calificó con E en el material de apoyo de: Actividades para discriminar sonidos', '2025-02-12 21:35:43'),
+(185, 43, '<b> Elimita</b> ha completado su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-13 06:59:28'),
+(186, 43, '<b> Elimita</b> ha completado su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-14 18:08:09'),
+(187, 12, '<b> Emilita</b> ha completado su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-18 17:57:09'),
+(188, 43, '<b>Elimita </b>calificó con A en el material de apoyo de: Actividades para discriminar sonidos', '2025-02-18 17:59:08'),
+(189, 43, '<b> Elimita</b> ha completado su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-19 19:24:53'),
+(190, 12, '<b> Emilita</b> ha completado su sesión de terapia de:  <i> Ejercicios de pronunciación de fonemas.</i> <i> Fortalecimiento muscular.</i> <i> Fluidez.</i>', '2025-02-19 21:01:29');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `avatares`
+--
+
+DROP TABLE IF EXISTS `avatares`;
+CREATE TABLE `avatares` (
+  `id_avatar` int(10) NOT NULL,
+  `nombre_avatar` varchar(30) NOT NULL,
+  `ruta_imagen` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -115,7 +143,8 @@ CREATE TABLE `calificaciones_materiales_apoyo` (
 --
 
 INSERT INTO `calificaciones_materiales_apoyo` (`id_calificacion_material`, `id_material_apoyo`, `id_paciente`, `calificacion`) VALUES
-(5, 2, 43, 'E');
+(5, 2, 43, 'E'),
+(6, 1, 43, 'A');
 
 -- --------------------------------------------------------
 
@@ -134,9 +163,9 @@ CREATE TABLE `especialidades` (
 --
 
 INSERT INTO `especialidades` (`id_especialidad`, `especialidad`) VALUES
-(1, 'Logopeda'),
-(2, 'Foniatra'),
-(3, 'Terapeuta del Lenguaje');
+(1, 'Terapia de lenguaje'),
+(2, 'Foniatría'),
+(3, 'Otro');
 
 -- --------------------------------------------------------
 
@@ -202,7 +231,7 @@ CREATE TABLE `materiales_apoyo` (
 
 INSERT INTO `materiales_apoyo` (`id_material_apoyo`, `id_formato_material`, `Icono`, `titulo`, `url_material`) VALUES
 (0, 1, 'bi bi-filetype-pdf', 'Ejercicios para pronunciación <br> el fonema r y la doble rr', '../../pdf/Ejercicios para el fonema r y la doble rr.pdf'),
-(1, 5, 'bi bi-ear', 'Actividades para discriminar sonidos', './materials/auditory-discrimination/guide.php'),
+(1, 5, 'bi bi-ear', 'Actividades para discriminar sonidos', './materials/auditory-discrimination/practice.php'),
 (2, 5, 'bi bi-journals', 'Vocabulario', './materials/learn-more/vocabulary.php'),
 (3, 2, 'bi bi-book', 'Trabalenguas fáciles', './materials/tongue-twister/easy.php'),
 (4, 3, 'bi bi-play-btn', 'Aprende a pronunciar <br> el fonema Ñ 👅👀🧠 ', './materials/video/pronounce-the-ñ.php'),
@@ -231,9 +260,22 @@ CREATE TABLE `pacientes` (
 --
 
 INSERT INTO `pacientes` (`id_paciente`, `id_genero`, `id_usuario`, `id_profesional`, `nombre`, `apellido`, `fecha_nacimiento`) VALUES
-(12, 1, 39, 13, 'Emily', 'Perdomo', '2019-02-02'),
-(22, 2, 49, 13, 'Yaireli', 'Perdomo', '2021-01-06'),
-(43, 2, 70, 13, 'Elimita', 'Perdomo', '2018-01-03');
+(12, 2, 39, 13, 'Emily', 'Perdomo', '2019-02-02'),
+(43, 2, 70, 13, 'Elimita', 'Perdomo', '2018-01-03'),
+(44, 2, 71, 13, 'Paola', 'Nieves', '2019-01-02');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `pacientes_avatar`
+--
+
+DROP TABLE IF EXISTS `pacientes_avatar`;
+CREATE TABLE `pacientes_avatar` (
+  `id_paciente_avatar` int(10) NOT NULL,
+  `id_paciente` int(10) DEFAULT NULL,
+  `id_avatar` int(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -258,9 +300,9 @@ CREATE TABLE `pacientes_diagnosticados` (
 --
 
 INSERT INTO `pacientes_diagnosticados` (`id_paciente_diagnostico`, `id_paciente`, `id_tipo_dislalia`, `id_calificacion_dislalia`, `fonemas`, `fecha_diagnostico`, `gravedad`, `observacion`) VALUES
-(6, 22, 1, 3, 'b,a', '0000-00-00', 'Leve', ''),
-(7, 12, 1, 3, 'a', '0000-00-00', 'Leve', ''),
-(8, 43, 2, 1, 'a,b', '2025-01-25', 'Moderada', 'He podido notar que el niño no puede hablar mucho cuando hay gente no conocida por parte de el');
+(7, 12, 1, 3, 'Todos los fonemas', '0000-00-00', 'Leve', ''),
+(8, 43, 2, 1, 'a,b', '2025-01-25', 'Moderada', 'He podido notar que el niño no puede hablar mucho cuando hay gente no conocida por parte de el'),
+(9, 44, 1, 1, 'r', '2025-02-18', 'Leve', '');
 
 -- --------------------------------------------------------
 
@@ -282,7 +324,9 @@ CREATE TABLE `pacientes_materiales_apoyo` (
 
 INSERT INTO `pacientes_materiales_apoyo` (`id_paciente_material_apoyo`, `id_paciente`, `id_material_apoyo`, `activo`) VALUES
 (21, 43, 2, b'1'),
-(22, 43, 1, b'1');
+(22, 43, 1, b'1'),
+(23, 44, 0, b'0'),
+(24, 44, 1, b'0');
 
 -- --------------------------------------------------------
 
@@ -312,7 +356,7 @@ INSERT INTO `profesionales` (`id_profesional`, `id_especialidad`, `id_usuario`, 
 (7, 2, 7, 'paola', 'perdomo', 'perdomopaola33brriosw@gmail.com', 'josefina de acosta'),
 (8, 2, 8, 'paola', 'perdomo', 'perdomoapolabarrios@gmail.com', 'josef'),
 (12, 1, 12, '', '', '', ''),
-(13, 1, 13, 'Dustin', 'Perdomo', 'dustinperdomo@gmail.com', 'Josefina de Acosta');
+(13, 3, 13, 'Dustin', 'Perdomo', 'dustinperdomo@gmail.com', 'Josefina de Acosta');
 
 -- --------------------------------------------------------
 
@@ -336,7 +380,7 @@ CREATE TABLE `representantes` (
 --
 
 INSERT INTO `representantes` (`id_representante`, `id_paciente`, `nombre`, `apellido`, `correo_electronico`, `numero_telefonico`, `clave_secreta`) VALUES
-(3, 12, 'Yaneri', 'perdomo', 'perdomopaolabarrios@gmail.com', 32332, '');
+(3, 12, 'Yaneri', 'perdomo', 'perdomopaolabarrios@gmail.com', 32332, '$2y$10$Zr.ziXJk6or.2sUiX6JGjeNWLQxs5fcwoylfYo/FTTlcygTEBQBjq');
 
 -- --------------------------------------------------------
 
@@ -381,11 +425,6 @@ CREATE TABLE `sesiones` (
 --
 
 INSERT INTO `sesiones` (`id_sesion`, `id_paciente`, `fecha`, `estado`, `observaciones`, `objetivos_alcanzados`, `evaluacion`, `ejercicios`) VALUES
-(11, 22, '2025-01-19', 'Completado', 'DSADSA', '17', 0, ''),
-(14, 22, '2025-01-20', 'Completado', 'La sesion de hoy buen bastante buena ', '3', 0, ''),
-(17, 22, '2025-01-21', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0'),
-(18, 22, '2025-01-22', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0'),
-(19, 22, '2025-01-24', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0'),
 (20, 43, '2025-01-25', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0'),
 (23, 12, '2025-01-26', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
 (24, 12, '2025-01-28', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0,mejillas0,seseo0'),
@@ -393,7 +432,17 @@ INSERT INTO `sesiones` (`id_sesion`, `id_paciente`, `fecha`, `estado`, `observac
 (26, 12, '2025-01-30', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0,mejillas0,seseo0'),
 (27, 43, '2025-01-31', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
 (28, 43, '2025-02-01', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
-(29, 43, '2025-02-03', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0');
+(29, 43, '2025-02-03', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
+(30, 43, '2025-02-09', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
+(31, 43, '2025-02-10', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
+(32, 43, '2025-02-11', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
+(33, 43, '2025-02-12', 'Completado', 'dsadsad', 'dsadsd', 2, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
+(34, 12, '2025-02-12', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0,mejillas0,seseo0'),
+(35, 43, '2025-02-13', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
+(36, 43, '2025-02-14', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
+(37, 12, '2025-02-18', 'Completado', 'El niño ha podido pronunciar mejor la r', 'Pronunciación del fonema \"R\"', 9, 'sonidos-habla,rotacismo0,el ritmo del habla0,mejillas0,seseo0'),
+(38, 43, '2025-02-19', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0'),
+(39, 12, '2025-02-19', 'Completado', NULL, NULL, NULL, 'sonidos-habla,rotacismo0,el ritmo del habla0,mejillas0,seseo0');
 
 -- --------------------------------------------------------
 
@@ -417,8 +466,8 @@ CREATE TABLE `terapias_lenguaje` (
 
 INSERT INTO `terapias_lenguaje` (`id_terapia_lenguaje`, `id_paciente`, `ejercicios`, `duracion_cada_ejercicio`, `duracion_total`, `nota`) VALUES
 (13, 12, 'sonidos-habla,rotacismo0,el ritmo del habla0,mejillas0,seseo0', 15000, '01:50:00', 'dsadsa'),
-(23, 22, 'sonidos-habla,rotacismo0', 10000, '01:00:00', 'El segundo ejercicio coloque bien la lengua'),
-(44, 43, 'sonidos-habla,rotacismo0,el ritmo del habla0', 10000, '01:00:00', 'd');
+(44, 43, 'sonidos-habla,rotacismo0,el ritmo del habla0', 10000, '01:00:00', 'd'),
+(45, 44, 'sonidos-habla,rotacismo0,rotacismo1,mejillas0,mejillas1', 40000, '04:00:00', 'Tienes que colocar bien la lengua. ');
 
 -- --------------------------------------------------------
 
@@ -469,10 +518,10 @@ INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `usuario`, `clave`, `fecha_hora_
 (7, 2, 'ttr', '$2y$10$vzk', '2025-01-09 23:14:28', NULL),
 (8, 2, 'yayat', '123', '2025-01-09 23:21:35', '2025-01-10 19:06:27'),
 (12, 2, 'Josef', '$2y$10$82MantakXrnLWQAST9GeYurPOUWrq7qMB7zFcg8.SEj0MSJ.G51He', '2025-01-10 13:08:26', NULL),
-(13, 2, 'Dustin2024', '$2y$10$tS.V2.Qh5Ezd6GR1TcX2A.BqdtCiwbSGgYAOIoxtqTJctm.R7zBH.', '2025-01-10 22:23:21', '2025-02-03 22:21:41'),
-(39, 1, 'Emilita', '$2y$10$.qIXULE52aytpZfac5b0nehJ0zsmSagqYvZV0HXvF7Fo5XTtwZEbi', '2025-01-15 14:38:12', '2025-02-02 15:53:47'),
-(49, 1, 'Yesenia', '$2y$10$tIKCJFf8bNJspgv3X2e91.wE8dVZlUpAPSlq1ZIxrfKl/MbIewmL.', '2025-01-15 18:10:01', '2025-01-25 10:15:08'),
-(70, 1, 'elimita', '$2y$10$8wanl9b5yMK96Yw0svZ6I.4EBbgUOV8OvhpJ6d4oVmAAoy/zMJxxy', '2025-01-25 08:06:32', '2025-02-04 18:01:16');
+(13, 2, 'Dustin2024', '$2y$10$ylbWSAqizurX8hdl/cT31ukP9aDF.26WpaTEpIeuCcvXMJLQNwd7i', '2025-01-10 22:23:21', '2025-02-19 19:35:38'),
+(39, 1, 'Emilita', '$2y$10$.qIXULE52aytpZfac5b0nehJ0zsmSagqYvZV0HXvF7Fo5XTtwZEbi', '2025-01-15 14:38:12', '2025-02-19 20:59:32'),
+(70, 1, 'elimita', '$2y$10$8wanl9b5yMK96Yw0svZ6I.4EBbgUOV8OvhpJ6d4oVmAAoy/zMJxxy', '2025-01-25 08:06:32', '2025-02-19 19:24:19'),
+(71, 1, 'Paola3', '$2y$10$z9v7tz6uXFnsn46MzJ3.kezFbJzzH7HFA.7fpwqB9mnZ0B1T/lXZK', '2025-02-18 17:53:24', NULL);
 
 --
 -- Índices para tablas volcadas
@@ -484,6 +533,13 @@ INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `usuario`, `clave`, `fecha_hora_
 ALTER TABLE `actividades`
   ADD PRIMARY KEY (`id_actividad`),
   ADD KEY `id_paciente` (`id_paciente`);
+
+--
+-- Indices de la tabla `avatares`
+--
+ALTER TABLE `avatares`
+  ADD PRIMARY KEY (`id_avatar`),
+  ADD UNIQUE KEY `ruta_imagen` (`ruta_imagen`);
 
 --
 -- Indices de la tabla `calificaciones_dislalia`
@@ -532,6 +588,14 @@ ALTER TABLE `pacientes`
   ADD KEY `id_genero` (`id_genero`),
   ADD KEY `id_usuario` (`id_usuario`),
   ADD KEY `id_profesional` (`id_profesional`);
+
+--
+-- Indices de la tabla `pacientes_avatar`
+--
+ALTER TABLE `pacientes_avatar`
+  ADD PRIMARY KEY (`id_paciente_avatar`),
+  ADD KEY `id_paciente` (`id_paciente`),
+  ADD KEY `id_avatar` (`id_avatar`);
 
 --
 -- Indices de la tabla `pacientes_diagnosticados`
@@ -608,7 +672,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `actividades`
 --
 ALTER TABLE `actividades`
-  MODIFY `id_actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id_actividad` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+
+--
+-- AUTO_INCREMENT de la tabla `avatares`
+--
+ALTER TABLE `avatares`
+  MODIFY `id_avatar` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `calificaciones_dislalia`
@@ -620,7 +690,7 @@ ALTER TABLE `calificaciones_dislalia`
 -- AUTO_INCREMENT de la tabla `calificaciones_materiales_apoyo`
 --
 ALTER TABLE `calificaciones_materiales_apoyo`
-  MODIFY `id_calificacion_material` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_calificacion_material` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `especialidades`
@@ -650,19 +720,25 @@ ALTER TABLE `materiales_apoyo`
 -- AUTO_INCREMENT de la tabla `pacientes`
 --
 ALTER TABLE `pacientes`
-  MODIFY `id_paciente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id_paciente` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+
+--
+-- AUTO_INCREMENT de la tabla `pacientes_avatar`
+--
+ALTER TABLE `pacientes_avatar`
+  MODIFY `id_paciente_avatar` int(10) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `pacientes_diagnosticados`
 --
 ALTER TABLE `pacientes_diagnosticados`
-  MODIFY `id_paciente_diagnostico` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_paciente_diagnostico` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `pacientes_materiales_apoyo`
 --
 ALTER TABLE `pacientes_materiales_apoyo`
-  MODIFY `id_paciente_material_apoyo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_paciente_material_apoyo` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT de la tabla `profesionales`
@@ -674,7 +750,7 @@ ALTER TABLE `profesionales`
 -- AUTO_INCREMENT de la tabla `representantes`
 --
 ALTER TABLE `representantes`
-  MODIFY `id_representante` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_representante` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -686,13 +762,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `sesiones`
 --
 ALTER TABLE `sesiones`
-  MODIFY `id_sesion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id_sesion` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `terapias_lenguaje`
 --
 ALTER TABLE `terapias_lenguaje`
-  MODIFY `id_terapia_lenguaje` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id_terapia_lenguaje` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos_dislalia`
@@ -704,7 +780,7 @@ ALTER TABLE `tipos_dislalia`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id_usuario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- Restricciones para tablas volcadas
@@ -736,6 +812,13 @@ ALTER TABLE `pacientes`
   ADD CONSTRAINT `pacientes_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `generos` (`id_genero`),
   ADD CONSTRAINT `pacientes_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE CASCADE,
   ADD CONSTRAINT `pacientes_ibfk_3` FOREIGN KEY (`id_profesional`) REFERENCES `profesionales` (`id_profesional`);
+
+--
+-- Filtros para la tabla `pacientes_avatar`
+--
+ALTER TABLE `pacientes_avatar`
+  ADD CONSTRAINT `pacientes_avatar_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `pacientes` (`id_paciente`),
+  ADD CONSTRAINT `pacientes_avatar_ibfk_2` FOREIGN KEY (`id_avatar`) REFERENCES `avatares` (`id_avatar`);
 
 --
 -- Filtros para la tabla `pacientes_diagnosticados`

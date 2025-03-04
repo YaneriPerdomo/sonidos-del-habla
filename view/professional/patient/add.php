@@ -21,9 +21,16 @@ include '../../../php/validation/authorized-user.php';
     <link rel="stylesheet" href="../../../css/admin/header.css">
     <link rel="stylesheet" href="../../../css/components/view-add-modify-patient.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@3.1.0/dist/css/multi-select-tag.css">
-
 </head>
+    <style>
+        .selection-img{
+            cursor: pointer;
+            border: 0rem;
+            width: 100px;
+            clip-path: circle();
+        }
 
+    </style>
 <body>
 
     <?php include '../../include/professional/account/header.php'; ?>
@@ -57,21 +64,44 @@ include '../../../php/validation/authorized-user.php';
                                 aria-label="Username" aria-describedby="basic-addon1" autofocus="true">
                         </div>
                         <label for="gender">Genero </label><br>
-
-                        <p class="d-flex gap-2 selection-gender">
-                            <label for="M" data-checked="true">
-                                <input type="radio" id="M" name="id-gender" value="1" checked>
-                                <img src="../../../img/patients/childs/boy.png" alt="" class="checked">
-                            </label>
-                            <label for="F">
-                                <input type="radio" id="F" name="id-gender" value="2">
-                                <img src="../../../img/patients/childs/girl.png" alt="">
-                            </label>
-                        </p>
-
+                        <div class="input-group mb-2">
+                            <span class="input-group-text" id="basic-addon1"><i class="bi bi-journal-text"></i></span>
+                            <select class="form-control" name="id-gender">
+                                <option disabled value=""  selected>Elige el genero</option>
+                                <option value="1">Masculino</option>
+                                <option value="2">Femenina</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="col-6">
                         <b>Datos de la cuenta</b><br>
+                        <label for="avatar">Avatar</label>
+                        <p class="d-flex gap-2 selection-avatar flex-wrap">
+                            <label for="0" data-checked="true">
+                                <input type="radio" id="0" name="id-avatar" value="0" checked class="input-radio--hidden ">
+                                <img src="../../../img/patients/avatares/default.png" alt="" class="selection-img">
+                            </label>
+                            <label for="1">
+                                <input type="radio" id="1" name="id-avatar" value="1" class="input-radio--hidden">
+                                <img src="../../../img/patients/avatares/boy.png" alt="" class="selection-img">
+                            </label>
+                            <label for="2">
+                                <input type="radio" id="2" name="id-avatar" value="2" class="input-radio--hidden">
+                                <img src="../../../img/patients/avatares/girl.png" alt="" class="selection-img">
+                            </label>
+                            <label for="3">
+                                <input type="radio" id="3" name="id-avatar" value="3" class="input-radio--hidden">
+                                <img src="../../../img/patients/avatares/dinosaur.png" alt="" class="selection-img">
+                            </label>
+                            <label for="4">
+                                <input type="radio" id="4" name="id-avatar" value="4" class="input-radio--hidden">
+                                <img src="../../../img/patients/avatares/young-snow-m.png" alt="" class="selection-img">
+                            </label>
+                            <label for="5">
+                                <input type="radio" id="5" name="id-avatar" value="5" class="input-radio--hidden">
+                                <img src="../../../img/patients/avatares/young-snow-f.png" alt="" class="selection-img">
+                            </label>
+                        </p>
                         <label for="user">Usuario</label><br>
                         <div class="input-group mb-2">
                             <span class="input-group-text" id="basic-addon1"><i class="bi bi-person"></i></span>

@@ -30,6 +30,31 @@ include '../../php/validation/authorized-user.php';
         .card-patient>div:nth-of-type(2) {
             flex-grow: 2;
         }
+
+        @media screen and (max-width: 992px) {
+            .col-lg-3>.history{
+                height: 200px !important;
+                margin-bottom: 1rem !important;
+            }
+
+            .col-lg-3 {
+                height: 200px !important;
+            }
+
+            .row {
+                height: auto !important;
+                gap: 1rem
+            }
+
+            .history>div {
+                justify-content: space-between;
+            }
+
+            .reportHistory {
+                justify-content: center;
+            }
+            
+        }
     </style>
 </head>
 
@@ -39,7 +64,7 @@ include '../../php/validation/authorized-user.php';
     <main class="flex-start-full">
         <section class=" h-100  z-1 w-100 p-3 ">
             <div class="row ">
-                <div class="col-9">
+                <div class="col-12 col-lg-9">
                     <div>
                         <h1 class="">Panel de control</h1>
                         <hr>
@@ -173,8 +198,9 @@ include '../../php/validation/authorized-user.php';
                             ?>
                         </div>
                     </div>
-                    <div class="col-3">
-                        <div>
+                    <div class="col-12 col-lg-3 h-100">
+                        <div class="history">
+                            <div>
                             <a href="./patient/add.php" class="text-decoration-none w-100">
                                 <button class="button__green w-100">
                                     Agregar paciente
@@ -191,6 +217,7 @@ include '../../php/validation/authorized-user.php';
                                 show_historys();
                                 ?>
                             </section>
+                            </div>
 
                         </div>
                     </div>

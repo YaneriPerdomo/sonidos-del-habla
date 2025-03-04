@@ -25,6 +25,7 @@ try {
                 //User
                 $user = $_POST['user'];
                 $password = $_POST['password'];
+                $id_avatar = $_POST['id-avatar'] ?? 0;
 
                 //Information about dyslalia
                 $dyslalia_type = $_POST['dyslalia-type'] ?? NULL;
@@ -65,7 +66,6 @@ try {
                     exit();
                 }
 
-
                 $pdo->beginTransaction();
 
                 $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -98,6 +98,12 @@ try {
                 $add_therapy_stmt->bindParam('duracion_total', $session_duration, PDO::PARAM_STR);
                 $add_therapy_stmt->bindParam('nota', $note, PDO::PARAM_STR);
                 $add_therapy_stmt->execute();
+
+                $add_avatar_query = 'INSERT INTO pacientes_avatar(id_paciente, id_avatar) VALUES (:id_patient, :id_avatar)';
+                $add_avatar_stmt = $pdo->prepare($add_avatar_query);
+                $add_avatar_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $add_avatar_stmt->bindParam('id_avatar', $id_avatar, PDO::PARAM_INT);
+                $add_avatar_stmt->execute();
 
                 if (
                     $representative_name != "" || $representative_lastname != "" || $representative_email != ""
@@ -196,8 +202,7 @@ try {
                         "Lo sentimos, el nombre de usuario \"$user\" ya está en uso.",
                         "./../../view/professional/patient/modify.php?id=" . $id_patient . ""
                     );
-
-                    return;
+                    return false;
                 }
 
                 $search_representative_query = "SELECT correo_electronico FROM representantes WHERE correo_electronico = :email AND id_paciente != :id_paciente";
@@ -212,10 +217,9 @@ try {
                         "./../../view/professional/patient/modify.php?id=" . $id_patient . ""
                     );
 
-                    return;
+                    return false;
                 }
 
-                echo 0;
                 if (
                     $representative_name != "" || $representative_lastname != "" || $representative_email != ""
                     && $representative_phone_number != "" || $representative_secret_code != ""
@@ -266,7 +270,6 @@ try {
                     }
                 }
 
-                echo 'end';
                 $get_id_user_query = "SELECT 
                                     usuarios.id_usuario AS id_usuario
                                     FROM 
@@ -280,8 +283,6 @@ try {
                 $get_id_user_stmt->execute();
                 $row_id_user = $get_id_user_stmt->fetch(PDO::FETCH_ASSOC);
                 $id_user = $row_id_user['id_usuario'];
-
-
 
                 if ($password != "") {
                     $update_user_query = 'UPDATE usuarios SET usuario =:user, clave =:clave WHERE id_usuario =:id_user';
@@ -299,9 +300,6 @@ try {
                     $update_user_stmt->bindParam('id_user', $id_user, PDO::PARAM_INT);
                     $update_user_stmt->execute();
                 }
-
-                echo 22;
-
 
                 $update_patient_query = 'UPDATE pacientes SET nombre = :nombre, apellido = :apellido, id_genero = :id_genero, fecha_nacimiento = :fecha_nacimiento 
                 WHERE id_paciente = :id_paciente';
@@ -353,10 +351,10 @@ try {
 
                 showMsg(
                     "Datos del paciente actualizados con éxito.",
-                    "./../../view/professional/patient/modify.php?id=" . $id_patient . ""
+                    './../../view/professional/dashboard.php'
                 );
 
-                echo $id_patient;
+              
 
                 break;
             case 'delete';
@@ -385,6 +383,11 @@ try {
                 $delete_paciente_materiales_apoyo_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
                 $delete_paciente_materiales_apoyo_stmt->execute();
 
+                $delete_avatar_query = "DELETE FROM pacientes_avatar WHERE id_paciente = :id_patient";
+                $delete_avatar_stmt = $pdo->prepare($delete_avatar_query);
+                $delete_avatar_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $delete_avatar_stmt->execute();
+
                 $delete_representative_query = "DELETE FROM representantes WHERE id_paciente = :id_patient";
                 $delete_representative_stmt = $pdo->prepare($delete_representative_query);
                 $delete_representative_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
@@ -409,9 +412,14 @@ try {
                 $delete_grades_support_materials_stmt = $pdo->prepare($delete_activities_query);
                 $delete_grades_support_materials_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
                 $delete_grades_support_materials_stmt->execute();
+
+              
                 $pdo->commit();
                 showMsg('Datos del paciente eliminados exitosamente', './../../view/professional/dashboard.php');
 
+
+                
+              
                 break;
             default:
                 echo 'Que paso con el valor de state. :/';

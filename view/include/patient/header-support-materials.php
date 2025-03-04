@@ -14,9 +14,11 @@
                 <button type="button" class="dropdown-toggle" data-bs-toggle="dropdown"
                     data-bs-display="static" aria-expanded="false">
                     <img src=<?php
-                                echo $_SESSION['id_gender'] == 1 ? "../../../../img/patients/childs/boy.png"
-                                    : "../../../../img/patients/childs/girl.png" ?>
-                        class="img-fluid header-img" alt="">
+                                echo  "../../../../img/patients/avatares/".$_SESSION['avatar'].".png" ?>
+                        class="img-fluid header-img" 
+                         alt="<?php echo $_SESSION['avatar'] != NULL ? $_SESSION['avatar'] : 'No hay ningun avatar seleccionado' ?>" 
+                                        title="<?php echo $_SESSION['avatar'] != NULL ? $_SESSION['avatar'] : 'No hay ningun avatar seleccionado' ?>"
+                        >
                 </button>
                 <ul class="dropdown-menu p-3">
                     <li clasS="text-center">

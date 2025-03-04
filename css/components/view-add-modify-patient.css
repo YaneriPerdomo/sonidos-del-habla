@@ -95,3 +95,9 @@
 .modal-body__therapy_img {
     width: 217px;
 }
+
+
+
+.input-radio--hidden{
+    display: none;
+}
