@@ -170,6 +170,7 @@ try {
                 //User
                 $user = trim($_POST['user']);
                 $password = trim($_POST['password']);
+                $id_avatar = $_POST['id-avatar'] ?? 0;
 
                 //Information about dyslalia
                 $dyslalia_type = trim($_POST['dyslalia-type'] ?? NULL);
@@ -349,6 +350,12 @@ try {
                     }
                 }
 
+                $update_avatar_query = 'UPDATE pacientes_avatar SET id_avatar = :id_avatar WHERE id_paciente = :id_patient';
+                $update_avatar_stmt = $pdo->prepare($update_avatar_query);
+                $update_avatar_stmt->bindParam('id_patient', $id_patient, PDO::PARAM_INT);
+                $update_avatar_stmt->bindParam('id_avatar', $id_avatar, PDO::PARAM_INT);
+                $update_avatar_stmt->execute();
+                echo $id_avatar;
                 showMsg(
                     "Datos del paciente actualizados con éxito.",
                     './../../view/professional/dashboard.php'

@@ -48,7 +48,7 @@ try {
                         $_SESSION['id_user'] = $row_user["id_usuario"];
                         $_SESSION['id_professional'] = $row_patient['id_profesional'];
                         $_SESSION['id_patient'] = $row_patient['id_paciente'];
-                        $_SESSION['avatar'] = $row_patient_a['nombre_avatar'] ?? NULL;
+                        $_SESSION['avatar'] = $row_patient_a['nombre_avatar'] ?? 'default';
                         $_SESSION['user'] = ucfirst($user);
                         $_SESSION['id_gender'] =$row_patient['id_genero'];
                         $_SESSION['name_lastname'] = ucfirst($row_patient['nombre']) .' '. ucfirst($row_patient['apellido']);

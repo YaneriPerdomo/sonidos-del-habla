@@ -32,7 +32,7 @@ include '../../php/validation/authorized-user.php';
         }
 
         @media screen and (max-width: 992px) {
-            .col-lg-3>.history{
+            .col-lg-3>.history {
                 height: 200px !important;
                 margin-bottom: 1rem !important;
             }
@@ -53,7 +53,7 @@ include '../../php/validation/authorized-user.php';
             .reportHistory {
                 justify-content: center;
             }
-            
+
         }
     </style>
 </head>
@@ -98,12 +98,16 @@ include '../../php/validation/authorized-user.php';
                                            COALESCE( SUBSTRING(DATE(NOW()), 1, 4) - SUBSTRING(DATE(fecha_nacimiento), 1, 4), 0) AS 'Edad', 
                                            usuario AS 'Usuario', 
                                            ejercicios AS 'Terapias', 
-                                           pacientes.id_genero AS 'Id_genero' 
+                                           pacientes.id_genero AS 'Id_genero' ,
+                                              avatares.nombre_avatar
                                        FROM 
                                            `pacientes` 
-                                       INNER JOIN 
+                                          INNER JOIN 
                                            terapias_lenguaje ON pacientes.id_paciente = terapias_lenguaje.id_paciente
-                                       INNER JOIN 
+                                           INNER JOIN
+                                           pacientes_avatar on terapias_lenguaje.id_paciente = terapias_lenguaje.id_paciente
+                                          INNER join avatares on pacientes_avatar.id_avatar = avatares.id_avatar
+                                            INNER JOIN 
                                            usuarios on pacientes.id_usuario = usuarios.id_usuario
                                        WHERE id_profesional =:id_professional 
                                        LIMIT :inicio, :registros_por_pagina";
@@ -139,13 +143,13 @@ include '../../php/validation/authorized-user.php';
                                     if (preg_match("/el ritmo del habla0|el ritmo del habla1/", $value['Terapias'])) {
                                         $fluency = 'Fluidez. ';
                                     }
-                                    $img_gender = $value['Id_genero'] == 1 ? 'boy' : 'girl';
+                                    $img_avatar = $value['nombre_avatar'];
                                     $bg_card_patient = $value['Id_genero'] == 1 ? '' : 'card-patient--bgPink';
                                     echo '
                                         <div class="card-patient p-2 ' . $bg_card_patient . '">
                                           
                                            <div class="card-patient__img flex-center-full">
-                                               <img src="../../img/patients/childs/' . $img_gender . '.png" class="" alt="">
+                                               <img src="../../img/patients/avatares/' . $img_avatar . '.png" class="" alt="">
                                            </div>
                                            <div class="card-patiente_information ">
                                                <b>Usuario:</b><span> ' . $value['Usuario'] . '</span><br>
@@ -161,7 +165,7 @@ include '../../php/validation/authorized-user.php';
                                            <div class="card-patient__operation flex-center-full gap-4">
                                            <i class="bi bi-trash openModalDelete" data-idPatient="' . $value['Id_paciente'] . '"  data-idUser = "' . $value['Id_usuario'] . '"   ></i>
                                                <a href="./patient/modify.php?id=' . $value['Id_paciente'] . '" class="text-decoration-none text__black" > <i class="bi bi-person-lines-fill" > </i></a>
-                                               <a href="./patient/attendance.php?id='.$value['Id_paciente'].'"class="text-doration-none text__black"  >  <i class="bi bi-calendar3" data-idProgress="' . $value['Id_paciente'] . '"></i> </a>
+                                               <a href="./patient/attendance.php?id=' . $value['Id_paciente'] . '"class="text-doration-none text__black"  >  <i class="bi bi-calendar3" data-idProgress="' . $value['Id_paciente'] . '"></i> </a>
                                                </div>
                                            </div>
                                        </div> 
@@ -201,22 +205,22 @@ include '../../php/validation/authorized-user.php';
                     <div class="col-12 col-lg-3 h-100">
                         <div class="history">
                             <div>
-                            <a href="./patient/add.php" class="text-decoration-none w-100">
-                                <button class="button__green w-100">
-                                    Agregar paciente
-                                </button>
-                            </a>
-                            <hr style="  margin-bottom: 0.5rem;">
-                            <section class="activities-patients">
-                                <span class=" fs-3 activities-patients__title">Actividades</span>
+                                <a href="./patient/add.php" class="text-decoration-none w-100">
+                                    <button class="button__green w-100">
+                                        Agregar paciente
+                                    </button>
+                                </a>
+                                <hr style="  margin-bottom: 0.5rem;">
+                                <section class="activities-patients">
+                                    <span class=" fs-3 activities-patients__title">Actividades</span>
 
-                                <?php
+                                    <?php
 
-                                include '../../php/admin/show-history.php';
+                                    include '../../php/admin/show-history.php';
 
-                                show_historys();
-                                ?>
-                            </section>
+                                    show_historys();
+                                    ?>
+                                </section>
                             </div>
 
                         </div>

@@ -108,7 +108,7 @@ function show_additional_information():void
             <div class="row">
                 <div class="col-12 col-lg-6 card-patient flex-center-full flex-column"0>
                     <div class="card-patient__img">
-                        <img src="<?php echo "../../img/patients/avatares/".$_SESSION['avatar'].".png"
+                        <img src="<?php echo "../../img/patients/avatares/".$_SESSION['avatar'] .".png"
                                     ?>" alt="<?php echo $_SESSION['avatar'] != NULL ? $_SESSION['avatar'] : 'No hay ningun avatar seleccionado' ?>" 
                                        class="img-fluid"
                                        title="<?php echo $_SESSION['avatar'] != NULL ? $_SESSION['avatar'] : 'No hay ningun avatar seleccionado' ?>">
